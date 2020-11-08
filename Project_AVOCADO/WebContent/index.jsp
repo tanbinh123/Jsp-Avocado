@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="common.*,dto.*,java.util.*" %>
-<%  
-ExchangeRate_dao dao = new ExchangeRate_dao();
-
-ArrayList<ExchangeRate_dto> arr = dao.getExchangeRate();
-
+<%@ page import="common.*,dto.*,dao.*,java.util.*" %>
+<%
+	ArrayList<ExchangeRate_dto> arr = (ArrayList<ExchangeRate_dto>)request.getAttribute("t_arr");
 %>
 <!DOCTYPE html>
 <html>
