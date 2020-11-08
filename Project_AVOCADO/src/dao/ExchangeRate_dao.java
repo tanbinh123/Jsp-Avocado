@@ -46,8 +46,6 @@ public class ExchangeRate_dao {
 	 *@param
 	 *@return	ArrayList<ExchangeRate_dto>
 	 *@throws	비영업일의 데이터, 혹은 영업당일 11시 이전에 해당일의 데이터를 요청할 경우 null 값이 반환
-	 *@deprecated	1.8
-	 *@author	thyoondev
 	 */
     public ArrayList<ExchangeRate_dto> getExchangeRate() throws Exception {
 
