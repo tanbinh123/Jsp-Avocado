@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ExchangeRate_dao;
+import dao.NoticeDao;
 import dto.ExchangeRate_dto;
+import dto.NoticeDto;
 
 /**
  * Servlet implementation class index
@@ -32,14 +34,19 @@ public class index extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		
 		request.setCharacterEncoding("utf-8");
 		
-		ExchangeRate_dao dao = new ExchangeRate_dao();
+		ExchangeRate_dao exchangeRateDao = new ExchangeRate_dao();
+		NoticeDao noticeDao = new NoticeDao();
 		
 		try {
-			ArrayList<ExchangeRate_dto> arr = dao.getExchangeRate();
-			request.setAttribute("t_arr", arr);
+			ArrayList<ExchangeRate_dto> exchangeRateArray = exchangeRateDao.getExchangeRate();
+			ArrayList<NoticeDto> noticeArray = noticeDao.getNoticeList("", "");
+			
+			request.setAttribute("t_exchangeRateArray", exchangeRateArray);
+			request.setAttribute("t_noticeArray", noticeArray);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
