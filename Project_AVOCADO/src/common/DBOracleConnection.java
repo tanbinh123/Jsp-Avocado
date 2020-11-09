@@ -72,7 +72,7 @@ public class DBOracleConnection {
       System.out.println(" oracle db 연결실패===========");
       return;
     }
-    System.out.println(" oracle db 연결성공~~~");
+    //System.out.println(" oracle db 연결성공~~~");
   }
 
 

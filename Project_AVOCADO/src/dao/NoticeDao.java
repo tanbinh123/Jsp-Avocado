@@ -50,10 +50,10 @@ public class NoticeDao {
    * @return 각 메소드에 맞는 쿼리값
    */
   private String getQuery(String methodName, NoticeDto dto) {
-    if (equalsCheck(methodName, "save"))
-      return "insert into h05_News (no,title,content,reg_name,reg_date,hit) values ('" + dto.getNo() + "','" + dto.getTitle() + "','" + dto.getContent() + "','" + dto.getReg_name() + "','" + dto.getReg_date() + "','" + dto.getHit() + "')";
-    if (equalsCheck(methodName, "update"))
-      return "update h05_notice set title='" + dto.getTitle() + "', content='" + dto.getContent() + "', attach ='" + dto.getAttach() + "', reg_name ='" + dto.getReg_name() + "', reg_date ='" + dto.getReg_date() + "' where no ='" + dto.getNo() + "'";
+    if (equalsCheck(methodName, "saveNotice"))
+      return "insert into avocado_notice (no,title,content,attach,reg_name,reg_date,hit) values ('" + dto.getNo() + "','" + dto.getTitle() + "','" + dto.getContent() + "','" + dto.getAttach() + "','" + dto.getReg_name() + "','" + dto.getReg_date() + "','" + dto.getHit() + "')";
+    if (equalsCheck(methodName, "updateNotice"))
+      return "update avocado_notice set title='" + dto.getTitle() + "', content='" + dto.getContent() + "', attach ='" + dto.getAttach() + "', reg_name ='" + dto.getReg_name() + "', reg_date ='" + dto.getReg_date() + "' where no ='" + dto.getNo() + "'";
 
     return "";
   }
@@ -66,8 +66,8 @@ public class NoticeDao {
    * @return 각 메소드에 맞는 쿼리값
    */
   private String getQuery(String methodName, String no) {
-    if (equalsCheck(methodName, "delete"))
-      return " delete from h05_notice where no ='" + no + "'";
+    if (equalsCheck(methodName, "deleteNotice"))
+      return " delete from avocado_notice where no ='" + no + "'";
 
     return "";
   }
