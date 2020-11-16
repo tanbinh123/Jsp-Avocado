@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap');
+
+
+*{
+    margin: auto 0;
+    scroll-behavior: smooth;
+}
+body ::selection{
+    color: #000;
+    background: #8bc34a;
+}
+header{
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+/*header css*/
+#header-inner{
+    width: 1024px;
+    margin: 0 auto;
+    padding: 16px 0;
+    position: relative;
+}
+.logo{
+    display: flex;
+    cursor: pointer;
+}
+#logo-txt{
+    /*font-family: 'Amatic SC', cursive;*/
+    font-family: 'Rowdies', cursive;
+    font-size: 1.8em;
+    color: #558203;
+}
+#logo-image{
+    font-size: 1.5em;
+}
+#menu {
+    position: absolute;
+    right: 0;
+    top: 16px;
+}
+.dropdown {
+    display: inline-block;
+}
+.dropbtn{
+    width: 140px;
+    border-radius: 5px;
+    border: solid 1px #e9ecef;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    height: 40px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #495057;
+    outline: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    border-radius: 10px;
+}
+a{text-decoration: none;}
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: black; text-decoration: none;}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #eee;}
+
+
+
+
+
+
+
+
+
+
+
+
+/*section common css*/
+.anchor{
+    display: block;
+    height: 68px;       
+    margin-top: -68px;  
+    visibility: hidden;
+}
+
+.home-main-section{
+    height: 760px;
+    background-color: #fff;
+}
+
+.home-main-content{
+    position: relative;
+    width: 1024px;
+    margin:0 auto;
+}
+
+
+
+
+
+
+
+
+
+/*section top css*/
+.home-main-section-top{
+    margin-top: 68px;
+    height: 760px;
+    background-color: #f1f8e9;
+    position: relative;
+}
+
+.titleText{
+    font-family: 'Gugi', cursive;
+    font-size: 3.5rem;
+    line-height: 1.3;
+    padding-top: 20rem;
+    margin-bottom: 2rem;
+    letter-spacing: -0.4px;
+    color: #558203;
+    
+}
+.text-m{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem !important;
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+    color: #495057;
+}
+.home-main-image-top{
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 600px;
+    height: 500px;
+    background: url(/img/main-top-img.png) no-repeat;
+    background-size: 600px 500px;
+}
+
+
+
+
+
+
+
+
+
+/*section2 css*/
+.home-main-content-box-container{
+    display: flex;
+    padding-top: 50px;
+    justify-content: space-between;
+}
+.home-main-content-box{
+    width: 270px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    /*border: solid 1px #e9ecef;*/
+    padding: 30px;
+}
+.home-main-content-box-txt{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0px;
+}
+.home-main-content-box-title{
+   font-family: 'Gugi', cursive;
+    font-size: 1.7rem;
+    color: #558203; 
+}
+
+
+
+
+
+
+
+
+
+/*section3 css*/
+.how-to-use-title{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.how-to-use-box-container{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 1.8rem;
+    color: #495057;
+}
+.how-to-use-box-container ul{
+    list-style: inherit;
+}
+.how-to-use-txt-title{
+    font-family: 'Gugi', cursive;
+    font-size: 2rem;
+    color: #558203;
+}
+
+
+
+
+
+
+
+/*section4 css*/
+.for-safe-title{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: #495057;
+    text-align: center;
+    padding-top: 20px;
+}
+.for-safe-box-container{
+    display: flex;
+    padding-top: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.for-safe-box{
+    width: 400px;
+    height: 150px;
+    /*border: solid 1px #e9ecef;*/
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.for-safe-box-txt{
+ padding-left: 53px;   
+}
+.for-safe-box-txt-title{
+    font-family: 'Gugi', cursive;
+    font-size: 1.8em;
+}
+.for-safe-box-txt-content{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    font-size: 1.1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*section5 css*/
+.faq-title{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: #495057;
+    text-align: center;
+    padding-top: 20px;
+}
+.faq-box-container{
+    display: flex;
+    padding-top: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.faq-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.faq-box-button{
+    background-color: #F8F9FA;
+    width: 165px;
+    height: 60px;
+    border: solid 1px #e9ecef;
+    padding: 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.3rem;
+    color: #495057;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+.faq-box-button:hover {
+    background-color: #eee;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*footer css*/
+footer{
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #495057;
+    color: #fff;
+    padding: 8rem 0;
+}
+.footer-inner{
+    width: 1024px;
+    margin: 0 auto;
+    text-align: center;
+}
