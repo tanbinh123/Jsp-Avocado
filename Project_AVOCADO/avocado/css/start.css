@@ -1,0 +1,17 @@
+.start-main-content{
+    position: relative;
+    width: 1024px;
+    margin:0 auto;
+}
+
+.start-section-top{
+    margin-top: 68px;
+    height: 100vh-68px;
+    background-color: #f1f8e9;
+    position: relative;
+}
+
+#map{
+    width: 1024px;
+    height: 900px;
+}
