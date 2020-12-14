@@ -68,6 +68,24 @@
     outline: none;
     cursor: pointer;
 }
+.dropbtn-half{
+    width: 67px;
+    border-radius: 5px;
+    border: solid 1px #e9ecef;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    height: 40px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #495057;
+    outline: none;
+    cursor: pointer;
+}
 
 .dropdown-content {
     display: none;
@@ -97,6 +115,8 @@ a{text-decoration: none;}
 .dropdown:hover .dropbtn {background-color: #eee;}
 
 .dropbtn-login:hover{background-color: #fff;}
+
+.dropbtn-half:hover{background-color: #eee;}
 
 #map_search_input{
     width: 300px;

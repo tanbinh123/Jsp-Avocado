@@ -31,7 +31,7 @@
     <!-- header start-->
     <header>
       <div id="header-inner">
-        <a href="index.jsp">
+        <a href="/index.jsp">
           <div class="logo"><i class="em em-avocado" aria-role="presentation" aria-label="AVOCADO" id="logo-image"></i>&nbsp;<span id="logo-txt">AVOCADO</span></div></a
         >
         <nav id="menu">
@@ -52,29 +52,43 @@
           <div class="dropdown">
             <button class="dropbtn"><i class="em em-left_speech_bubble" aria-role="presentation" aria-label=""></i>&nbsp;&nbsp;게시판</button>
             <div class="dropdown-content">
-              <a href="board/freeboard/freeboard_list.jsp">자유게시판</a>
-              <a href="board/qna/qna_list.jsp">문의하기</a>
-              <a href="board/faq/faq_list.jsp">자주묻는질문</a>
+              <a href="/board/freeboard/freeboard_list.jsp">자유게시판</a>
+              <a href="/board/qna/qna_list.jsp">문의하기</a>
+              <a href="/board/faq/faq_list.jsp">자주묻는질문</a>
               <a href="/Devinfo">개발정보</a>
             </div>
           </div>
           <div class="dropdown">
-            <a href="start.jsp"
+            <a href="/start.jsp"
               ><button class="dropbtn"><i class="em em-rocket" aria-role="presentation" aria-label="ROCKET"></i>&nbsp;&nbsp;출발하기</button></a
             >
           </div>
           <%if (sessionName.equals("")) {%>
           <div class="dropdown">
-            <a href="member/login.jsp"
+            <a href="/member/login.jsp"
               ><button class="dropbtn-login"><i class="em em-closed_lock_with_key" aria-role="presentation" aria-label="CLOSED LOCK WITH KEY"></i>&nbsp;&nbsp;로그인</button></a
             >
           </div>
           <%} else { %>
           <div class="dropdown">
-            <a href="member/mypage.jsp"
-              ><button class="dropbtn-login"><i class="em em-bust_in_silhouette" aria-role="presentation" aria-label="BUST IN SILHOUETTE"></i>&nbsp;&nbsp;마이페이지</button></a
+            <a href="/member/mypage.jsp"
+              ><button class="dropbtn-half" title="<%=sessionName%>님 마이페이지"><i class="em em-bust_in_silhouette" aria-role="presentation" aria-label="BUST IN SILHOUETTE"></i></button></a
             >
           </div>
+            <div class="dropdown">
+            <button onclick="goLogout()" class="dropbtn-half" title="로그아웃"><i class="em em-unlock" aria-role="presentation" aria-label="OPEN LOCK"></i></button>
+          </div>
+          
+          <script type="text/javascript">
+          function goLogout() {
+			if (confirm("로그아웃 하시겠습니까?")) {
+				location.href = '/member/DBLogout.jsp';
+			} else {
+				return;
+			}
+			}
+          </script>
+          
           <% } %>
         </nav>
       </div>
