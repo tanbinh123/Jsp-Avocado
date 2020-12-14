@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap');
+
+
+/*footer css*/
+.footer-logo{
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+}
+#footer-logo-txt{
+    /*font-family: 'Amatic SC', cursive;*/
+    font-family: 'Rowdies', cursive;
+    font-size: 1.8em;
+    color: #558203;
+}
+#footer-logo-image{
+    font-size: 1.5em;
+}
+
+footer{
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #495057;
+    color: #fff;
+    padding: 2rem 0;
+}
+.footer-inner{
+    width: 1024px;
+    margin: 0 auto;
+    //border: 1px solid yellow;
+    display: flex;
+    flex-direction: column;
+}
+.footer-inner-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    //border: 1px red solid;
+}
+
+.footer-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 300px;
+    height: 150px;
+    //border: 1px solid blue;
+    align-items: center;
+}
+
+.footer-box-bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-box-content-txt, .footer-box-content-txt a{
+    font-size: 0.8rem;
+    color: #eee;
+}
+.footer-box-content-txt a{text-decoration: none;}
+.footer-box-content-txt a:link { color: #eee; text-decoration: none;}
+.footer-box-content-txt a:visited { color: #eee; text-decoration: none;}
+.footer-box-content-txt a:hover { color: #000; text-decoration: none;}
+
+.footer-box-content-title{
+    font-weight: bold;
+}

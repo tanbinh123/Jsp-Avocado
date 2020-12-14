@@ -1,0 +1,401 @@
+.board-main-section{
+    margin-top: 68px;
+    height:100vh-68px;
+    min-height: 900px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-main-content{
+    position: relative;
+    width: 1024px;
+    margin:0 auto;
+    //border: 3px solid pink;
+    
+}
+
+.board-container{
+    width: 100%;
+    //border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+.board-kind{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.board-kind-title{
+    font-family: 'Gugi', cursive;
+    font-size: 2.5rem;
+    color: #558203;
+}
+.board-box{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    height: 705px;
+    //border: 2px solid orange;
+    width: 1004px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+.board-section{
+    border: 1px solid #eee;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background-color: #fff;
+    margin: 1px;
+    
+}
+
+.board-section:not(.board-th-container){cursor: pointer;}
+.board-section:not(.board-th-container):hover{background-color: #eee;}
+.board-th{
+    text-align: center !important;
+    font-weight: bold;
+    color: #456902 !important;
+    font-size: 1.1rem;
+    
+}
+.board-th-container{
+    background-color: #f1f8e9;
+    
+}
+.board-section > *{
+    //border: 1px solid red;
+    white-space: nowrap;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.board-section > *:not(.board-recommend){border-right: 1px solid #eee;}
+
+.board-no{
+    min-width: 50px;
+}
+.board-title{
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: left;
+}
+.board-reg_name{
+    min-width: 120px;
+}
+.board-reg_date{
+    min-width: 90px;
+}
+.board-hit{
+    min-width: 50px;
+}
+.board-recommend{
+    min-width: 50px;
+    font-weight: bold;
+    color: #558203;
+}
+.board-bottom{
+    margin: 10px 0;
+    //border: 1px solid red;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.board-write-button{
+    width: 140px;
+    border-radius: 5px;
+    border: solid 1px #e9ecef;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    height: 40px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #495057;
+    outline: none;
+    cursor: pointer;
+}
+
+.board-write-button:hover {background-color: #eee;}
+
+
+.board-write-button > div{
+    flex: 1;
+}
+
+/*왼쪽 하단 검색*/
+.board-bottom-search{
+    width: 140px;
+    display: flex;
+}
+.board-bottom-search select{
+    width: 60px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    border: solid 1px #e9ecef;
+    border-radius: 10px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #495057;
+}
+.board-bottom-search input{
+    width: 130px;
+    height: 38px;
+    padding: 0;
+    margin: 0;
+    border: solid 1px #e9ecef;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.board-bottom-search button{
+    width: 60px;
+    border-radius: 10px;
+    border: solid 1px #e9ecef;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    height: 40px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #495057;
+    outline: none;
+    cursor: pointer;
+}
+
+.board-paging{
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    //border: 1px solid red;
+    justify-content: space-between;
+    cursor: pointer;
+    
+}
+
+.board-paging > div{
+    font-family: 'Gugi', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #495057;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+
+.board-paging > div:hover{background-color: #eee;}
+
+
+
+
+
+/*글쓰기*/
+.board-box-write-top{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    //border: 1px solid red;
+    margin-bottom: 10px;
+}
+
+.board-box-write-middle{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    //border: 1px solid red;
+    margin-bottom: 10px;
+}
+.board-box-write-bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    //border: 1px solid red;
+}
+.board-box-write-bottom-left{
+    display: flex;
+    flex-direction: row;
+}
+.board-box-write-bottom-right{
+    display: flex;
+    flex-direction: row;
+}
+.board-box-write-th{
+    height: 100%;
+    min-width: 200px;
+    border: 1px solid #eee;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-family: 'Gugi', cursive;
+    color: #558203;
+    margin-right: 10px;
+    //border: 1px solid blue;
+}
+.board-box-write-td{
+    //border: 1px solid blue;
+    height: 100%;
+    width: 824px;
+    
+}
+.board-box-write-td input{
+    width: 96%;
+    height: 100%;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #eee;
+    padding: 0 2%;
+}
+.board-box-write-td textarea{
+    outline: none;
+    width: 96%;
+    height: 94%;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 2%;
+}
+
+
+
+.board-box-write-th-bottom{
+    height: 100%;
+    min-width: 200px;
+    border: 1px solid #eee;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-family: 'Gugi', cursive;
+    color: #558203;
+    margin-right: 10px;
+    //border: 1px solid blue;
+}
+.board-box-write-td-bottom{
+    //border: 1px solid blue;
+    height: 100%;
+    width: 290px;
+    
+}
+.board-box-write-td-bottom input{
+    width: 96%;
+    height: 45px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #eee;
+    padding-left: 0 2%;
+}
+
+
+
+/*상세화면*/
+.board-box-view-top{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    align-items: center;
+    padding: 0px 10px;
+    border-radius: 10px;
+}
+
+.board-box-view-middle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.board-box-view-bottom{
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #eee;
+    padding:  10px;
+    border-radius: 10px;
+}
+
+
+
+.board-box-view-middle-right{
+    display: flex;
+    flex-direction: row;
+}
+.board-box-view-middle-box{
+    display: flex;
+    flex-direction: row;
+    
+}
+.board-box-view-middle-th{
+    font-size: 0.8rem;
+    background-color: #f1f8e9;
+    padding: 10px;
+    width: 50px;
+    text-align: center;
+    
+    
+}
+.board-box-view-middle-th-no{
+     font-size: 0.8rem;
+    background-color: #f1f8e9;
+    padding: 10px;
+    width: 50px;
+    text-align: center;
+    border-radius: 10px 0px 0px 10px;
+}
+.board-box-view-middle-no{
+    padding: 5px;
+    width: 50px;
+    text-align: center;
+}
+.board-box-view-middle-reg_name{
+    padding: 5px;
+    width: 130px;
+    text-align: center;
+}
+.board-box-view-middle-reg_date{
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+}
+.board-box-view-middle-hit{
+    padding: 5px;
+    width: 30px;
+    text-align: center;
+}
+.board-box-view-middle-up{
+    padding: 5px;
+    width: 30px;
+    text-align: center;
+}
