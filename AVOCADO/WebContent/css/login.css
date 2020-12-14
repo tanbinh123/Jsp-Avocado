@@ -56,13 +56,13 @@
 }
 #input-id,
 #input-pw,
+#input-pw-check,
 #input-name,
 #input-phone {
   width: 400px;
   height: 40px;
   border-radius: 10px;
   border: 0px;
-  background-color: ;
 }
 .login-title {
   font-family: "Rowdies", cursive;
@@ -95,4 +95,22 @@
 
 .login-btn-login:hover {
   background-color: floralwhite;
+}
+.phoneTip{
+	display : none;
+	font-family: 'Noto Sans KR', sans-serif;
+ 	font-size: 0.85rem;
+ 	color: #558203;
+}
+.passwordTip{
+	display : none;
+	font-family: 'Noto Sans KR', sans-serif;
+ 	font-size: 0.85rem;
+ 	color: #558203;
+}
+.passwordCheckTip{
+	display : none;
+	font-family: 'Noto Sans KR', sans-serif;
+ 	font-size: 0.85rem;
+ 	color: red;
 }

@@ -16,15 +16,19 @@
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/home.css" />
     <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/start.css">
     <!--이모지-->
     <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet" />
+    <!-- js -->
+    <script type="text/javascript" src="/js/commonUtil.js"></script>
     <!--파비콘-->
     <link rel="icon" type="/image/x-icon" href="img/favicon_io/favicon.ico" />
     <!--애니메이션 https://animate.style/-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- 지도API -->
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=87p51rsq4y"></script>
-    <!-- js -->
-    <script type="text/javascript" src="/js/commonUtil.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0a64aa7a78cd30d3f2bc2538a3944e8a&libraries=services"></script>
+    
   </head>
   
   <body>
@@ -48,7 +52,18 @@
              >
            </div>
         <%} %>
-         
+       <%
+         if (this.getClass().getSimpleName().replaceAll("_", ".").equals("start.jsp")) { %> 
+        <div class="dropdown" >
+        <input type="text" id="map_search_input" placeholder="지역을 검색해보세요!" class="dropbtn">
+        </div>
+        <div class="dropdown" >
+            <button class="dropbtn" id="map_search_button" title="검색"><i class="em em-mag header_icon" aria-role="presentation" aria-label="LEFT-POINTING MAGNIFYING GLASS"></i></button>
+        </div>
+        <div class="dropdown" >
+            <button class="dropbtn" id="my_location" title="현재 위치"><i class="em em-round_pushpin header_icon" aria-role="presentation" aria-label="ROUND PUSHPIN"></i></button>
+        </div>
+         <%} %>
           <div class="dropdown">
             <button class="dropbtn"><i class="em em-left_speech_bubble" aria-role="presentation" aria-label=""></i>&nbsp;&nbsp;게시판</button>
             <div class="dropdown-content">
@@ -58,11 +73,14 @@
               <a href="/Devinfo">개발정보</a>
             </div>
           </div>
+          <%
+         if (!this.getClass().getSimpleName().replaceAll("_", ".").equals("start.jsp")) { %> 
           <div class="dropdown">
             <a href="/start.jsp"
               ><button class="dropbtn"><i class="em em-rocket" aria-role="presentation" aria-label="ROCKET"></i>&nbsp;&nbsp;출발하기</button></a
             >
           </div>
+           <%} %>
           <%if (sessionName.equals("")) {%>
           <div class="dropdown">
             <a href="/member/login.jsp"

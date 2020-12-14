@@ -8,7 +8,7 @@
 	MemberDao dao = new MemberDao();
 	
 	String member_email = request.getParameter("t_email");
-	String member_password = request.getParameter("t_password");
+	String member_password = commonUtil.encoding(request.getParameter("t_password"));
 	
 	String name = dao.getLoginName(member_email, member_password);
 	String msg ="";

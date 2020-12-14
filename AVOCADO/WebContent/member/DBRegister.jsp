@@ -9,7 +9,8 @@
 	String member_no = dao.getMemberNo();
 	String member_name = request.getParameter("t_name");
 	String member_email = request.getParameter("t_email");
-	String member_password = request.getParameter("t_password");
+	String member_password_raw = request.getParameter("t_password");
+	String member_password = commonUtil.encoding(member_password_raw);
 	String member_phoneNumber = request.getParameter("t_phoneNumber");
 	String member_regDate = commonUtil.getToday();
 	
