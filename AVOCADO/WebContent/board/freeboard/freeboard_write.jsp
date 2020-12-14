@@ -1,0 +1,164 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="common.commonUtil"%>
+<%@ include file="/common/sessionInfo.jsp" %>
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="utf-8" />
+    <title>아보카도 - No.1 공유킥보드 서비스</title>
+    <meta name="author" content="thyoondev" />
+    <meta name="description" content="아보카도 - No.1 공유킥보드 서비스" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--제이쿼리 최신 -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!--css-->
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/header.css" />
+    <link rel="stylesheet" href="../../css/footer.css" />
+    <link rel="stylesheet" href="../../css/board.css" />
+    <!--이모지-->
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet" />
+    <!--파비콘-->
+    <link rel="icon" type="image/x-icon" href="img/favicon_io/favicon.ico" />
+    <!--애니메이션 https://animate.style/-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  </head>
+
+  <body>
+    <!-- header start-->
+    <header>
+      <div id="header-inner">
+        <a href="../../index.html"
+          ><div class="logo"><i class="em em-avocado" aria-role="presentation" aria-label="AVOCADO" id="logo-image"></i>&nbsp;<span id="logo-txt">AVOCADO</span></div></a
+        >
+        <nav id="menu">
+          <!--<div class="dropdown">
+          <a href="#이용방법"><button class="dropbtn"><i class="em em-beginner" aria-role="presentation" aria-label="JAPANESE SYMBOL FOR BEGINNER"></i>&nbsp;&nbsp;이용 방법</button></a>
+        </div>
+        <div class="dropdown">
+          <a href="#안전수칙"><button class="dropbtn"><i class="em em-female-construction-worker" aria-role="presentation" aria-label=""></i>&nbsp;&nbsp;안전 수칙</button></a>
+        </div>-->
+          <div class="dropdown">
+            <button class="dropbtn"><i class="em em-left_speech_bubble" aria-role="presentation" aria-label=""></i>&nbsp;&nbsp;게시판</button>
+            <div class="dropdown-content">
+              <a href="freeboard_list.html">자유게시판</a>
+              <a href="../qna/qna_list.html">문의하기</a>
+              <a href="../faq/faq_list.html">자주묻는질문</a>
+              <a href="/Devinfo">개발정보</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="../../start.html"
+              ><button class="dropbtn"><i class="em em-rocket" aria-role="presentation" aria-label="ROCKET"></i>&nbsp;&nbsp;출발하기</button></a
+            >
+          </div>
+          <div class="dropdown">
+            <a href="../../member/login.html"
+              ><button class="dropbtn-login"><i class="em em-closed_lock_with_key" aria-role="presentation" aria-label="CLOSED LOCK WITH KEY"></i>&nbsp;&nbsp;로그인</button></a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- header end-->
+    
+<script type="text/javascript">
+	function goSave(){
+		if(freeboard.t_title.value==""){
+			alert(" 제목 입력! ");
+			freeboard.t_title.focus();
+			return;
+		}	
+		if(freeboard.t_content.value==""){
+			alert(" 내용 입력! ");
+			freeboard.t_content.focus();
+			return;
+		}	
+		
+		freeboard.method="post";
+		freeboard.action="dbFreeboardSave.jsp";
+		freeboard.submit();
+	}
+</script>	   
+    
+    <main>
+      <section class="board-main-section" style="background-color: #f1f8e9">
+        <div class="board-main-content">
+          <div class="board-container">
+            <div class="board-kind">
+              <a href="freeboard_list.html" class="board-kind-title">자유게시판</a>
+            </div>
+            <form name="freeboard">
+	            <div class="board-box">
+	              <div class="board-box-write-top">
+	                <div class="board-box-write-th">제목</div>
+	                <div class="board-box-write-td"><input type="text" name="t_title" /></div>
+	              </div>
+	              <div class="board-box-write-middle">
+	                <div class="board-box-write-th">내용</div>
+	                <div class="board-box-write-td"><textarea name="t_content"></textarea></div>
+	              </div>
+	              <div class="board-box-write-bottom">
+	                <div class="board-box-write-bottom-left">
+	                  <div class="board-box-write-th-bottom">작성자</div>
+	                  <div class="board-box-write-td-bottom"><input type="text" name="t_reg_name" value="<%=sessionName %>" /></div>
+	                </div>
+	                <div class="board-box-write-bottom-right">
+	                  <div class="board-box-write-th-bottom">작성일</div>
+	                  <div class="board-box-write-td-bottom"><input type="date" name="t_reg_date" value="<%=commonUtil.getToday() %>" /></div>
+	                </div>
+	              </div>
+	            </div>
+            </form>
+
+            <div class="board-bottom">
+              <div class="board-bottom-blank"></div>
+              <div>
+                <button type="button" onclick="history.back()" class="board-write-button">뒤로</button>
+                <button class="board-write-button" onclick="goSave()">등록</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- footer start-->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-inner-box">
+          <div class="footer-box">
+            <a href="index.html"
+              ><div class="footer-logo"><i class="em em-avocado" aria-role="presentation" aria-label="AVOCADO" id="footer-logo-image"></i>&nbsp;<span id="footer-logo-txt">AVOCADO</span></div></a
+            >
+          </div>
+          <div class="footer-box">
+            <p class="footer-box-content-title">사이트 맵</p>
+            <p class="footer-box-content-txt">홈</p>
+            <p class="footer-box-content-txt">자유게시판</p>
+            <p class="footer-box-content-txt">QNA</p>
+            <p class="footer-box-content-txt">FAQ</p>
+          </div>
+          <div class="footer-box">
+            <p class="footer-box-content-title">개발자 정보</p>
+            <p class="footer-box-content-txt">프로젝트명 : 아보카도</p>
+            <p class="footer-box-content-txt">개발 로드맵 : <a href="https://www.notion.so/153432ead0fd4336b0b998d08e6aa426?v=9b3a63f01aa84e0ca0249bfc9ede1527" target="_blank">로드맵 바로가기</a></p>
+            <p class="footer-box-content-txt">개발크루원 : 윤태희 장명수 조경미</p>
+            <p class="footer-box-content-txt">Github : <a href="https://github.com/thyoondev" target="_blank">https://github.com/thyoondev</a></p>
+            <p class="footer-box-content-txt">e-mail : th.yoon.dev@gmail.com</p>
+          </div>
+        </div>
+        <div>
+          <br />
+          <div class="footer-box-bottom">
+            <i class="em em-kr" aria-role="presentation" aria-label="South Korea Flag"></i>
+            <p>서비스 문의 : th.yoon.dev@gmail.com</p>
+            <p>© Copyright thyoondev. All right reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer end-->
+  </body>
+</html>
+
