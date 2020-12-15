@@ -15,7 +15,16 @@ public class commonUtil {
     String formatted = format1.format(cal.getTime());
     return formatted;
   }
-  
+  /**
+   * 현재 날짜 구하기 시간 분 추가
+   * @return 현재 날짜
+   */
+  public static String getTodayHHmmss() {
+    Calendar cal = Calendar.getInstance();
+    SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+    String formatted = format1.format(cal.getTime());
+    return formatted;
+  }
   
 	/**문자열을 전달받아 암호화하여 반환하는 메소드
 	/*단방향 암호 알고리즘(MD5, SHA-1, SHA-256, SHA-512등) 사용

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/css/home.css" />
     <link rel="stylesheet" href="/css/login.css" />
     <link rel="stylesheet" href="/css/start.css">
+    <link rel="stylesheet" href="/css/board.css">
     <!--이모지-->
     <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet" />
     <!-- js -->

@@ -194,6 +194,12 @@
 					return false;
 				}
 				
+				if (register.t_name.value.length > 8) {
+					register.t_name.focus();
+					alert('이름은 8글자까지만 입력 가능합니다!');
+					return false;
+				}
+				
 				if (register.t_password.value.length < 8) {
 					register.t_password.focus();
 					alert('비밀번호는 8글자 이상으로 입력해주세요!');

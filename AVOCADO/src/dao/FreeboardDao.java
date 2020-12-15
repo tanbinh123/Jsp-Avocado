@@ -65,7 +65,7 @@ public class FreeboardDao {
 			String query ="insert into TA_FreeBoard \r\n" + 
 					"(freeboard_no,freeboard_title,freeboard_content,freeboard_regname,freeboard_regdate) \r\n" + 
 					"values \r\n" + 
-					"('"+dto.getFreeboard_no()+"','"+dto.getFreeboard_title()+"','"+dto.getFreeboard_content()+"','"+dto.getFreeboard_regName()+"','"+dto.getFreeboard_regDate()+"')";
+					"('"+dto.getFreeboard_no()+"','"+dto.getFreeboard_title()+"','"+dto.getFreeboard_content()+"','"+dto.getFreeboard_regName()+"',TO_DATE('"+dto.getFreeboard_regDate()+"','YYYY-MM-DD HH24:MI:SS'))";
 			try {
 				connection = common.getConnection();
 				ps  = connection.prepareStatement(query);
@@ -83,9 +83,10 @@ public class FreeboardDao {
 	//상세조회
 		public FreeboardDto getFreeboardView(String no){
 			FreeboardDto dto = null; 
-			String query ="  select freeboard_no, freeboard_title, freeboard_content, freeboard_regname, to_char(freeboard_regdate,'yyyy-MM-dd'), freeboard_hit\r\n" + 
-							" from TA_FreeBoard\r\n" + 
-							" where freeboard_no ='"+no+"'";
+			String query ="  select b.freeboard_no, b.freeboard_title, b.freeboard_content, a.member_name, to_char(b.freeboard_regdate,'yyyy-MM-dd HH24:MI'), b.freeboard_hit\r\n" + 
+							" from TA_FreeBoard b, ta_member a\r\n" + 
+							" where a.member_email = b.freeboard_regname"
+							+ " and b.freeboard_no ='"+no+"'";
 			try {
 				connection = common.getConnection();
 				ps  = connection.prepareStatement(query);
@@ -130,9 +131,10 @@ public class FreeboardDao {
 	//목록조회
 		public ArrayList<FreeboardDto> getFreeboard(String select,String search){
 			ArrayList<FreeboardDto> arr = new ArrayList<FreeboardDto>();
-			String query =" select freeboard_no, freeboard_title, freeboard_regname, to_char(freeboard_regdate,'yyyy-MM-dd'), freeboard_hit\r\n" + 
-						  " from TA_FreeBoard\r\n" + 
-					      " where "+select+" like '%"+search+"%' "+
+			String query =" select b.freeboard_no, b.freeboard_title, a.member_name, to_char(b.freeboard_regdate,'yyyy-MM-dd'), b.freeboard_hit\r\n" + 
+						  " from TA_FreeBoard b, ta_member a\r\n" + 
+					      " where a.member_email = b.freeboard_regname"+ 
+					      " and b."+select+" like '%"+search+"%' "+
 						  " order by freeboard_no desc";
 			try {
 				connection = common.getConnection();
