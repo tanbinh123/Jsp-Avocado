@@ -83,10 +83,6 @@
 			freeboard.submit();		
 		}
 	}
-	function goLikeStack(){
-		freeboard.method="post";
-		freeboard.action=
-	}
 </script> 
     <main>
     <form name="freeboard">
@@ -134,7 +130,6 @@
             <div class="board-bottom">
               <div class="board-bottom-blank"></div>
               <div>
-                <button type="button" onclick="goLikeStack()" class="board-write-button">공감</button>
                 <button type="button" onclick="history.back()" class="board-write-button">목록</button>
                 <button class="board-write-button" onclick="goUpdateForm()">수정</button>
                 <button class="board-write-button" onclick="goDelete()">삭제</button>
