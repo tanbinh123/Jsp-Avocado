@@ -13,11 +13,11 @@
 	String name = dao.getLoginName(member_email, member_password);
 	String msg ="";
 	if(name.equals("")){
-		msg =" ID나 비밀번호가 맞지 않습니다. ";
+		msg =" Email이나 비밀번호가 맞지 않습니다. ";
 	} else {
 		msg = name +"님 환영합니다. ";
 		session.setAttribute("sessionName",name);
-		session.setAttribute("sessionId",member_email);
+		session.setAttribute("sessionEmail",member_email);
 		if(member_email.equals("admin@avocado.com")) {
 			session.setAttribute("sessionLevel","top");
 		}
