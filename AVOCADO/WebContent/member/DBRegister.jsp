@@ -30,7 +30,7 @@
 
 <script type="text/javascript">
 <% if(result == 1){%>
-alert('회원가입 완료~~');
+alert('회원가입 완료되었습니다.');
 <%}%>
 location.href="/member/login.jsp";
 </script>

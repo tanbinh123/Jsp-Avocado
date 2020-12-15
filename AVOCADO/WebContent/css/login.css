@@ -96,6 +96,12 @@
 .login-btn-login:hover {
   background-color: floralwhite;
 }
+.emailTip{
+	display : none;
+	font-family: 'Noto Sans KR', sans-serif;
+ 	font-size: 0.85rem;
+ 	color: #558203;
+}
 .phoneTip{
 	display : none;
 	font-family: 'Noto Sans KR', sans-serif;
@@ -112,5 +118,4 @@
 	display : none;
 	font-family: 'Noto Sans KR', sans-serif;
  	font-size: 0.85rem;
- 	color: red;
 }

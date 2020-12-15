@@ -149,6 +149,8 @@ public class MemberDao {
     if (getMethodName().equals("idCheckCount")) {
       return "select count(*) from ta_member where member_email ='" + dto.getMember_email() + "'";
     }
+    
+    
     return "";
   }
 
