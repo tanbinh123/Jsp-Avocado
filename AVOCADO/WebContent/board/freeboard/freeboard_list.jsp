@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.FreeboardDao, dto.FreeboardDto, java.util.*" %>
+<%@ page import="dao.FreeboardDao, dto.FreeboardDto, java.util.*,common.Paging" %>
 <%
 	request.setCharacterEncoding("utf-8");
 	FreeboardDao dao = new FreeboardDao();
@@ -13,6 +13,46 @@
 	}
 	
 	ArrayList<FreeboardDto> arr = dao.getFreeboard(select,search);
+	
+	//*************page 시작**************/
+	int	list_setup_count = 15;			// 한페이지에 출력될 List 수 
+
+	String r_page = request.getParameter("r_page");
+	if(r_page==null) r_page= "";
+	int			current_page;					// 현재페이지 번호
+	int			total_page;						// 총페이지 수
+	int			total_count;					// 총레코드 수
+	int			for_count;						
+	int			p_no;
+	int			v_count;
+	int			a_count;
+	String		url				= null;	
+
+	// 조회된 건수 구하기  total_count : 설정
+	if(arr == null) total_count =0;
+	else total_count = arr.size(); 
+
+
+	// 페이지번호가 없으면 1페이지로 간주
+	if(r_page.equals("")) current_page = 1;
+	else current_page = Integer.parseInt(r_page);
+		
+	for_count		= list_setup_count;
+	p_no			= list_setup_count;				// 페이지수가 10
+	total_page = total_count / list_setup_count;		// 전체페이지수 계산 (if 23개 게시물이면 2)
+   
+	if(current_page == 1) {
+		v_count		= 0;
+		a_count		= list_setup_count;
+		for_count	= 0;
+	} else{
+		v_count		= 0;
+		a_count		= p_no * current_page;
+		for_count	= a_count - list_setup_count;
+	}
+	if(total_page * list_setup_count != total_count)   total_page = total_page +1;
+
+//*************page 끝**************/	
 
 %>
 <!DOCTYPE html>
@@ -85,8 +125,19 @@
 			freeboardView.action = "freeboard_view.jsp"
 			freeboardView.submit();
 		}
+		function goPage(pageNumber){
+			pageForm.r_page.value = pageNumber;
+			pageForm.method="post";
+			pageForm.action="freeboard_list.jsp";
+			pageForm.submit();
+		}
 		
 	</script>
+	<form name="pageForm">
+			<input type="hidden" name="r_page">
+			<input type="hidden" name="t_select" value="<%=select%>">
+			<input type="hidden" name="t_search" value="<%=search%>">
+	</form>
 	<form name="freeboardView">
 		<input type="hidden" name="t_no">
 	</form>
@@ -118,7 +169,10 @@
                                 공감
                             </div>
                         </div>
-<% for(int k = 0; k < arr.size(); k++ ) {%>
+<%	if ( total_count > 0 ){
+		for(int k = 0 ; k < total_count ; k++ )	{
+			if(v_count == for_count){ 
+%>		
                        <div class="board-section">
                            <div class="board-no">
                                 <%=arr.get(k).getFreeboard_no() %>
@@ -139,9 +193,16 @@
                                 6
                             </div>
                         </div>
-<% } %>
-                       
-                          
+<%
+				v_count = v_count + 1;
+				for_count = for_count + 1;
+			}else { 
+				v_count = v_count + 1;
+			}
+			if(v_count == a_count)break; 
+		}
+	}
+%>
                         </div>
                         
                     </div>
@@ -160,13 +221,17 @@
 	                     </div>
                      </form>
                        <div class="board-paging">
-                          <div>앞</div>
+ <!--                          <div>앞</div>
                            <div style="background: #558203; color: #fff;">1</div>
                            <div>2</div>
                            <div>3</div>
                            <div>4</div>
                            <div>5</div>
                            <div>뒤</div>
+-->                            
+<%
+			out.println(Paging.pageListPost(current_page, total_page));			
+%>                         
                        </div>
                         <div>
                             <button type="button" class="board-write-button" onclick="location.href='freeboard_write.jsp'">글쓰기</button>

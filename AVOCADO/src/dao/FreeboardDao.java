@@ -20,7 +20,7 @@ public class FreeboardDao {
 		// 삭제
 		public int deleteFreeboard(String no) {
 			int result =0;
-			String query=" delete from ta_01freeboard " + 
+			String query=" delete from TA_FreeBoard " + 
 						 " where freeboard_no='"+no+"' ";
 			try {
 				connection = common.getConnection();
@@ -39,7 +39,7 @@ public class FreeboardDao {
 		// 수정
 		public int updateFreeboard(FreeboardDto dto) {
 			int result =0;
-			String query ="update ta_01freeboard \r\n" + 
+			String query ="update TA_FreeBoard \r\n" + 
 					"set freeboard_title='"+dto.getFreeboard_title()+"', \r\n" + 
 					"    freeboard_content='"+dto.getFreeboard_content()+"', \r\n" + 
 					"    freeboard_regname ='"+dto.getFreeboard_regName()+"', \r\n" + 
@@ -62,7 +62,7 @@ public class FreeboardDao {
 		// 등록
 		public int saveFreeboard(FreeboardDto dto) {
 			int result =0;
-			String query ="insert into ta_01freeboard \r\n" + 
+			String query ="insert into TA_FreeBoard \r\n" + 
 					"(freeboard_no,freeboard_title,freeboard_content,freeboard_regname,freeboard_regdate) \r\n" + 
 					"values \r\n" + 
 					"('"+dto.getFreeboard_no()+"','"+dto.getFreeboard_title()+"','"+dto.getFreeboard_content()+"','"+dto.getFreeboard_regName()+"','"+dto.getFreeboard_regDate()+"')";
@@ -84,7 +84,7 @@ public class FreeboardDao {
 		public FreeboardDto getFreeboardView(String no){
 			FreeboardDto dto = null; 
 			String query ="  select freeboard_no, freeboard_title, freeboard_content, freeboard_regname, to_char(freeboard_regdate,'yyyy-MM-dd'), freeboard_hit\r\n" + 
-							" from TA_01FreeBoard\r\n" + 
+							" from TA_FreeBoard\r\n" + 
 							" where freeboard_no ='"+no+"'";
 			try {
 				connection = common.getConnection();
@@ -112,7 +112,7 @@ public class FreeboardDao {
 	  
 	// 조회수 증가
 		public void setHitCount(String no) {
-			String query=" update TA_01Freeboard set freeboard_hit = freeboard_hit + 1\r\n" + 
+			String query=" update TA_FreeBoard set freeboard_hit = freeboard_hit + 1\r\n" + 
 						 " where freeboard_no='"+no+"' ";
 			try {
 				connection = common.getConnection();
@@ -131,7 +131,7 @@ public class FreeboardDao {
 		public ArrayList<FreeboardDto> getFreeboard(String select,String search){
 			ArrayList<FreeboardDto> arr = new ArrayList<FreeboardDto>();
 			String query =" select freeboard_no, freeboard_title, freeboard_regname, to_char(freeboard_regdate,'yyyy-MM-dd'), freeboard_hit\r\n" + 
-						  " from TA_01FreeBoard\r\n" + 
+						  " from TA_FreeBoard\r\n" + 
 					      " where "+select+" like '%"+search+"%' "+
 						  " order by freeboard_no desc";
 			try {
@@ -162,7 +162,7 @@ public class FreeboardDao {
 		// 번호생성
 		public String getFreeboardNo() {
 			String maxNo="";
-			String query=" select max(freeboard_no) from ta_01freeboard ";
+			String query=" select max(freeboard_no) from TA_FreeBoard ";
 			try {
 				connection = common.getConnection();
 				ps  = connection.prepareStatement(query);
