@@ -18,7 +18,7 @@ public class MemberDao {
   // 번호생성
   public String getMemberNo() {
     String maxNo = "";
-    String query = " select max(member_no) from ta_01member ";
+    String query = " select max(member_no) from ta_member ";
     try {
       connection = common.getConnection();
       ps = connection.prepareStatement(query);
@@ -37,9 +37,9 @@ public class MemberDao {
         maxNo = "M" + newNo; //
       }
     } catch (SQLException se) {
-      System.out.println("getNoticeNo() query 오류: " + query);
+    	printSQLExceptionError(query);
     } catch (Exception ee) {
-      System.out.println("getNoticeNo() 오류");
+    	printExceptionError();
     } finally {
       common.close(connection, ps, rs);
     }
@@ -133,7 +133,7 @@ public class MemberDao {
   private String getQuery(MemberDto dto) {
 
     if (getMethodName().equals("joinMember")) {
-      return " insert into ta_01member \r\n"
+      return " insert into ta_member \r\n"
           + " (member_no, member_name, member_email, member_phoneNumber, member_password, member_regDate) \r\n"
           + "values \r\n" + "('" + dto.getMember_no() + "','" + dto.getMember_name() + "','"
           + dto.getMember_email() + "','" + dto.getMember_phoneNumber() + "','"
@@ -141,13 +141,13 @@ public class MemberDao {
     }
 
     if (getMethodName().equals("getLoginName")) {
-      return " select member_name from ta_01member \r\n" + " where member_email ='"
+      return " select member_name from ta_member \r\n" + " where member_email ='"
           + dto.getMember_email() + "' \r\n" + " and member_password='" + dto.getMember_password()
           + "'";
     }
 
     if (getMethodName().equals("idCheckCount")) {
-      return "select count(*) from ta_01member where member_email ='" + dto.getMember_email() + "'";
+      return "select count(*) from ta_member where member_email ='" + dto.getMember_email() + "'";
     }
     return "";
   }
@@ -168,7 +168,7 @@ public class MemberDao {
    * @param query 오류 쿼리문 출력
    */
   private void printSQLExceptionError(String query) {
-    System.out.println(getMethodName() + "() query error: " + query);
+    System.out.println("[ERROR]" + getMethodName() + " query error: " + query);
   }
 
   /**
@@ -177,7 +177,7 @@ public class MemberDao {
    * @param methodName 대상 메소드 이름
    */
   private void printExceptionError() {
-    System.out.println(getMethodName() + "() error");
+    System.out.println("[ERROR]" + getMethodName());
   }
 
 }

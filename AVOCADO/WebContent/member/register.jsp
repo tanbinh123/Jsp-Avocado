@@ -11,7 +11,7 @@
 <main>
 	<section class="login-main-section" style="background-color: #f1f8e9">
 		<div class="login-main-content">
-			<form name="register">
+			<form name="register" onsubmit="return false">
 				<div class="register-box animate__animated animate__fadeIn">
 					<span class="login-title">AVOCADO</span>
 					<div class="login-id">
@@ -37,7 +37,7 @@
 						<span class="login-icon"><i
 							class="em em-closed_lock_with_key" aria-role="presentation"
 							aria-label="CLOSED LOCK WITH KEY"></i></span> <input type="password"
-							placeholder="Password confirm" id="input-pw-check"
+							 placeholder="Password confirm" id="input-pw-check"
 							name="t_passwordCheck" required />
 					</div>
 					<p class="passwordCheckTip"></p>
@@ -45,7 +45,7 @@
 						<span class="login-icon"><i class="em em-iphone"
 							aria-role="presentation" aria-label="MOBILE PHONE"></i></span> <input
 							type="tel" placeholder="Phone number" id="input-phone"
-							name="t_phoneNumber" required pattern="(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})"/>
+							name="t_phoneNumber" required pattern="^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$"/>
 					</div>
 					<p class="phoneTip">01012345678 형식으로 입력해주세요</p>
 					<div class="login-btn">
@@ -102,7 +102,6 @@
 			});
 		
 		function goRegister() {
-			var passwordCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
 
 			if (!checkEmpty(register.t_email, " 이메일을 입력해주세요! ")) {
 				return;
@@ -119,12 +118,23 @@
 			if (!checkEmpty(register.t_phoneNumber, " 전화번호를 입력해주세요! ")) {
 				return;
 			}
-
+			
+			if (register.t_password.value.langth > 16) {
+				alert('16글자까지만 입력 가능합니다!');
+				return;
+			}
+			
+			if (register.t_phoneNumber.value.langth > 11) {
+				alert('11글자로 입력 해주세요!');
+				return;
+			}
+			
 			if (register.t_password.value != register.t_passwordCheck.value) {
-				alert('비밀번호가 맞지 않습니다.');
+				alert('비밀번호가 일치하지 않습니다.');
 				register.t_phoneNumber.focus();
 				return;
 			}
+			
 			register.method = "post";
 			register.action = "/member/DBRegister.jsp";
 			register.submit();

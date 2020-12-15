@@ -36,7 +36,7 @@
 <script type="text/javascript">
 	alert("<%=msg%>");
 <%	if(name.equals("")){ %>	
-		location.href="/member/Login.jsp";
+		location.href="/member/login.jsp";
 <%  } else { %>
 		location.href="/index.jsp";
 <%  }  %>	
