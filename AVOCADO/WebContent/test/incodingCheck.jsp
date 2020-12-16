@@ -11,7 +11,7 @@
 	<h1>암호화 메소드 테스트</h1>
 	<hr>
 	<%
-		String sourceString = "12341234";
+		String sourceString = "111";
 		String encodeString = commonUtil.encoding(sourceString);
 	%>
 	<p>암호화 전 문자열 : <%=sourceString %></p>

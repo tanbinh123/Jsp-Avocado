@@ -15,7 +15,7 @@
 	int result = dao.saveFreeboard(dto);
 	String msg="";
 	if(result == 1) msg =" 등록 되었습니다. ";
-	else msg=" 등록 실패~ ";
+	else msg=" 등록 실패하였습니다 ";
 %>
 <!DOCTYPE html>
 <html>

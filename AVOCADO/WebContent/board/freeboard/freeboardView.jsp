@@ -27,6 +27,14 @@
 			freeboard.submit();		
 		}
 	}
+	function goLikeStack() {
+		<%if (!sessionEmail.equals("")) {%>
+		
+		<%} else {%>
+		alert('로그인 후 이용가능합니다.');
+		location.href='/member/login.jsp';
+		<%}%>
+	}
 	//function goLikeStack(){
 		//freeboard.method="post";
 		//freeboard.action=
@@ -40,7 +48,7 @@
         <div class="board-main-content">
           <div class="board-container">
             <div class="board-kind">
-              <a href="freeboard_list.jsp" class="board-kind-title">자유게시판</a>
+              <a href="freeboardList.jsp" class="board-kind-title">자유게시판</a>
             </div>
             <div class="board-box">
               <div class="board-box-view-middle">
@@ -80,8 +88,10 @@
               <div>
                 <button type="button" onclick="goLikeStack()" class="board-write-button">공감</button>
                 <button type="button" onclick="history.back()" class="board-write-button">목록</button>
-                <button class="board-write-button" onclick="goUpdateForm()">수정</button>
-                <button class="board-write-button" onclick="goDelete()">삭제</button>
+                <% if (sessionEmail.equals(dto.getReg_email()) || sessionLevel.equals("top")) { %>
+	                <button class="board-write-button" onclick="goUpdateForm()">수정</button>
+	                <button class="board-write-button" onclick="goDelete()">삭제</button>
+                <% } %>
               </div>
             </div>
           </div>

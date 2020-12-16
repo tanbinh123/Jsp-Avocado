@@ -81,7 +81,7 @@ public class FreeboardDao {
 	//상세조회
 		public FreeboardDto getFreeboardView(String no){
 			FreeboardDto dto = null; 
-			String query ="  select b.freeboard_no, b.freeboard_title, b.freeboard_content, a.member_name, to_char(b.freeboard_regdate,'yyyy-MM-dd HH24:MI'), b.freeboard_hit\r\n" + 
+			String query ="  select b.freeboard_no, b.freeboard_title, b.freeboard_content, a.member_name, to_char(b.freeboard_regdate,'yyyy-MM-dd HH24:MI'), b.freeboard_hit, b.freeboard_regname\r\n" + 
 							" from TA_FreeBoard b, ta_member a\r\n" + 
 							" where a.member_email = b.freeboard_regname"
 							+ " and b.freeboard_no ='"+no+"'";
@@ -96,8 +96,9 @@ public class FreeboardDao {
 					String reg_name = rs.getString(4);
 					String reg_date = rs.getString(5);
 					int hit 		= rs.getInt(6);
+					String reg_email = rs.getString(7);
 					dto = new FreeboardDto(nn,title,content,
-													reg_name,reg_date,hit);
+													reg_name,reg_date,hit,reg_email);
 				}
 			}catch(SQLException se) {
 				System.out.println("getFreeboardView() query 오류: "+query);

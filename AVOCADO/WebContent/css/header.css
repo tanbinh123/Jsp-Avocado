@@ -11,6 +11,7 @@
     position: relative;
 }
 .logo{
+	width:200px;
     display: flex;
     cursor: pointer;
 }

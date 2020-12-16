@@ -13,7 +13,7 @@
 	FreeboardDto dto = new FreeboardDto(no,title,content);				
 	int result = dao.updateFreeboard(dto);
 	if(result == 1) msg =" 수정 되었습니다. ";
-	else msg=" 수정 실패~ ";
+	else msg=" 수정 실패하였습니다. ";
 %>
 <!DOCTYPE html>
 <html>

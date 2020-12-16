@@ -22,8 +22,15 @@
     <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet" />
     <!-- js -->
     <script type="text/javascript" src="/js/commonUtil.js"></script>
+    <!-- 썸머노트 에디터 -->
+    <script src="/js/summernote/summernote-lite.js"></script>
+	<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+	<script src="/js/summernote/lang/summernote-ja-JP.js"></script>
+	<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
     <!--파비콘-->
     <link rel="icon" type="/image/x-icon" href="img/favicon_io/favicon.ico" />
+    <!-- 폰트어썸 -->
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <!--애니메이션 https://animate.style/-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- 지도API -->
@@ -36,21 +43,17 @@
     <!-- header start-->
     <header>
       <div id="header-inner">
-        <a href="/index.jsp">
-          <div class="logo"><i class="em em-avocado" aria-role="presentation" aria-label="AVOCADO" id="logo-image"></i>&nbsp;<span id="logo-txt">AVOCADO</span></div></a
-        >
+          <div class="logo" onclick="javascript:location.href='/index.jsp'"><i class="em em-avocado" aria-role="presentation" aria-label="AVOCADO" id="logo-image"></i>&nbsp;<span id="logo-txt">AVOCADO</span></div>
         <nav id="menu">
         <%
         if (this.getClass().getSimpleName().replaceAll("_", ".").equals("index.jsp")) { %> 
         	 <div class="dropdown">
              <a href="#이용방법">
-               <button class="dropbtn"><i class="em em-beginner" aria-role="presentation" aria-label="JAPANESE SYMBOL FOR BEGINNER"></i>&nbsp;&nbsp;이용 방법</button></a
-             >
+               <button class="dropbtn"><i class="em em-beginner" aria-role="presentation" aria-label="JAPANESE SYMBOL FOR BEGINNER"></i>&nbsp;&nbsp;이용 방법</button></a>
            </div>
            <div class="dropdown">
              <a href="#안전수칙">
-               <button class="dropbtn"><i class="em em-female-construction-worker" aria-role="presentation" aria-label=""></i>&nbsp;&nbsp;안전 수칙</button></a
-             >
+               <button class="dropbtn"><i class="em em-female-construction-worker" aria-role="presentation" aria-label=""></i>&nbsp;&nbsp;안전 수칙</button></a>
            </div>
         <%} %>
        <%
@@ -77,22 +80,16 @@
           <%
          if (!this.getClass().getSimpleName().replaceAll("_", ".").equals("start.jsp")) { %> 
           <div class="dropdown">
-            <a href="/start.jsp"
-              ><button class="dropbtn"><i class="em em-rocket" aria-role="presentation" aria-label="ROCKET"></i>&nbsp;&nbsp;출발하기</button></a
-            >
+            <a href="/start.jsp"><button class="dropbtn"><i class="em em-rocket" aria-role="presentation" aria-label="ROCKET"></i>&nbsp;&nbsp;출발하기</button></a>
           </div>
            <%} %>
           <%if (sessionName.equals("")) {%>
           <div class="dropdown">
-            <a href="/member/login.jsp"
-              ><button class="dropbtn-login"><i class="em em-closed_lock_with_key" aria-role="presentation" aria-label="CLOSED LOCK WITH KEY"></i>&nbsp;&nbsp;로그인</button></a
-            >
+            <a href="/member/login.jsp"><button class="dropbtn-login"><i class="em em-closed_lock_with_key" aria-role="presentation" aria-label="CLOSED LOCK WITH KEY"></i>&nbsp;&nbsp;로그인</button></a>
           </div>
           <%} else { %>
           <div class="dropdown">
-            <a href="/member/mypage.jsp"
-              ><button class="dropbtn-half" title="<%=sessionName%>님 마이페이지"><i class="em em-bust_in_silhouette" aria-role="presentation" aria-label="BUST IN SILHOUETTE"></i></button></a
-            >
+            <a href="/member/mypage.jsp"><button class="dropbtn-half" title="<%=sessionName%>님 마이페이지"><i class="em em-bust_in_silhouette" aria-role="presentation" aria-label="BUST IN SILHOUETTE"></i></button></a>
           </div>
             <div class="dropdown">
             <button onclick="goLogout()" class="dropbtn-half" title="로그아웃"><i class="em em-unlock" aria-role="presentation" aria-label="OPEN LOCK"></i></button>

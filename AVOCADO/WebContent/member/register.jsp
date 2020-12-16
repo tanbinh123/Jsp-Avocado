@@ -34,8 +34,7 @@
 						<span class="login-icon"><i class="em em-key"
 							aria-role="presentation" aria-label="KEY"></i></span> <input
 							type="password" placeholder="Password" id="input-pw"
-							name="t_password" required="required"
-							pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,16}" />
+							name="t_password" required="required" />
 					</div>
 					<p class="passwordTip">8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.</p>
 
@@ -52,10 +51,9 @@
 						<span class="login-icon"><i class="em em-iphone"
 							aria-role="presentation" aria-label="MOBILE PHONE"></i></span> <input
 							type="tel" placeholder="Phone number" id="input-phone"
-							name="t_phoneNumber" required="required"
-							pattern="^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$" />
+							name="t_phoneNumber" required="required" />
 					</div>
-					<p class="phoneTip">01012345678 형식으로 입력해주세요</p>
+					<p class="phoneTip">숫자만 입력해주세요</p>
 
 					<div class="login-btn">
 						<button type="button" class="login-btn-login"
@@ -90,7 +88,7 @@
 				success:function(data){
 					//alert("넘어온 값:==="+data+"====");
 					$(".emailTip").html(data);
-					if (/^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/.test(email)){
+					if (/^[A-Za-z0-9_.]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/.test(email)){
 						if($.trim(data) =="사용가능한 이메일 입니다."){
 							 $('.emailTip').css('display', 'block');
 						     $('.emailTip').css('color', '#199894b3');
@@ -157,7 +155,10 @@
 		    });
 		});
 	
-		//핸드폰 형식 안내
+	//핸드폰 체크
+	$(document).on("keyup", "#input-phone", function() { $(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") ); });
+		
+	//핸드폰 형식 안내
 		$(function(){
 			  $('#input-phone').focus(function(){
 				  $('.phoneTip').css('display', 'block');
@@ -212,7 +213,7 @@
 					return false;
 				}
 				
-				if (register.t_phoneNumber.value.length != 11) {
+				if (register.t_phoneNumber.value.length > 13) {
 					register.t_phoneNumber.focus();
 					alert('핸드폰 번호는 11글자로 입력 해주세요!');
 					return false;

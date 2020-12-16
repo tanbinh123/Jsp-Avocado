@@ -8,7 +8,7 @@
 	int result = dao.deleteFreeboard(no);
 	String msg="";
 	if(result == 1) msg ="  삭제 되었습니다. ";
-	else msg="  삭제 실패~ ";
+	else msg="삭제 실패하였습니다 ";
 
 
 %>
