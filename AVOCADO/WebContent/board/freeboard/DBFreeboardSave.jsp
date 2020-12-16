@@ -22,7 +22,7 @@
 <head>
 <script type="text/javascript">
 	alert("<%=msg%>");
-	location.href="freeboard_list.jsp";
+	location.href="/board/freeboard/freeboardList.jsp";
 </script>
 </head>
 <body>

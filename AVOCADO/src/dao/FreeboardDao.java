@@ -41,9 +41,7 @@ public class FreeboardDao {
 			int result =0;
 			String query ="update TA_FreeBoard \r\n" + 
 					"set freeboard_title='"+dto.getFreeboard_title()+"', \r\n" + 
-					"    freeboard_content='"+dto.getFreeboard_content()+"', \r\n" + 
-					"    freeboard_regname ='"+dto.getFreeboard_regName()+"', \r\n" + 
-					"    freeboard_regdate ='"+dto.getFreeboard_regDate()+"' \r\n" + 
+					"    freeboard_content='"+dto.getFreeboard_content()+"' \r\n" + 
 					"where freeboard_no ='"+dto.getFreeboard_no()+"'";
 			try {
 				connection = common.getConnection();

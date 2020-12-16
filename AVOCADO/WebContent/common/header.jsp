@@ -68,9 +68,9 @@
           <div class="dropdown">
             <button class="dropbtn"><i class="em em-left_speech_bubble" aria-role="presentation" aria-label=""></i>&nbsp;&nbsp;게시판</button>
             <div class="dropdown-content">
-              <a href="/board/freeboard/freeboard_list.jsp">자유게시판</a>
-              <a href="/board/qna/qna_list.jsp">문의하기</a>
-              <a href="/board/faq/faq_list.jsp">자주묻는질문</a>
+              <a href="/board/freeboard/freeboardList.jsp">자유게시판</a>
+              <a href="/board/qna/qnaList.jsp">문의하기</a>
+              <a href="/board/faq/faqList.jsp">자주묻는질문</a>
               <a href="/Devinfo">개발정보</a>
             </div>
           </div>

@@ -73,13 +73,13 @@
 <script>
 	function goUpdateForm(){
 		freeboard.method="post";
-		freeboard.action="freeboard_update.jsp";
+		freeboard.action="freeboardUpdate.jsp";
 		freeboard.submit();
 	}
 	function goDelete(){
 		if(confirm(" 삭제하시겠습니까? ")){
 			freeboard.method="post";
-			freeboard.action="dbFreeBoardDelete.jsp";
+			freeboard.action="DBFreeBoardDelete.jsp";
 			freeboard.submit();		
 		}
 	}

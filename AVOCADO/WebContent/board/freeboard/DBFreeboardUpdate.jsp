@@ -8,11 +8,9 @@
 	String no 		= request.getParameter("t_no"); 
 	String title 	= request.getParameter("t_title"); 
 	String content 	= request.getParameter("t_content"); 
-	String reg_name = request.getParameter("t_reg_name"); 
-	String reg_date = request.getParameter("t_reg_date");
 	
 	String msg="";
-	FreeboardDto dto = new FreeboardDto(no,title,content,reg_name,reg_date,0);				
+	FreeboardDto dto = new FreeboardDto(no,title,content);				
 	int result = dao.updateFreeboard(dto);
 	if(result == 1) msg =" 수정 되었습니다. ";
 	else msg=" 수정 실패~ ";
@@ -22,7 +20,7 @@
 <head>
 <script type="text/javascript">
 	alert("<%=msg%>");
-	location.href="freeboard_list.jsp";
+	location.href="/board/freeboard/freeboardList.jsp";
 </script>
 </head>
 <body>

@@ -15,6 +15,15 @@ public class FreeboardDto {
 		this.freeboard_hit = freeboard_hit;
 	}
 	
+	
+	public FreeboardDto(String freeboard_no, String freeboard_title, String freeboard_content) {
+		super();
+		this.freeboard_no = freeboard_no;
+		this.freeboard_title = freeboard_title;
+		this.freeboard_content = freeboard_content;
+	}
+
+
 	public String getFreeboard_no() {
 		return freeboard_no;
 	}

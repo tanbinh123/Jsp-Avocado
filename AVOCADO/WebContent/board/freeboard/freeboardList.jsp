@@ -64,24 +64,24 @@
 	
 		function goSearch(){
 			freeboardSearch.method="post";
-			freeboardSearch.action="freeboard_list.jsp";
+			freeboardSearch.action="/board/freeboard/freeboardList.jsp";
 			freeboardSearch.submit();
 		}
 		function goView(num){
 			freeboardView.t_no.value = num;
 			freeboardView.method = "post";
-			freeboardView.action = "freeboard_view.jsp"
+			freeboardView.action = "/board/freeboard/freeboardView.jsp"
 			freeboardView.submit();
 		}
 		function goPage(pageNumber){
 			pageForm.r_page.value = pageNumber;
 			pageForm.method="post";
-			pageForm.action="freeboard_list.jsp";
+			pageForm.action="/board/freeboard/freeboardList.jsp";
 			pageForm.submit();
 		}
 		function goWrite() {
 			<%if (!sessionEmail.equals("")) {%>
-			location.href='/board/freeboard/freeboard_write.jsp';
+			location.href='/board/freeboard/freeboardWrite.jsp';
 			<%} else {%>
 			alert('로그인 후 이용가능합니다.');
 			location.href='/member/login.jsp';
@@ -101,7 +101,7 @@
 	        <div class="board-main-content">
                <div class="board-container">
                    <div class="board-kind">
-                       <a href="freeboard_list.jsp" class="board-kind-title">자유게시판</a>
+                       <a href="/board/freeboard/freeboardList.jsp" class="board-kind-title">자유게시판</a>
                    </div>
                     <div class="board-box">
                       <div class="board-section board-th-container">
@@ -145,7 +145,7 @@
                                 <%=arr.get(k).getFreeboard_hit() %>
                             </div>
                             <div class="board-recommend">
-                                6
+                                0
                             </div>
                         </div>
 <%

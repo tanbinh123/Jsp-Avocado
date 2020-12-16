@@ -20,7 +20,7 @@
 		}	
 		
 		freeboard.method="post";
-		freeboard.action="dbFreeboardSave.jsp";
+		freeboard.action="DBFreeboardSave.jsp";
 		freeboard.submit();
 	}
 </script>	   
@@ -45,11 +45,13 @@
 	              <div class="board-box-write-bottom">
 	                <div class="board-box-write-bottom-left">
 	                  <div class="board-box-write-th-bottom">작성자</div>
-	                  <div class="board-box-write-td-bottom"><input type="text" name="t_reg_name" value="<%=sessionEmail %>" readonly/></div>
+	                  <div class="board-box-write-td-bottom"><input type="text" value="<%=sessionName %>" readonly/>
+	                  <input type="hidden" name="t_reg_name" value="<%=sessionEmail %>"/></div>
 	                </div>
 	                <div class="board-box-write-bottom-right">
 	                  <div class="board-box-write-th-bottom">작성일</div>
-	                  <div class="board-box-write-td-bottom"><input type="text" name="t_reg_date" value="<%=commonUtil.getTodayHHmmss() %>" readonly/></div>
+	                  <div class="board-box-write-td-bottom"><input type="text" name="t_reg_date" value="<%=commonUtil.getTodayHHmmss() %>" readonly/>
+	                  </div>
 	                </div>
 	              </div>
 	            </div>
