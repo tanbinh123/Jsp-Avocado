@@ -21,7 +21,7 @@
 		freeboard.submit();
 	}
 	function goDelete(){
-		if(confirm(" 삭제하시겠습니까? ")){
+		if(confirm("삭제된 게시물은 복구 할수 없습니다.\n정말 삭제 하시겠습니까? ")){
 			freeboard.method="post";
 			freeboard.action="/board/freeboard/DBFreeBoardDelete.jsp";
 			freeboard.submit();		
@@ -29,7 +29,11 @@
 	}
 	function goLikeStack() {
 		<%if (!sessionEmail.equals("")) {%>
-		
+			<% if (sessionEmail.equals(dto.getReg_email())) { %>
+	        	alert('자신의 글은 자신이 공감할 수 없습니다.');
+	       	<% } else {%>
+	       
+	      	<% }%> 
 		<%} else {%>
 		alert('로그인 후 이용가능합니다.');
 		location.href='/member/login.jsp';
