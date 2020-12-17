@@ -15,7 +15,28 @@ public class FreeboardDao {
 	 DBOracleConnection common = new DBOracleConnection();
 	  Connection connection = null;
 	  PreparedStatement ps = null;
-	  ResultSet rs = null;
+	  ResultSet rs = null;	  
+
+		// 공감하기 db 저장
+		public int saveLikeStack(String post_no, String email, String no) {
+			int result =0;
+			String query=" insert into ta_freeboardlike\r\n " + 
+						 "    (like_postnumber, like_gubun, like_memberemail, like_no)\r\n " + 
+						 "    values\r\n" + 
+						 "    ('"+post_no+"',1,'"+email+"','"+no+"') ";
+			try {
+				connection = common.getConnection();
+				ps  = connection.prepareStatement(query);
+				result = ps.executeUpdate();		
+			}catch(SQLException se) {
+				System.out.println("saveLikeStack() query 오류: "+query);
+			}catch(Exception ee) {
+				System.out.println("saveLikeStack() 오류");
+			}finally {
+				common.close(connection, ps, rs);
+			}	
+			return result;
+		}	  
 	  
 		// 삭제
 		public int deleteFreeboard(String no) {
@@ -81,10 +102,16 @@ public class FreeboardDao {
 	//상세조회
 		public FreeboardDto getFreeboardView(String no){
 			FreeboardDto dto = null; 
-			String query ="  select b.freeboard_no, b.freeboard_title, b.freeboard_content, a.member_name, to_char(b.freeboard_regdate,'yyyy-MM-dd HH24:MI'), b.freeboard_hit, b.freeboard_regname\r\n" + 
-							" from TA_FreeBoard b, ta_member a\r\n" + 
-							" where a.member_email = b.freeboard_regname"
-							+ " and b.freeboard_no ='"+no+"'";
+			String query =	" select b.freeboard_no, b.freeboard_title, b.freeboard_content, a.member_name, to_char(b.freeboard_regdate,'yyyy-MM-dd HH24:MI'), b.freeboard_hit, b.freeboard_regname, c.freeboard_likestack\r\n" + 
+							" from   TA_FreeBoard b, \r\n" + 
+							"        ta_member a, \r\n" + 
+							"        (select like_postnumber, count(*) as freeboard_likestack   \r\n" + 
+							"        from ta_freeboardlike \r\n" + 
+							"        where like_gubun = 1 group by like_postnumber) c\r\n" + 
+							" where a.member_email = b.freeboard_regname \r\n" + 
+							"        and b.freeboard_no = c.like_postnumber(+)\r\n" + 
+							"        and b.freeboard_no ='"+no+"'";
+			
 			try {
 				connection = common.getConnection();
 				ps  = connection.prepareStatement(query);
@@ -97,8 +124,9 @@ public class FreeboardDao {
 					String reg_date = rs.getString(5);
 					int hit 		= rs.getInt(6);
 					String reg_email = rs.getString(7);
+					int like		= rs.getInt(8);
 					dto = new FreeboardDto(nn,title,content,
-													reg_name,reg_date,hit,reg_email);
+													reg_name,reg_date,hit,reg_email,like);
 				}
 			}catch(SQLException se) {
 				System.out.println("getFreeboardView() query 오류: "+query);
@@ -130,11 +158,20 @@ public class FreeboardDao {
 	//목록조회
 		public ArrayList<FreeboardDto> getFreeboard(String select,String search){
 			ArrayList<FreeboardDto> arr = new ArrayList<FreeboardDto>();
-			String query =" select b.freeboard_no, b.freeboard_title, a.member_name, to_char(b.freeboard_regdate,'yyyy-MM-dd'), b.freeboard_hit\r\n" + 
-						  " from TA_FreeBoard b, ta_member a\r\n" + 
-					      " where a.member_email = b.freeboard_regname"+ 
-					      " and b."+select+" like '%"+search+"%' "+
-						  " order by freeboard_no desc";
+			
+			String searchGubun = "b";
+			if(select.equals("member_name")) searchGubun = "a";
+			String query =  " select b.freeboard_no, b.freeboard_title, a.member_name, to_char(b.freeboard_regdate,'yyyy-MM-dd'), b.freeboard_hit, c.freeboard_likestack\r\n " + 
+							" from TA_FreeBoard b, \r\n " + 
+							"        ta_member a, \r\n " + 
+							"        (select like_postnumber, count(*) as freeboard_likestack   \r\n" + 
+							"        from ta_freeboardlike \r\n " + 
+							"        where like_gubun = 1 group by like_postnumber) c\r\n " + 
+							" where a.member_email = b.freeboard_regname \r\n " + 
+							"        and b.freeboard_no = c.like_postnumber(+) \r\n " + 
+							"        and "+searchGubun+"."+select+" like '%"+search+"%'  \r\n" + 
+							"        order by freeboard_no desc ";
+			
 			try {
 				connection = common.getConnection();
 				ps  = connection.prepareStatement(query);
@@ -145,8 +182,9 @@ public class FreeboardDao {
 					String regName  = rs.getString(3);
 					String regDate  = rs.getString(4);
 					int hit 		= rs.getInt(5);
+					int like		= rs.getInt(6);
 					FreeboardDto dto = new FreeboardDto(no,title,"",
-													regName,regDate,hit);
+													regName,regDate,hit,like);
 					arr.add(dto);
 				}			
 			}catch(SQLException se) {
@@ -158,6 +196,37 @@ public class FreeboardDao {
 			}		
 			
 			return arr;
+		}
+		
+		// 번호생성(ta_freeboardlike 테이블 기본키 번호자동생성
+		public String getLikeStackNo() {
+			String maxNo="";
+			String query=" select max(Like_no) from TA_FreeBoardLike ";
+			try {
+				connection = common.getConnection();
+				ps  = connection.prepareStatement(query);
+				rs  = ps.executeQuery();
+				if(rs.next()) {
+					maxNo = rs.getString(1);
+				}
+				if(maxNo == null) {
+					maxNo ="FL001";
+				} else {
+					String n = maxNo.substring(2); 
+					int i = Integer.parseInt(n); 
+					i = i + 1;
+					DecimalFormat df = new DecimalFormat("000");
+					String newNo = df.format((double)i);
+					maxNo = "FL"+newNo; // 
+				}
+			}catch(SQLException se) {
+				System.out.println("getLikeStackNo() query 오류: "+query);
+			}catch(Exception ee) {
+				System.out.println("getLikeStackNo() 오류");
+			}finally {
+				common.close(connection, ps, rs);
+			}		
+			return maxNo;
 		}
 	  
 		// 번호생성

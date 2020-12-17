@@ -7,9 +7,14 @@
 	
 	String select = request.getParameter("t_select");
 	String search = request.getParameter("t_search");
+	
 	if(select == null){
 		select = "freeboard_title";
 		search ="";
+		
+	}
+	if(select == "freeboard_regname"){
+		
 	}
 	
 	ArrayList<FreeboardDto> arr = dao.getFreeboard(select,search);
@@ -145,7 +150,7 @@
                                 <%=arr.get(k).getFreeboard_hit() %>
                             </div>
                             <div class="board-recommend">
-                                0
+                                <%=arr.get(k).getFreeboard_like() %>
                             </div>
                         </div>
 <%
@@ -168,6 +173,7 @@
 	                        <select name="t_select" id="">
 	                            <option value="freeboard_title" <%if(select.equals("freeboard_title")) out.print("selected");%>>제목</option>
 	                            <option value="freeboard_content" <%if(select.equals("freeboard_content")) out.print("selected");%>>내용</option>
+	                            <option value="member_name" <%if(select.equals("member_name")) out.print("selected");%>>작성자</option>
 	                        </select>
 	                        <input name="t_search" type="text" value="<%=search%>">
 	                        <button type="button" onclick="goSearch()">
