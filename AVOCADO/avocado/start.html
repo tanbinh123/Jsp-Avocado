@@ -84,20 +84,24 @@
                     </div>
                     
                     <div class="map-infoPanel-using">
-                        <p class="map-infoPanel-using-text"><i class="em em-avocado" aria-role="presentation" aria-label="AVOCADO"></i>&nbsp;홍길동님 안전 주행하세요 :) </p>
+                        <p class="map-infoPanel-using-text"><i class="em em-avocado" aria-role="presentation" aria-label="AVOCADO"></i>&nbsp;곽두팔님 안전 주행하세요 :) </p>
                         <p class="map-infoPanel-using-text"><i class="em em-first_place_medal" aria-role="presentation" aria-label="FIRST PLACE MEDAL"></i>&nbsp;등급 : 골드</p>
-                        <p class="map-infoPanel-using-text"><i class="em em-clock7" aria-role="presentation" aria-label="CLOCK FACE SEVEN OCLOCK"></i>&nbsp;현재 이용 시간 : 15분 31초</p>
+                        <p class="map-infoPanel-using-text"><i class="em em-clock7" aria-role="presentation" aria-label="CLOCK FACE SEVEN OCLOCK"></i>&nbsp;현재 이용 시간 : 12분</p>
                         <p class="map-infoPanel-using-text"><i class="em em-moneybag" aria-role="presentation" aria-label="MONEY BAG"></i>&nbsp;현재 이용 요금 : 8,400원</p>
                         <button class="map-infoPanel-using-button"><i class="em em-arrow_right_hook" aria-role="presentation" aria-label="RIGHTWARDS ARROW WITH HOOK"></i>반납하기</button>
+                    </div>
+                    <div class="map-infoPanel-used">
+                        <p class="map-infoPanel-used-text"><i class="em em-avocado" aria-role="presentation" aria-label="AVOCADO"></i>&nbsp;곽두팔님 이용해주셔서 감사합니다 :) </p>
+                        <p class="map-infoPanel-used-text"><i class="em em-first_place_medal" aria-role="presentation" aria-label="FIRST PLACE MEDAL"></i>&nbsp;등급 : 골드</p>
+                        <p class="map-infoPanel-used-text"><i class="em em-clock7" aria-role="presentation" aria-label="CLOCK FACE SEVEN OCLOCK"></i>&nbsp;총 이용 시간 : 27분</p>
+                        <p class="map-infoPanel-used-text"><i class="em em-moneybag" aria-role="presentation" aria-label="MONEY BAG"></i>&nbsp;총 이용 요금 : 12,400원</p>
+                        <button class="map-infoPanel-used-button"><i class="em em-white_check_mark" aria-role="presentation" aria-label="WHITE HEAVY CHECK MARK"></i>창닫기</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <script>
-        var serviceArea = new naver.maps.LatLngBounds(
-            new naver.maps.LatLng(36.439988, 127.264349),
-            new naver.maps.LatLng(36.232447, 127.534364));
         
         var mapOptions = {//지도 초기화면 값
             center: new naver.maps.LatLng(36.3275885300226, 127.41819483000722),//지도의 초기 중심 좌표
@@ -235,22 +239,117 @@
             new naver.maps.LatLng(36.333830591710324, 127.41259822636265)
         ];
         
-        var polygon = new naver.maps.Polygon({  
+        var serviceArea = new naver.maps.Polygon({  
             map: map,
-            paths: [outerPolygon, innerPolygon,samsungAPT, miruAPT, centralXiAPT, hanbatXiAPT,sunwhaHyeondaeAPT,daeheongHyeondaeAPT, theShopAPT],
+            paths: [outerPolygon, innerPolygon],
             fillColor: '#558203',
-            fillOpacity: 0.1,
+            fillOpacity: 0.2,
             strokeColor: '#558203',
             strokeOpacity: 0.6,
             strokeWeight: 2
         });
+        var banArea = new naver.maps.Polygon({  
+            map: map,
+            paths: [samsungAPT, miruAPT, centralXiAPT, hanbatXiAPT,sunwhaHyeondaeAPT,daeheongHyeondaeAPT, theShopAPT],
+            fillColor: '#ff0000',
+            fillOpacity: 0.1,
+            strokeColor: '#ff0000',
+            strokeOpacity: 0.6,
+            strokeWeight: 1
+        });
 
-        
+        var markerOptions = {
+            position: new naver.maps.LatLng(36.32546368731953, 127.4090509851486),
+            map: map,
+            icon: {
+                content: "<div class='pin'></div>",
+                size: new naver.maps.Size(50,50),
+                anchor: new naver.maps.Point(25, 26)
+            }
+        };
+
         //마커        
-//        var marker = new naver.maps.Marker({
-//        position: new naver.maps.LatLng(36.326688, 127.407852),
-//        map: map
-//        });
+        var markerOption1 = {
+            map: map,
+            position: new naver.maps.LatLng(36.32546368731953, 127.4090509851486),
+            icon: {
+              //content: "<div class='pin' ></div>",
+              content: "<img src='img/pin4.png' class = 'pin'>",
+              anchor: new naver.maps.Point(15, 30),
+            },
+          }
+        
+        var marker1 = new naver.maps.Marker(markerOption1);
+        
+        
+        var markerOption2 = {
+            map: map,
+            position: new naver.maps.LatLng(36.32214160019321, 127.41202950748722),
+            icon: {
+              content: "<img src='img/pin4.png' class = 'pin'>",
+              anchor: new naver.maps.Point(15, 30),
+            },
+          }
+        
+        var marker2 = new naver.maps.Marker(markerOption2);
+        
+        var markerOption3 = {
+            map: map,
+            position: new naver.maps.LatLng(36.324778856980835, 127.41969293719585),
+            icon: {
+              content: "<img src='img/pin4.png' class = 'pin'>",
+              anchor: new naver.maps.Point(15, 30),
+            },
+          }
+        
+        var marker3 = new naver.maps.Marker(markerOption3);
+        
+        
+        
+        var marker4 = new naver.maps.Marker({
+        position: new naver.maps.LatLng(36.32681744540576, 127.41184899217201),
+        map: map
+        });
+        
+        var marker5 = new naver.maps.Marker({
+        position: new naver.maps.LatLng(36.3316003310822, 127.43356337490906),
+        map: map
+        });
+        
+        var marker6 = new naver.maps.Marker({
+        position: new naver.maps.LatLng(36.32902286253786, 127.42535708396257),
+        map: map
+        });
+        
+        var marker7 = new naver.maps.Marker({
+        position: new naver.maps.LatLng(36.32797532866398, 127.42631036172708),
+        map: map
+        });
+        
+        var marker8 = new naver.maps.Marker({
+        position: new naver.maps.LatLng(36.32268476176774, 127.42316431981536),
+        map: map
+        });
+        
+        var marker9 = new naver.maps.Marker({
+        position: new naver.maps.LatLng(36.31918738050652, 127.42141766619166),
+        map: map
+        });
+        
+        var marker10 = new naver.maps.Marker({
+        position: new naver.maps.LatLng(36.32671786041655, 127.42910668774793),
+        map: map
+        });
+        
+        var marker11 = new naver.maps.Marker({
+        position: new naver.maps.LatLng(36.33062294327649, 127.43292468092797),
+        map: map
+        });
+        
+        var marker12 = new naver.maps.Marker({
+        position: new naver.maps.LatLng(36.32177670413975, 127.41337669401027),
+        map: map
+        });
         
         
         //카카오 검색 api

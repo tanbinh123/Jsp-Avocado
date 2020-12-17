@@ -15,8 +15,10 @@
     width: 1024px;
     height: 900px;
 }
+
+/*왼쪽 정보패널*/
 .map-infoPanel{
-    background-color: rgba( 0, 0, 0, 0.1 );
+    background-color: #fff;
     width: 25%;
     height: 100%;
     position: absolute;
@@ -24,6 +26,8 @@
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
 }
+
+/*사용 전 화면*/
 .map-infoPanel-rent{
     width: 100%;
     height: 165px;
@@ -37,7 +41,7 @@
 }
 .map-infoPanel-rent-text{
     font-size: 0.9rem;
-    color: gray;
+    color: #495057;
     display: flex;
     align-items: center;
 }
@@ -89,10 +93,10 @@
 }
 
 
-/*현재 사용 중*/
+/*현재 사용 중 화면*/
 .map-infoPanel-using{
     width: 100%;
-    height: 165px;
+    height: 160px;
     border: 1px solid #eee;
     background-color: #fff;
     display: flex;
@@ -103,7 +107,7 @@
 }
 .map-infoPanel-using-text{
     font-size: 0.9rem;
-    color: gray;
+    color: #495057;
     display: flex;
     align-items: center;
 }
@@ -116,4 +120,44 @@
     font-weight: 500;
     cursor: pointer;
     border-radius: 10px;
+}
+
+.map-infoPanel-using-button:hover{
+    background-color: #fff;
+}
+/*사용 완료 화면*/
+.map-infoPanel-used{
+    width: 100%;
+    height: 160px;
+    border: 1px solid #eee;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    border-radius: 10px;
+}
+.map-infoPanel-used-text{
+    font-size: 0.9rem;
+    color: #495057;
+    display: flex;
+    align-items: center;
+}
+.map-infoPanel-used-button{
+    width: 100%;
+    height: 40px;
+    background-color: #f1f8e9;
+    border: 1px solid #eee;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.map-infoPanel-used-button:hover{
+    background-color: #fff;
+}
+.pin{
+    width:30px;
+    height:30px;
+    filter:drop-shadow(1px 1px 1px #000);
 }
