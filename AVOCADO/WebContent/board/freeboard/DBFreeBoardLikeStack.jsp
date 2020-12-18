@@ -12,8 +12,11 @@
 
 	int result = dao.saveLikeStack(post_no, email, no);
 	String msg="";
-	if(result == 1) msg =" 공감하셨습니다. ";
-	else msg=" 이미 공감하셨습니다. ";
+	if (result == 1) {
+		msg =" 공감하셨습니다. ";
+	} else {
+		msg=" 실패. ";
+	}
 %>
 <!DOCTYPE html>
 <html>
