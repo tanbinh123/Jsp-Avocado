@@ -177,6 +177,28 @@
             new naver.maps.LatLng(36.333830591710324, 127.41259822636265)
         ];
         
+        var daeheongHyeondae2APT = [  
+            new naver.maps.LatLng(36.31864425529103, 127.4256256176393),
+            new naver.maps.LatLng(36.318314395519465, 127.42571715546826),
+            new naver.maps.LatLng(36.31824400946458, 127.42585870696108),
+            new naver.maps.LatLng(36.31837800141418, 127.42600354624392),
+            new naver.maps.LatLng(36.318339100549316, 127.42626640272019),
+            new naver.maps.LatLng(36.31832829475008, 127.42640051316725),
+            new naver.maps.LatLng(36.318319824331965, 127.42664495517359),
+            new naver.maps.LatLng(36.318288983520354, 127.42693521805168),
+            new naver.maps.LatLng(36.318576830624146, 127.42768479802741),
+            new naver.maps.LatLng(36.3191191111165, 127.42730203379082),
+            new naver.maps.LatLng(36.31924504301794, 127.42704685762178),
+            new naver.maps.LatLng(36.31864622218181, 127.42562106082723)
+        ];
+        
+        var hanoulAPT = [  
+            new naver.maps.LatLng(36.324026499385354, 127.43458819202093),
+            new naver.maps.LatLng(36.32360781004883, 127.43492578826826),
+            new naver.maps.LatLng(36.32388286169126, 127.43572615689958),
+            new naver.maps.LatLng(36.32431377397926, 127.43549856392384)
+        ];
+        
         var serviceArea = new naver.maps.Polygon({  
             map: map,
             paths: [outerPolygon, innerPolygon],
@@ -188,7 +210,7 @@
         });
         var banArea = new naver.maps.Polygon({  
             map: map,
-            paths: [samsungAPT, miruAPT, centralXiAPT, hanbatXiAPT,sunwhaHyeondaeAPT,daeheongHyeondaeAPT, theShopAPT],
+            paths: [samsungAPT, miruAPT, centralXiAPT, hanbatXiAPT,sunwhaHyeondaeAPT,daeheongHyeondaeAPT, theShopAPT, daeheongHyeondae2APT, hanoulAPT],
             fillColor: '#ff0000',
             fillOpacity: 0.1,
             strokeColor: '#ff0000',
@@ -242,52 +264,104 @@
         
         var marker3 = new naver.maps.Marker(markerOption3);
         
+        var markerOption4 = {
+       		map: map,
+            position: new naver.maps.LatLng(36.32681744540576, 127.41184899217201),
+            icon: {
+              content: "<img src='img/pin4.png' class = 'pin'>",
+              anchor: new naver.maps.Point(15, 30),
+            },	
+        }
         
+        var marker4 = new naver.maps.Marker(markerOption4);
         
-        var marker4 = new naver.maps.Marker({
-        position: new naver.maps.LatLng(36.32681744540576, 127.41184899217201),
-        map: map
-        });
+        var markerOption5 = {
+       		map: map,
+            position: new naver.maps.LatLng(36.3316003310822, 127.43356337490906),
+            icon: {
+              content: "<img src='img/pin4.png' class = 'pin'>",
+              anchor: new naver.maps.Point(15, 30),
+            },	
+        }
         
-        var marker5 = new naver.maps.Marker({
-        position: new naver.maps.LatLng(36.3316003310822, 127.43356337490906),
-        map: map
-        });
+        var marker5 = new naver.maps.Marker(markerOption5);
         
-        var marker6 = new naver.maps.Marker({
-        position: new naver.maps.LatLng(36.32902286253786, 127.42535708396257),
-        map: map
-        });
+        var markerOption6 = {
+       		map: map,
+            position: new naver.maps.LatLng(36.32902286253786, 127.42535708396257),
+            icon: {
+              content: "<img src='img/pin4.png' class = 'pin'>",
+              anchor: new naver.maps.Point(15, 30),
+            },	
+        }        
         
-        var marker7 = new naver.maps.Marker({
-        position: new naver.maps.LatLng(36.32797532866398, 127.42631036172708),
-        map: map
-        });
+        var marker6 = new naver.maps.Marker(markerOption6);
         
-        var marker8 = new naver.maps.Marker({
-        position: new naver.maps.LatLng(36.32268476176774, 127.42316431981536),
-        map: map
-        });
+        var markerOption7 = {
+      		map: map,
+            position: new naver.maps.LatLng(36.32797532866398, 127.42631036172708),
+            icon: {
+              content: "<img src='img/pin4.png' class = 'pin'>",
+              anchor: new naver.maps.Point(15, 30),
+            },	
+        }
         
-        var marker9 = new naver.maps.Marker({
-        position: new naver.maps.LatLng(36.31918738050652, 127.42141766619166),
-        map: map
-        });
+        var marker7 = new naver.maps.Marker(markerOption7);
         
-        var marker10 = new naver.maps.Marker({
-        position: new naver.maps.LatLng(36.32671786041655, 127.42910668774793),
-        map: map
-        });
+        var markerOption8 = {
+      		map: map,
+            position: new naver.maps.LatLng(36.32268476176774, 127.42316431981536),
+            icon: {
+              content: "<img src='img/pin4.png' class = 'pin'>",
+              anchor: new naver.maps.Point(15, 30),
+            },	
+        }       
         
-        var marker11 = new naver.maps.Marker({
-        position: new naver.maps.LatLng(36.33062294327649, 127.43292468092797),
-        map: map
-        });
+        var marker8 = new naver.maps.Marker(markerOption8);
         
-        var marker12 = new naver.maps.Marker({
-        position: new naver.maps.LatLng(36.32177670413975, 127.41337669401027),
-        map: map
-        });
+        var markerOption9 = {
+      		map: map,
+            position: new naver.maps.LatLng(36.31918738050652, 127.42141766619166),
+            icon: {
+              content: "<img src='img/pin4.png' class = 'pin'>",
+              anchor: new naver.maps.Point(15, 30),
+            },	
+        }   
+        
+        var marker9 = new naver.maps.Marker(markerOption9);
+        
+        var markerOption10 = {
+      		map: map,
+            position: new naver.maps.LatLng(36.32671786041655, 127.42910668774793),
+            icon: {
+              content: "<img src='img/pin4.png' class = 'pin'>",
+              anchor: new naver.maps.Point(15, 30),
+            },	
+        } 
+        
+        var marker10 = new naver.maps.Marker(markerOption10);
+        
+        var markerOption11 = {
+      		map: map,
+            position: new naver.maps.LatLng(36.33062294327649, 127.43292468092797),
+            icon: {
+              content: "<img src='img/pin4.png' class = 'pin'>",
+              anchor: new naver.maps.Point(15, 30),
+            },	
+        }         
+        
+        var marker11 = new naver.maps.Marker(markerOption11);
+        
+        var markerOption12 = {
+      		map: map,
+            position: new naver.maps.LatLng(36.33062294327649, 127.43292468092797),
+            icon: {
+              content: "<img src='img/pin4.png' class = 'pin'>",
+              anchor: new naver.maps.Point(15, 30),
+            },	
+        } 
+        
+        var marker12 = new naver.maps.Marker(markerOption12);
         
         
         //카카오 검색 api
