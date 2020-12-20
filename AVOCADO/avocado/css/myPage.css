@@ -1,0 +1,73 @@
+/*section common css*/
+.myPage-main-section {
+  margin-top: 68px;
+  height: 100vh-68px;
+  min-height: 900px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.myPage-main-content {
+  position: relative;
+  width: 1024px;
+  margin: 0 auto;
+  display: flex;
+    flex-direction: column;
+  justify-content: center;
+}
+.myPage-main-content-myInfo{
+    background-color: #fff;
+    width: 100%-18px;
+    border: 1px solid red;
+    height: 160px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.myPage-main-content-myInfo-profileLeft{
+    display: flex;
+    flex-direction: row;
+}
+.myPage-main-content-myInfo-profileLeft img{
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+}
+.myPage-main-content-myInfo-profileText{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid green;
+    margin-left: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+}
+.myPage-main-content-myInfo-profileText-name{
+    font-size: 1.3rem;
+}
+.myPage-main-content-myInfo-profileRight{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid green;
+}
+.myPage-main-content-container{
+    width: 100%px;
+    border: 1px solid green;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.myPage-main-content-container-box{
+    background-color: #fff;
+    width: 495px;
+    height: 495px;
+    border: 1px solid blue;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
