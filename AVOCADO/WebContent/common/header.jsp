@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/login.css" />
     <link rel="stylesheet" href="/css/start.css">
     <link rel="stylesheet" href="/css/board.css">
+    <link rel="stylesheet" href="/css/myPage.css" />
     <!--이모지-->
     <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet" />
     <!-- js -->
@@ -89,7 +90,7 @@
           </div>
           <%} else { %>
           <div class="dropdown">
-            <a href="/member/mypage.jsp"><button class="dropbtn-half" title="<%=sessionName%>님 마이페이지"><i class="em em-bust_in_silhouette" aria-role="presentation" aria-label="BUST IN SILHOUETTE"></i></button></a>
+            <a href="/member/myPage.jsp"><button class="dropbtn-half" title="<%=sessionName%>님 마이페이지"><i class="em em-bust_in_silhouette" aria-role="presentation" aria-label="BUST IN SILHOUETTE"></i></button></a>
           </div>
             <div class="dropdown">
             <button onclick="goLogout()" class="dropbtn-half" title="로그아웃"><i class="em em-unlock" aria-role="presentation" aria-label="OPEN LOCK"></i></button>

@@ -16,9 +16,12 @@ public class DBOracleConnection {
     loadJDBCDriver();
 
     try {
-      String DB_URL = "jdbc:oracle:thin:@jsl70104:1521:orcl";
-      String DB_USER = "jsl43";
-      String DB_PASSWORD = "1234";
+//      String DB_URL = "jdbc:oracle:thin:@jsl70104:1521:orcl";
+//      String DB_USER = "jsl43";
+//      String DB_PASSWORD = "1234";
+      String DB_URL = "jdbc:oracle:thin:@awsavocado.c7ka5gpemdun.ap-northeast-2.rds.amazonaws.com:1521:ORCL";
+      String DB_USER = "admin";
+      String DB_PASSWORD = "avocado1234";
 
       printConnertionCheck(DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD));
       return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
