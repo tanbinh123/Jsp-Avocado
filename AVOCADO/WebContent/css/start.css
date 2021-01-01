@@ -5,7 +5,8 @@
 }
 
 .start-section-top{
-    margin-top: 68px;
+    margin-top: 68px; /*68px*/
+	padding: 50px 0px;
     height: 100vh-68px;
     background-color: #f1f8e9;
     position: relative;
@@ -25,6 +26,7 @@
     z-index: 100;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 500;
+    display:none;
 }
 
 /*사용 전 화면*/
@@ -158,6 +160,6 @@
 }
 .pin{
     width:30px;
-    height:30px;
+    height:33px;
     filter:drop-shadow(1px 1px 1px #000);
 }

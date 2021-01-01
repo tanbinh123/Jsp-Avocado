@@ -1,5 +1,7 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="dao.BanAreaDao, dto.BanAreaDto, common.*"%>
 	<!DOCTYPE html>
 <html lang="kr">
 <%@ include file="/common/header.jsp" %>
@@ -83,120 +85,56 @@
             new naver.maps.LatLng(36.329477248044945, 127.40816495799514)
         ];
         
-         var samsungAPT = [  
-            new naver.maps.LatLng(36.32512143126316, 127.40385954562106),
-            new naver.maps.LatLng(36.32610345901512, 127.4072256430737),
-            new naver.maps.LatLng(36.32401887120531, 127.40983158970138),
-            new naver.maps.LatLng(36.32315631852501, 127.41003020222638),
-            new naver.maps.LatLng(36.32214015105258, 127.40623608228485),
-            new naver.maps.LatLng(36.324525184339414, 127.40406801374063)
-        ];
+
+
         
+        
+        <% BanAreaDao banAreaDao = new BanAreaDao();
+        String samsungAPT = banAreaDao.getBanAreaLocationValue("samsungAPT");
+        String miruAPT = banAreaDao.getBanAreaLocationValue("miruAPT");
+        String centralXiAPT = banAreaDao.getBanAreaLocationValue("centralXiAPT");
+        String hanbatXiAPT = banAreaDao.getBanAreaLocationValue("hanbatXiAPT");
+        String sunwhaHyeondaeAPT = banAreaDao.getBanAreaLocationValue("sunwhaHyeondaeAPT");
+        String daeheongHyeondaeAPT = banAreaDao.getBanAreaLocationValue("daeheongHyeondaeAPT");
+        String theShopAPT = banAreaDao.getBanAreaLocationValue("theShopAPT");
+        String daeheongHyeondae2APT = banAreaDao.getBanAreaLocationValue("daeheongHyeondae2APT");
+        String hanoulAPT = banAreaDao.getBanAreaLocationValue("hanoulAPT");
+        %>
+         
+         var samsungAPT = [  
+             <%=samsungAPT%>
+         ];
+         
         var miruAPT = [  
-            new naver.maps.LatLng(36.32688203812006, 127.41258305152587),
-            new naver.maps.LatLng(36.32672634573307, 127.41211188848413),
-            new naver.maps.LatLng(36.32657029168145, 127.41194919184431),
-            new naver.maps.LatLng(36.325851785620046, 127.41179441215512),
-            new naver.maps.LatLng(36.32400637538311, 127.41390260927521),
-            new naver.maps.LatLng(36.323768845635236, 127.413957887735),
-            new naver.maps.LatLng(36.32387573410989, 127.41518506957023),
-            new naver.maps.LatLng(36.32297014654566, 127.4153472197386),
-            new naver.maps.LatLng(36.32312157339384, 127.41685447910953),
-            new naver.maps.LatLng(36.324050912119944, 127.41842438737784),
-            new naver.maps.LatLng(36.32498023977609, 127.41778684246944),
-            new naver.maps.LatLng(36.324021220969826, 127.41567889051626),
-            new naver.maps.LatLng(36.325953591353674, 127.41425772518069),
-            new naver.maps.LatLng(36.32564777931441, 127.41358701319173),
-            new naver.maps.LatLng(36.326378163378486, 127.41286839317537),
-            new naver.maps.LatLng(36.32665131338005, 127.41286470794192)
+            <%=miruAPT%>
         ];
         
         var centralXiAPT = [  
-            new naver.maps.LatLng(36.323218915851236, 127.42541672285103),
-            new naver.maps.LatLng(36.32128370977881, 127.42647687141941),
-            new naver.maps.LatLng(36.32149725210788, 127.42710081303402),
-            new naver.maps.LatLng(36.32081658385979, 127.42748732554098),
-            new naver.maps.LatLng(36.32146166175611, 127.42923767500022),
-            new naver.maps.LatLng(36.32239590304414, 127.4287572951926),
-            new naver.maps.LatLng(36.32261833979364, 127.4293094559053),
-            new naver.maps.LatLng(36.323379068682506, 127.42885668412545),
-            new naver.maps.LatLng(36.32321001846518, 127.42828243698324),
-            new naver.maps.LatLng(36.32348138837957, 127.42781862198458),
-            new naver.maps.LatLng(36.32296089115601, 127.42623944234057),
-            new naver.maps.LatLng(36.32332123576104, 127.42577562732512)
+            <%=centralXiAPT%>
         ];
         
         var hanbatXiAPT = [  
-            new naver.maps.LatLng(36.341658642541404, 127.42267704001154),
-            new naver.maps.LatLng(36.340893644443454, 127.4234666298307),
-            new naver.maps.LatLng(36.340288756906745, 127.42304698768908),
-            new naver.maps.LatLng(36.340026340996054, 127.42335619769763),
-            new naver.maps.LatLng(36.340182011554, 127.42384209912954),
-            new naver.maps.LatLng(36.33951484982003, 127.42454886484178),
-            new naver.maps.LatLng(36.33941255118216, 127.42473107787697),
-            new naver.maps.LatLng(36.33995072946674, 127.42645934090768),
-            new naver.maps.LatLng(36.34039550210189, 127.42622743340837),
-            new naver.maps.LatLng(36.34194773870323, 127.42390283680142),
-            new naver.maps.LatLng(36.34193884346306, 127.42321815750347)
+        	<%=hanbatXiAPT%>
         ];
         
         var sunwhaHyeondaeAPT = [  
-            new naver.maps.LatLng(36.33381602128855, 127.4184804451158),
-            new naver.maps.LatLng(36.33328114476974, 127.41922798415777),
-            new naver.maps.LatLng(36.33255550222328, 127.41870331389852),
-            new naver.maps.LatLng(36.332634051484945, 127.41851758991292),
-            new naver.maps.LatLng(36.3325480213371, 127.4183504383259),
-            new naver.maps.LatLng(36.3330941241414, 127.41758896998503)
+        	<%=sunwhaHyeondaeAPT%>
         ];
         
         var daeheongHyeondaeAPT = [  
-            new naver.maps.LatLng(36.32451779374241, 127.43106402520613),
-            new naver.maps.LatLng(36.32478339213383, 127.43207622092754),
-            new naver.maps.LatLng(36.323586321805635, 127.43266125148625),
-            new naver.maps.LatLng(36.323530208682875, 127.43247552750067),
-            new naver.maps.LatLng(36.32337683260791, 127.43255446019454),
-            new naver.maps.LatLng(36.323092524938886, 127.43157940927027),
-            new naver.maps.LatLng(36.32421478601992, 127.43099902181531)
+        	<%=daeheongHyeondaeAPT%>
         ];
         
         var theShopAPT = [  
-            new naver.maps.LatLng(36.334534388689605, 127.41332117104297),
-            new naver.maps.LatLng(36.332881899989495, 127.4155889189193),
-            new naver.maps.LatLng(36.3321289558598, 127.41585455532736),
-            new naver.maps.LatLng(36.33169700041398, 127.41395082771453),
-            new naver.maps.LatLng(36.33066821595493, 127.41357222657793),
-            new naver.maps.LatLng(36.32985580547241, 127.41375423670246),
-            new naver.maps.LatLng(36.32976465645184, 127.41330659016262),
-            new naver.maps.LatLng(36.32918209278452, 127.41339513563558),
-            new naver.maps.LatLng(36.328195291355236, 127.41380834782755),
-            new naver.maps.LatLng(36.32815566051481, 127.41280975170025),
-            new naver.maps.LatLng(36.32954669095672, 127.41273596379675),
-            new naver.maps.LatLng(36.32960217313717, 127.4128589436154),
-            new naver.maps.LatLng(36.331682726425804, 127.4129278122977),
-            new naver.maps.LatLng(36.33179765061316, 127.41088634726863),
-            new naver.maps.LatLng(36.333830591710324, 127.41259822636265)
+        	<%=theShopAPT%>
         ];
         
         var daeheongHyeondae2APT = [  
-            new naver.maps.LatLng(36.31864425529103, 127.4256256176393),
-            new naver.maps.LatLng(36.318314395519465, 127.42571715546826),
-            new naver.maps.LatLng(36.31824400946458, 127.42585870696108),
-            new naver.maps.LatLng(36.31837800141418, 127.42600354624392),
-            new naver.maps.LatLng(36.318339100549316, 127.42626640272019),
-            new naver.maps.LatLng(36.31832829475008, 127.42640051316725),
-            new naver.maps.LatLng(36.318319824331965, 127.42664495517359),
-            new naver.maps.LatLng(36.318288983520354, 127.42693521805168),
-            new naver.maps.LatLng(36.318576830624146, 127.42768479802741),
-            new naver.maps.LatLng(36.3191191111165, 127.42730203379082),
-            new naver.maps.LatLng(36.31924504301794, 127.42704685762178),
-            new naver.maps.LatLng(36.31864622218181, 127.42562106082723)
+        	<%=daeheongHyeondae2APT%>
         ];
         
         var hanoulAPT = [  
-            new naver.maps.LatLng(36.324026499385354, 127.43458819202093),
-            new naver.maps.LatLng(36.32360781004883, 127.43492578826826),
-            new naver.maps.LatLng(36.32388286169126, 127.43572615689958),
-            new naver.maps.LatLng(36.32431377397926, 127.43549856392384)
+        	<%=hanoulAPT%>
         ];
         
         var serviceArea = new naver.maps.Polygon({  
@@ -234,7 +172,7 @@
             position: new naver.maps.LatLng(36.32546368731953, 127.4090509851486),
             icon: {
               //content: "<div class='pin' ></div>",
-              content: "<img src='img/pin4.png' class = 'pin'>",
+              content: "<img src='img/pinimg.png' class = 'pin'>",
               anchor: new naver.maps.Point(15, 30),
             },
           }
@@ -246,7 +184,7 @@
             map: map,
             position: new naver.maps.LatLng(36.32214160019321, 127.41202950748722),
             icon: {
-              content: "<img src='img/pin4.png' class = 'pin'>",
+              content: "<img src='img/pinimg.png' class = 'pin'>",
               anchor: new naver.maps.Point(15, 30),
             },
           }
@@ -257,7 +195,7 @@
             map: map,
             position: new naver.maps.LatLng(36.324778856980835, 127.41969293719585),
             icon: {
-              content: "<img src='img/pin4.png' class = 'pin'>",
+              content: "<img src='img/pinimg.png' class = 'pin'>",
               anchor: new naver.maps.Point(15, 30),
             },
           }
@@ -268,7 +206,7 @@
        		map: map,
             position: new naver.maps.LatLng(36.32681744540576, 127.41184899217201),
             icon: {
-              content: "<img src='img/pin4.png' class = 'pin'>",
+              content: "<img src='img/pinimg.png' class = 'pin'>",
               anchor: new naver.maps.Point(15, 30),
             },	
         }
@@ -279,7 +217,7 @@
        		map: map,
             position: new naver.maps.LatLng(36.3316003310822, 127.43356337490906),
             icon: {
-              content: "<img src='img/pin4.png' class = 'pin'>",
+              content: "<img src='img/pinimg.png' class = 'pin'>",
               anchor: new naver.maps.Point(15, 30),
             },	
         }
@@ -290,7 +228,7 @@
        		map: map,
             position: new naver.maps.LatLng(36.32902286253786, 127.42535708396257),
             icon: {
-              content: "<img src='img/pin4.png' class = 'pin'>",
+              content: "<img src='img/pinimg.png' class = 'pin'>",
               anchor: new naver.maps.Point(15, 30),
             },	
         }        
@@ -301,7 +239,7 @@
       		map: map,
             position: new naver.maps.LatLng(36.32797532866398, 127.42631036172708),
             icon: {
-              content: "<img src='img/pin4.png' class = 'pin'>",
+              content: "<img src='img/pinimg.png' class = 'pin'>",
               anchor: new naver.maps.Point(15, 30),
             },	
         }
@@ -312,7 +250,7 @@
       		map: map,
             position: new naver.maps.LatLng(36.32268476176774, 127.42316431981536),
             icon: {
-              content: "<img src='img/pin4.png' class = 'pin'>",
+              content: "<img src='img/pinimg.png' class = 'pin'>",
               anchor: new naver.maps.Point(15, 30),
             },	
         }       
@@ -323,7 +261,7 @@
       		map: map,
             position: new naver.maps.LatLng(36.31918738050652, 127.42141766619166),
             icon: {
-              content: "<img src='img/pin4.png' class = 'pin'>",
+              content: "<img src='img/pinimg.png' class = 'pin'>",
               anchor: new naver.maps.Point(15, 30),
             },	
         }   
@@ -334,7 +272,7 @@
       		map: map,
             position: new naver.maps.LatLng(36.32671786041655, 127.42910668774793),
             icon: {
-              content: "<img src='img/pin4.png' class = 'pin'>",
+              content: "<img src='img/pinimg.png' class = 'pin'>",
               anchor: new naver.maps.Point(15, 30),
             },	
         } 
@@ -345,7 +283,7 @@
       		map: map,
             position: new naver.maps.LatLng(36.33062294327649, 127.43292468092797),
             icon: {
-              content: "<img src='img/pin4.png' class = 'pin'>",
+              content: "<img src='img/pinimg.png' class = 'pin'>",
               anchor: new naver.maps.Point(15, 30),
             },	
         }         
@@ -356,12 +294,61 @@
       		map: map,
             position: new naver.maps.LatLng(36.33062294327649, 127.43292468092797),
             icon: {
-              content: "<img src='img/pin4.png' class = 'pin'>",
+              content: "<img src='img/pinimg.png' class = 'pin'>",
               anchor: new naver.maps.Point(15, 30),
             },	
         } 
         
-        var marker12 = new naver.maps.Marker(markerOption12);
+        var marker = new naver.maps.Marker(markerOption12);
+        
+
+		//우클릭 이벤트
+        var menuLayer = $('<div style="position:absolute;z-index:10000;background-color:#fff;border:solid 1px #333;padding:10px;display:none;"></div>');
+        map.getPanes().floatPane.appendChild(menuLayer[0]);
+
+        naver.maps.Event.addListener(map, 'rightclick', function(e) {
+            var coordHtml =
+                'Coord: '+ '(우 클릭 지점 위/경도 좌표)' + '<br />' +
+                'Point: ' + e.point + '<br />' +
+                'Offset: ' + e.offset;
+
+            menuLayer.show().css({
+                left: e.offset.x,
+                top: e.offset.y
+            }).html(coordHtml);
+
+            console.log('Coord: ' + e.coord.toString());
+        });
+
+      //좌클릭 정보창 이벤트
+        var contentString = [
+            '<div class="map-infoPanel-rent">',
+            '<p class="map-infoPanel-rent-text"><i class="em em-avocado" aria-role="presentation" aria-label="AVOCADO"></i>&nbsp;기기 번호 : AVOCADO1684</p>',
+            '<p class="map-infoPanel-rent-text"><i class="em em-herb" aria-role="presentation" aria-label="HERB"></i>&nbsp;기기 종류 : 나노휠 프리미엄</p>',
+            '<p class="map-infoPanel-rent-text"><i class="em em-battery" aria-role="presentation" aria-label="BATTERY"></i>&nbsp;배터리 : 85%</p>',
+            '<div class="map-infoPanel-rent-cost">',
+              '  <div class="map-infoPanel-rent-cost-firstCost"><i class="em em-moneybag" aria-role="presentation" aria-label="MONEY BAG"></i>&nbsp;기본 10분 <span class="map-infoPanel-rent-cost-text">1,000원</span></div>',
+                '<div class="map-infoPanel-rent-cost-usetCost"><i class="em em-heavy_plus_sign" aria-role="presentation" aria-label="HEAVY PLUS SIGN"></i>&nbsp;추가 1분당 <span class="map-infoPanel-rent-cost-text">100원</span></div>',
+            '</div>',
+            '<button class="map-infoPanel-rent-button"><i class="em em-rocket" aria-role="presentation" aria-label="ROCKET"></i>대여하기</button>',
+        '</div>'
+        ].join('');
+        
+        var infowindow = new naver.maps.InfoWindow({
+            content: contentString,
+            borderWidth: 0,
+            anchorSize: new naver.maps.Size(10, 10),
+            anchorSkew: false,
+            pixelOffset: new naver.maps.Point(10, -5)
+        });
+        
+        naver.maps.Event.addListener(marker, 'click', function(e) {
+            if (infowindow.getMap()) {
+                infowindow.close();
+            } else {
+                infowindow.open(map, marker);
+            }
+        });
         
         
         //카카오 검색 api
@@ -421,7 +408,7 @@
             const lng = position.coords.longitude;
             const latlng = new naver.maps.LatLng(lat, lng);
             if (currentUse) {
-              marker = new naver.maps.Marker({
+              markerNow = new naver.maps.Marker({
                 map: map,
                 position: latlng,
                 icon: {
