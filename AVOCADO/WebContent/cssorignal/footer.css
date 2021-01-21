@@ -55,15 +55,10 @@ footer{
     font-size: 0.8rem;
     color: #eee;
 }
-.footer-box-content-txt a{text-decoration: none;}
-.footer-box-content-txt a:link { color: #eee; text-decoration: none;}
-.footer-box-content-txt a:visited { color: #eee; text-decoration: none;}
-.footer-box-content-txt a:hover { color: #000; text-decoration: none;}
-.footer-box-bottom-email a{text-decoration: none;}
-.footer-box-bottom-email a:link { color: #eee; text-decoration: none;}
-.footer-box-bottom-email a:visited { color: #eee; text-decoration: none;}
-.footer-box-bottom-email a:hover { color: #000; text-decoration: none;}
-
+a{text-decoration: none;}
+a:link { color: #eee; text-decoration: none;}
+a:visited { color: #eee; text-decoration: none;}
+a:hover { color: #000; text-decoration: none;}
 
 .footer-box-content-title{
     font-weight: bold;

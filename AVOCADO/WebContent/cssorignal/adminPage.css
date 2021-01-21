@@ -1,0 +1,142 @@
+/*section common css*/
+.adminPage-main-section {
+  margin-top: 68px;
+  height: 100vh-68px;
+  min-height: 900px;
+  background-color: #fff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.adminPage-main-content {
+  position: relative;
+  width: 1024px;
+  margin: 0 auto;
+  display: flex;
+    flex-direction: column;
+  justify-content: center;
+}
+.adminPage-main-content-myInfo{
+    background-color: #fff;
+    width: 100%-18px;
+    border: 1px solid #eee;
+    height: 160px;
+    margin: 30px 0px;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.adminPage-main-content-myInfo-profileLeft{
+    display: flex;
+    flex-direction: row;
+}
+.adminPage-main-content-myInfo-profileLeft img{
+    //border: 1px solid black;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+}
+.adminPage-main-content-myInfo-profileText{
+    display: flex;
+    flex-direction: column;
+    //border: 1px solid green;
+    margin-left: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+}
+.adminPage-main-content-myInfo-profileText-name{
+    font-size: 1.3rem;
+}
+.adminPage-main-content-myInfo-profileRight{
+    display: flex;
+    flex-direction: column;
+    //border: 1px solid green;
+}
+.adminPage-main-content-myInfo-profileRight-profileEditButton{
+    width: 120px;
+    border-radius: 5px;
+    border: solid 1px #e9ecef;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    height: 30px;
+    background-color: #f1f8e9;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: #495057;
+    outline: none;
+    cursor: pointer;
+}
+.adminPage-main-content-myInfo-profileRight-profileEditButton:hover{background-color: #fff;}
+.adminPage-main-content-container{
+    width: 100%;
+    //border: 1px solid green;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.adminPage-main-content-container-box{
+    background-color: #fff;
+    width: 200px;
+    height: 100px;
+    border: 1px solid #eee;
+    margin: 20px 0px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.adminPage-main-content-container-box-blank{
+    width: 200px;
+    height: 100px;
+}
+.adminPage-main-content-container-button{
+    width: 100%;
+    height: 40px;
+    align-items: flex-end;
+    padding: 0;
+    margin: 0;
+    border-radius: 0px 0px 10px 10px;
+    border: 1px solid #eee;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.adminPage-main-content-container-button:hover{
+    background: #fff;
+}
+.adminPage-main-content-topTitle{
+    font-size: 3rem;
+    font-family: "Gugi", cursive;
+    text-align: center;
+    margin: 50px 0px;
+}
+.adminPage-main-content-title{
+    font-size: 2rem;
+    font-family: "Gugi", cursive;
+    color: #558203;
+}
+.adminPage-main-content-container-registerKickboard  *{
+    margin: 5px;
+}
+.adminPage-main-content-container-registerKickboard-inputbox{
+    height: 30px;
+    width: 200px;
+}
+.adminPage-main-content-container-usingServiceInfo table, .adminPage-main-content-container-usingServiceInfo td, .adminPage-main-content-container-usingServiceInfo th{
+    border: 1px solid gray;
+}
+.adminPage-main-content-container-search table, .adminPage-main-content-container-search th, .adminPage-main-content-container-search td{
+	border: 1px solid gray;
+}
+.adminPage-main-content a:link, .adminPage-main-content a:visited, .adminPage-main-content a:hover{
+	color: black; text-decoration: none;
+}

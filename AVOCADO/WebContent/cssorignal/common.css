@@ -1,0 +1,28 @@
+*{
+    font-size: 16px;
+    margin: auto 0;
+    scroll-behavior: smooth;
+}
+body ::selection{
+    color: #000;
+    background: #8bc34a;
+}
+body{
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+}
+main{
+    flex: 1;
+    background-color: gold;
+}
+header{
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+}
+

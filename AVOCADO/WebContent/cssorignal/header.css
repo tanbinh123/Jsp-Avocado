@@ -1,0 +1,131 @@
+/*header css*/
+#header-inner{
+    width: 1024px;
+    margin: 0 auto;
+    padding: 16px 0;
+    position: relative;
+}
+.logo{
+	width:200px;
+    display: flex;
+    cursor: pointer;
+}
+#logo-txt{
+    /*font-family: 'Amatic SC', cursive;*/
+    font-family: 'Rowdies', cursive;
+    font-size: 1.8em;
+    color: #558203;
+}
+#logo-image{
+    font-size: 1.5em;
+}
+#menu {
+    position: absolute;
+    right: 0;
+    top: 16px;
+}
+.dropdown {
+    display: inline-block;
+}
+.dropbtn{
+    width: 140px;
+    border-radius: 5px;
+    border: solid 1px #e9ecef;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    height: 40px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #495057;
+    outline: none;
+    cursor: pointer;
+}
+
+.dropbtn-login{
+    width: 140px;
+    border-radius: 5px;
+    border: solid 1px #e9ecef;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    height: 40px;
+    background-color: #f1f8e9;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #495057;
+    outline: none;
+    cursor: pointer;
+}
+.dropbtn-half{
+    width: 67px;
+    border-radius: 5px;
+    border: solid 1px #e9ecef;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    height: 40px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #495057;
+    outline: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    border-radius: 10px;
+}
+a{text-decoration: none;}
+.dropdown-content a:link { color: black; text-decoration: none;}
+.dropdown-content a:visited { color: black; text-decoration: none;}
+.dropdown-content a:hover { color: black; text-decoration: none;}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #eee;}
+
+.dropbtn-login:hover{background-color: #fff;}
+
+.dropbtn-half:hover{background-color: #eee;}
+
+#map_search_input{
+    width: 300px;
+    cursor: text;
+    border: solid 3px #558203;
+}
+#map_search_button{
+    width: 50px;
+}
+#my_location{
+    width: 50px;
+}
+.header_icon:hover{
+    transform: scale(1.2);
+    transition: 0.3s;
+}

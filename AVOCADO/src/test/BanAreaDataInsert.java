@@ -3,7 +3,7 @@ package test;
 import dao.BanAreaDao;
 import dto.BanAreaDto;
 
-public class banAreaTest {
+public class BanAreaDataInsert {
 
   public static void main(String[] args) {
     // TODO Auto-generated method stub

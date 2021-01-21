@@ -76,7 +76,7 @@ public class MemberDao {
    * 
    * @param email 로그인폼에서 입력
    * @param password 로그인폼에서 입력
-   * @return 로그인 성공시 해당 회원의 이름 출력, 실패시 null
+   * @return 로그인 성공시 해당 회원의 이름 출력, 실패시 공백
    */
   public String getLoginName(String email, String password) {
     MemberDto dto = new MemberDto(email, password);
@@ -121,7 +121,36 @@ public class MemberDao {
     }
     return 0;
   }
+  
+  /**
+   * 회원 등급 조회 메소드
+   * 
+   * @param email 로그인폼에서 입력
+   * @param password 로그인폼에서 입력
+   * @return 로그인 성공시 해당 회원의 이름 출력, 실패시 공백
+   */
+  public String getRank(String sessionEmail) {
+    String member_rank = "";
+    String query = "select member_rank\r\n"
+        + "from ta_member\r\n"
+        + "where member_email = '"+sessionEmail+"'";
+    try {
+      connection = common.getConnection();
+      ps = connection.prepareStatement(query);
+      rs = ps.executeQuery();
+      if (rs.next()) {
+        member_rank = rs.getString(1);
+      }
 
+    } catch (SQLException se) {
+      printSQLExceptionError(query);
+    } catch (Exception ee) {
+      printExceptionError();
+    } finally {
+      common.close(connection, ps, rs);
+    }
+    return member_rank;
+  }
 
 
   /**
@@ -134,10 +163,12 @@ public class MemberDao {
 
     if (getMethodName().equals("joinMember")) {
       return " insert into ta_member \r\n"
-          + " (member_no, member_name, member_email, member_phoneNumber, member_password, member_regDate) \r\n"
+          + " (member_no, member_name, member_email, member_phoneNumber, member_password, member_regDate,member_lastRentDate,\r\n"
+          + "          member_money, member_useTimes, member_rank, member_useCount,\r\n"
+          + "          member_accept) \r\n"
           + "values \r\n" + "('" + dto.getMember_no() + "','" + dto.getMember_name() + "','"
           + dto.getMember_email() + "','" + dto.getMember_phoneNumber() + "','"
-          + dto.getMember_password() + "','" + dto.getMember_regDate() + "') ";
+          + dto.getMember_password() + "','" + dto.getMember_regDate() + "','" + dto.getMember_lastRentDate() + "'," + dto.getMember_money() + ",'" + dto.getMember_useTimes() + "','" + dto.getMember_rank() + "'," + dto.getMember_useCount() + "," + dto.getMember_accept() + ") ";
     }
 
     if (getMethodName().equals("getLoginName")) {

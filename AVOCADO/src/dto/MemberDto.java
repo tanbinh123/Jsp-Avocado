@@ -2,12 +2,12 @@ package dto;
 
 public class MemberDto {
   String member_no, member_name, member_email, member_phoneNumber, member_password, member_regDate,
-      member_lastRentDate, member_money, member_useTimes, member_rank;
-  int member_useCount, member_accept;
+      member_lastRentDate, member_rank;
+  int member_useCount, member_accept, member_money,member_useTimes;
 
   public MemberDto(String member_no, String member_name, String member_email,
       String member_phoneNumber, String member_password, String member_lastRentDate,
-      String member_money, String member_useTimes, String member_rank,String member_regDate, int member_useCount,
+      int member_money, int member_useTimes, String member_rank,String member_regDate, int member_useCount,
       int member_accept) {
     super();
     this.member_no = member_no;
@@ -55,6 +55,9 @@ public class MemberDto {
 
 
 
+
+
+
   public String getMember_no() {
     return member_no;
   }
@@ -79,11 +82,11 @@ public class MemberDto {
     return member_lastRentDate;
   }
 
-  public String getMember_money() {
+  public int getMember_money() {
     return member_money;
   }
 
-  public String getMember_useTimes() {
+  public int getMember_useTimes() {
     return member_useTimes;
   }
 

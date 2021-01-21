@@ -14,7 +14,36 @@ public class BanAreaDao {
   Connection connection = null;
   PreparedStatement ps = null;
   ResultSet rs = null;
-  
+ 
+//목록조회
+  public ArrayList<BanAreaDto> getBanAreaLocationValueInDB(){
+      ArrayList<BanAreaDto> arr = new ArrayList<BanAreaDto>();
+      
+      String query =  "select banarea_no, banarea_name, banarea_locationvalue\r\n"
+          + "from ta_banarea\r\n"
+          + "order by banarea_no asc";
+      
+      try {
+          connection = common.getConnection();
+          ps  = connection.prepareStatement(query);
+          rs  = ps.executeQuery();    
+          while(rs.next()) {
+              int no       = rs.getInt(1);
+              String name    = rs.getString(2);
+              String locationValue  = rs.getString(3);
+              BanAreaDto dto = new BanAreaDto(no,name,locationValue);
+              arr.add(dto);
+          }           
+      }catch(SQLException se) {
+          System.out.println("getBanAreaLocationValueInDB() query 오류: "+query);
+      }catch(Exception ee) {
+          System.out.println("getBanAreaLocationValueInDB() 오류");
+      }finally {
+          common.close(connection, ps, rs);
+      }       
+      
+      return arr;
+  }
 //목록조회
   public ArrayList<BanAreaDto> getBanAreaLocationValueInDB(String banAreaName){
       ArrayList<BanAreaDto> arr = new ArrayList<BanAreaDto>();
@@ -35,15 +64,16 @@ public class BanAreaDao {
               arr.add(dto);
           }           
       }catch(SQLException se) {
-          System.out.println("getFreeboard() query 오류: "+query);
+          System.out.println("getBanAreaLocationValueInDB() query 오류: "+query);
       }catch(Exception ee) {
-          System.out.println("getFreeboard() 오류");
+          System.out.println("getBanAreaLocationValueInDB() 오류");
       }finally {
           common.close(connection, ps, rs);
       }       
       
       return arr;
   }
+
   
   //디비에서 값 가져와서 스트링 변수에 한번에 담아주기 
   public String getBanAreaLocationValue(String banAreaName) {
@@ -75,9 +105,9 @@ public class BanAreaDao {
             maxNo += 1;
           }
       }catch(SQLException se) {
-          System.out.println("getFreeboardNo() query 오류: "+query);
+          System.out.println("getBanAreaNo() query 오류: "+query);
       }catch(Exception ee) {
-          System.out.println("getFreeboardNo() 오류");
+          System.out.println("getBanAreaNo() 오류");
       }finally {
           common.close(connection, ps, rs);
       }       
@@ -96,9 +126,9 @@ public class BanAreaDao {
           ps  = connection.prepareStatement(query);
           result  = ps.executeUpdate();           
       }catch(SQLException se) {
-          System.out.println("saveFreeboard() query 오류: "+query);
+          System.out.println("saveBanArea() query 오류: "+query);
       }catch(Exception ee) {
-          System.out.println("saveFreeboard() 오류");
+          System.out.println("saveBanArea() 오류");
       }finally {
           common.close(connection, ps, rs);
       }       

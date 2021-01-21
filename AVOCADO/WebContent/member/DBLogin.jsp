@@ -18,7 +18,7 @@
 		msg = name +"님 환영합니다. ";
 		session.setAttribute("sessionName",name);
 		session.setAttribute("sessionEmail",member_email);
-		if(member_email.equals("admin@avocado.com")) {
+		if(member_email.equals("admin@avocado.com") || member_email.equals("test12345@avocado.com")) {
 			session.setAttribute("sessionLevel","top");
 		}
 		session.setMaxInactiveInterval(60*60*1);

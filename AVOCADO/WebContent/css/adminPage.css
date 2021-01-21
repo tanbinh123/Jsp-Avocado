@@ -1,0 +1,296 @@
+/*section common css*/
+.adminPage-main-section {
+  margin-top: 68px;
+  height: 100vh-68px;
+  min-height: 900px;
+  background-color: #fff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.adminPage-main-content {
+  position: relative;
+  width: 1024px;
+  margin: 0 auto;
+  display: flex;
+    flex-direction: column;
+  justify-content: center;
+}
+.adminPage-main-content-myInfo{
+    background-color: #fff;
+    width: 100%-18px;
+    border: 1px solid #eee;
+    height: 160px;
+    margin: 30px 0px;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.adminPage-main-content-myInfo-profileLeft{
+    display: flex;
+    flex-direction: row;
+}
+.adminPage-main-content-myInfo-profileLeft img{
+    //border: 1px solid black;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+}
+.adminPage-main-content-myInfo-profileText{
+    display: flex;
+    flex-direction: column;
+    //border: 1px solid green;
+    margin-left: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+}
+.adminPage-main-content-myInfo-profileText-name{
+    font-size: 1.3rem;
+}
+.adminPage-main-content-myInfo-profileRight{
+    display: flex;
+    flex-direction: column;
+    //border: 1px solid green;
+}
+.adminPage-main-content-myInfo-profileRight-profileEditButton{
+    width: 120px;
+    border-radius: 5px;
+    border: solid 1px #e9ecef;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    height: 30px;
+    background-color: #f1f8e9;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: #495057;
+    outline: none;
+    cursor: pointer;
+}
+.adminPage-main-content-myInfo-profileRight-profileEditButton:hover{background-color: #fff;}
+.adminPage-main-content-container{
+    width: 100%;
+    //border: 1px solid green;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-bottom: 200px;
+    
+}
+.adminPage-main-content-container-main{
+    width: 100%;
+    //border: 1px solid green;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-bottom: 100px;
+    
+}
+.adminPage-main-content-container-box{
+    background-color: #fff;
+    width: 200px;
+    height: 100px;
+    border: 1px solid #eee;
+    margin: 20px 0px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    
+}
+.adminPage-main-content-container-box-blank{
+    width: 200px;
+    height: 100px;
+}
+.adminPage-main-content-container-button{
+    width: 100%;
+    height: 40px;
+    align-items: flex-end;
+    padding: 0;
+    margin: 0;
+    border-radius: 0px 0px 10px 10px;
+    border: 1px solid #eee;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.adminPage-main-content-container-button:hover{
+    background: #fff;
+}
+.adminPage-main-content-topTitle{
+    font-size: 3rem;
+    font-family: "Gugi", cursive;
+    text-align: center;
+    margin: 50px 0px;
+}
+.adminPage-main-content-title{
+    font-size: 2rem;
+    font-family: "Gugi", cursive;
+    color: #558203;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.adminPage-main-content-container-usingServiceInfo {
+	width : 100%;
+	border : 3px solid #558203;
+	border-radius: 10px;
+	padding: 30px;
+}
+.adminPage-main-content-container-registerKickboard {
+	border : 3px solid #558203;
+	border-radius: 10px;
+	padding: 30px;
+	display: flex;
+	justify-content: center;
+}
+.adminPage-main-content-container-search {
+	width : 100%;
+	border : 3px solid #558203;
+	border-radius: 10px;
+	padding: 30px;
+}
+.adminPage-main-content-container-registerKickboard  *{
+    margin: 5px;
+}
+.adminPage-main-content-container-registerKickboard-inputbox{
+    height: 35px;
+    width: 200px;
+    cursor: text;
+    border: solid 1px #558203;
+    border-radius: 5px;
+}
+.adminPage-main-content-container-registerKickboard-btn{
+    border-radius: 5px;
+    border: solid 1px #e9ecef;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    height: 40px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #495057;
+    outline: none;
+    cursor: pointer;
+    padding: 0px 20px;
+}
+
+.adminPage-main-content-container-registerKickboard-btn:hover {background-color: #eee;}
+
+.adminPage-main-content-container-registerKickboard-btn-half{
+	    width: 67px;
+    border-radius: 5px;
+    border: solid 1px #e9ecef;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    height: 40px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #495057;
+    outline: none;
+    cursor: pointer;
+}
+
+.adminPage-main-content-container-registerKickboard-btn-half:hover {background-color: #eee;}
+table { 
+	width: 100%; 
+	border-collapse: collapse; 
+	margin:50px auto;
+	
+	}
+
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+	background: #fff; 
+	}
+
+
+
+td, th { 
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	font-size: 0.75rem;
+	}
+th { 
+	text-align:center;
+	background: #558203; 
+	color: white; 
+	font-weight: bold; 
+	}
+.td_center{
+	text-align: center;
+}
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	table { 
+	  	width: 100%; 
+	}
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		/* Label the data */
+		content: attr(data-column);
+
+		color: #000;
+		font-weight: bold;
+	}
+
+}
+.adminPage-main-content a:link, .adminPage-main-content a:visited, .adminPage-main-content a:hover{
+	color: black; text-decoration: none;
+}
