@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.FreeboardDao,dto.FreeboardDto" %>
+<%@ page import="dao.FreeboardDaoBefore,dto.FreeboardDtoBefore" %>
 <%
-  FreeboardDao dao = new FreeboardDao();
+  FreeboardDaoBefore dao = new FreeboardDaoBefore();
 	String no = request.getParameter("t_no");
 	dao.setHitCount(no);
-	FreeboardDto dto = dao.getFreeboardView(no);
+	FreeboardDtoBefore dto = dao.getFreeboardView(no);
 %>
 
 <!DOCTYPE html>

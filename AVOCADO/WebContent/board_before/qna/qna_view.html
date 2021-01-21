@@ -1,13 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="dao.FreeboardDao,dto.FreeboardDto" %>
-<%
-  FreeboardDao dao = new FreeboardDao();
-	String no = request.getParameter("t_no");
-	dao.setHitCount(no);
-	FreeboardDto dto = dao.getFreeboardView(no);
-%>
-
 <!DOCTYPE html>
 <html lang="kr">
   <head>
@@ -48,8 +38,8 @@
           <div class="dropdown">
             <button class="dropbtn"><i class="em em-left_speech_bubble" aria-role="presentation" aria-label=""></i>&nbsp;&nbsp;게시판</button>
             <div class="dropdown-content">
-              <a href="freeboard_list.jsp">자유게시판</a>
-              <a href="../qna/qna_list.html">문의하기</a>
+              <a href="../freeboard/freeboard_list.html">자유게시판</a>
+              <a href="/qna_list.html">문의하기</a>
               <a href="../faq/faq_list.html">자주묻는질문</a>
               <a href="/Devinfo">개발정보</a>
             </div>
@@ -68,51 +58,33 @@
       </div>
     </header>
     <!-- header end-->
-    
-<script>
-	function goUpdateForm(){
-		freeboard.method="post";
-		freeboard.action="freeboardUpdate.jsp";
-		freeboard.submit();
-	}
-	function goDelete(){
-		if(confirm(" 삭제하시겠습니까? ")){
-			freeboard.method="post";
-			freeboard.action="DBFreeBoardDelete.jsp";
-			freeboard.submit();		
-		}
-	}
-</script> 
     <main>
-    <form name="freeboard">
-		<input type="hidden" name="t_no" value="<%=no %>">
-	</form>
       <section class="board-main-section" style="background-color: #f1f8e9">
         <div class="board-main-content">
           <div class="board-container">
             <div class="board-kind">
-              <a href="freeboard_list.jsp" class="board-kind-title">자유게시판</a>
+              <a href="qna_list.html" class="board-kind-title">QnA</a>
             </div>
             <div class="board-box">
               <div class="board-box-view-middle">
                 <div class="board-box-view-middle-left">
                   <div class="board-box-view-middle-box">
                     <div class="board-box-view-middle-th-no">글번호</div>
-                    <div class="board-box-view-middle-no"><%=dto.getFreeboard_no() %></div>
+                    <div class="board-box-view-middle-no">Q115</div>
                   </div>
                 </div>
                 <div class="board-box-view-middle-right">
                   <div class="board-box-view-middle-box">
                     <div class="board-box-view-middle-th">작성자</div>
-                    <div class="board-box-view-middle-reg_name"><%=dto.getFreeboard_regName() %></div>
+                    <div class="board-box-view-middle-reg_name">지나가는나그네</div>
                   </div>
                   <div class="board-box-view-middle-box">
                     <div class="board-box-view-middle-th">작성일</div>
-                    <div class="board-box-view-middle-reg_date"><%=dto.getFreeboard_regDate() %></div>
+                    <div class="board-box-view-middle-reg_date">2020-11-18</div>
                   </div>
                   <div class="board-box-view-middle-box">
                     <div class="board-box-view-middle-th">조회수</div>
-                    <div class="board-box-view-middle-hit"><%=dto.getFreeboard_hit() %></div>
+                    <div class="board-box-view-middle-hit">7</div>
                   </div>
                   <div class="board-box-view-middle-box">
                     <div class="board-box-view-middle-th">공감</div>
@@ -120,18 +92,16 @@
                   </div>
                 </div>
               </div>
-              <div class="board-box-view-top"><%=dto.getFreeboard_title() %></div>
-              <div class="board-box-view-bottom">
-               <%=dto.getFreeboard_content() %>
-              </div>
+              <div class="board-box-view-top">문의 드립니다.</div>
+              <div class="board-box-view-bottom">문의 드립니다..</div>
             </div>
 
             <div class="board-bottom">
               <div class="board-bottom-blank"></div>
               <div>
                 <button type="button" onclick="history.back()" class="board-write-button">목록</button>
-                <button class="board-write-button" onclick="goUpdateForm()">수정</button>
-                <button class="board-write-button" onclick="goDelete()">삭제</button>
+                <button class="board-write-button" onclick="location.href='qna_update.html'">수정</button>
+                <button class="board-write-button">삭제</button>
               </div>
             </div>
           </div>

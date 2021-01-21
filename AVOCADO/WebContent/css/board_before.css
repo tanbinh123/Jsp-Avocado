@@ -28,11 +28,17 @@
     margin-bottom: 10px;
     margin-left: 10px;
 }
+.board-kind a{text-decoration: none;}
+.board-kind a:link { color: #558203; text-decoration: none;}
+.board-kind a:visited { color: #558203; text-decoration: none;}
+.board-kind a:hover { color: #558203; text-decoration: none;}
+
 .board-kind-title{
     font-family: 'Gugi', cursive;
     font-size: 2.5rem;
     color: #558203;
 }
+
 .board-box{
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 1rem;
@@ -226,15 +232,8 @@
 .board-box-write-middle{
     display: flex;
     flex-direction: row;
-    height: 75%;
+    height: 100%;
     //border: 1px solid red;
-    margin-bottom: 10px;
-}
-.board-box-write-middle-attach{
-    display: flex;
-    flex-direction: row;
-    height: 6%;
-    //border: 1px solid yellow;
     margin-bottom: 10px;
 }
 .board-box-write-bottom{
@@ -267,39 +266,11 @@
     //border: 1px solid blue;
 }
 .board-box-write-td{
-    border: 1px solid blue;
+    //border: 1px solid blue;
     height: 100%;
     width: 824px;
-   	
     
 }
-
-
-.board-box-write-th-attach{
-    height: 10%;
-    min-width: 200px;
-    border: 1px solid #eee;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    font-size: 2rem;
-    font-family: 'Gugi', cursive;
-    color: #558203;
-    margin-right: 10px;
-    //border: 1px solid blue;
-}
-.board-box-write-td-attach{
-    //border: 1px solid blue;
-    height: 10%;
-    width: 824px;
-    
-}
-
-
-
-
 .board-box-write-td input{
     width: 96%;
     height: 100%;
@@ -373,7 +344,7 @@
     border-radius: 10px;
 }
 .board-box-view-bottom{
-    height: 70%;
+    height: 100%;
     border: 1px solid #eee;
     padding:  10px;
     border-radius: 10px;
@@ -433,33 +404,3 @@
     width: 30px;
     text-align: center;
 }
-
-/* attach 추가부분  적용x */
-.board-box-view-middle-attach{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;;
-    border: 1px solid #eee;
-    margin-bottom: 10px;
-    border-radius: 10px;
-}
-.board-box-view-middle-box-attach{
-    display: flex;
-    flex-direction: row;
-    
-}
-.board-box-view-middle-th-no-attach{
-     font-size: 0.8rem;
-    background-color: #f1f8e9;
-    padding: 10px;
-    width: 50px;
-    text-align: center;
-    border-radius: 10px 0px 0px 10px;
-}
-.board-box-view-middle-no-attach{
-    padding: 5px;
-    width: 50px;
-    text-align: center;
-}
-
-/* attach 추가부분 */

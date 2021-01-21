@@ -8,6 +8,7 @@
 	String post_no 	= request.getParameter("t_no");
 	String email	= request.getParameter("t_sessionEmail");
 	String no 		= dao.getLikeStackNo();
+	
 
 	int result = dao.saveLikeStack(post_no, email, no);
 	String msg="";

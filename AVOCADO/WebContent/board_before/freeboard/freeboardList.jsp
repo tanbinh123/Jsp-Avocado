@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.FreeboardDao,dto.FreeboardDto,java.util.*,common.Paging" %>
+<%@ page import="dao.FreeboardDaoBefore,dto.FreeboardDtoBefore,java.util.*,common.Paging" %>
 <%
   request.setCharacterEncoding("utf-8");
-	FreeboardDao dao = new FreeboardDao();
+	FreeboardDaoBefore dao = new FreeboardDaoBefore();
 	
 	String select = request.getParameter("t_select");
 	String search = request.getParameter("t_search");
@@ -17,7 +17,7 @@
 		
 	}
 	
-	ArrayList<FreeboardDto> arr = dao.getFreeboard(select,search);
+	ArrayList<FreeboardDtoBefore> arr = dao.getFreeboard(select,search);
 	
 	//*************page 시작**************/
 	int	list_setup_count = 15;			// 한페이지에 출력될 List 수 

@@ -402,18 +402,18 @@
         var kickboardMarkerList = [];
         var infowindowList = [];
         
-        
         <% 
         
       	ArrayList<KickboardDto> KickboardValueArray = KickboardDao.getKickboardValue(); 
       	String memberNo = RentDao.getMemberNo(sessionEmail);
+      	
       	for (int i = 0; i < KickboardValueArray.size(); i++) {
-      	  
+      	String nowUsingMember = RentDao.getUsingServiceWho(KickboardValueArray.get(i).getKickboard_no());
       	int rentStats = RentDao.getUsingServiceStats(memberNo);
       	%>
       	
-      	var visible = true;
-      	
+      	var visible = false;
+      	<%-- 
       	<%	if (KickboardValueArray.get(i).getKickboard_rentstats() == 1 && rentStats == 0){%>
 	    		visible = true,
 	    <%	} else if (KickboardValueArray.get(i).getKickboard_rentstats() != 0) {%>
@@ -423,8 +423,14 @@
 	     <% } else {%>
 	     		visible = false,
 	     <% }%>
-	     
-	     
+	      --%>
+	      <%
+	      if (KickboardValueArray.get(i).getKickboard_rentstats() == 1 && rentStats == 1 && nowUsingMember.equals(memberNo)){%>
+	  			visible = true,
+	  	<%}else if (rentStats != 1) {%>
+	      		visible = true,
+	     <%}%>
+	      
 	      	 //킥보드 마커
 	        kickboardMarkerOptionList = { 
 	        	visible: visible,
@@ -469,7 +475,7 @@
         
         
       //현재 대여중 일 때
-			<% if (KickboardValueArray.get(i).getKickboard_rentstats() == 1 && RentDao.getUsingServiceStats(RentDao.getMemberNo(sessionEmail)) == 0) {%>
+			<% if (KickboardValueArray.get(i).getKickboard_rentstats() == 1 && RentDao.getUsingServiceStats(memberNo) == 1) {%>
             var content = [
             '<form name = serviceEnd>',
             '<input type="hidden" name="t_kickboardNo" value="<%=KickboardValueArray.get(i).getKickboard_no()%>"/>',
@@ -539,7 +545,8 @@
         //시작 전 정보 박스
         var infowindow = new naver.maps.InfoWindow({
             content: content,
-            borderWidth: 2,
+            borderWidth: 3,
+            borderColor: "#558203",
             anchorSize: new naver.maps.Size(10, 10),
             anchorSkew: false,
             pixelOffset: new naver.maps.Point(10, -5)

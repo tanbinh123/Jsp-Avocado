@@ -158,6 +158,35 @@
 	border : 3px solid #558203;
 	border-radius: 10px;
 	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.adminPage-main-content-container-seach-pagig{
+    display: flex;
+    flex-direction: row;
+    //border: 1px solid red;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.adminPage-main-content-container-seach-pagig > div{
+    font-family: 'Gugi', cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #495057;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    margin : 0px 2.5px;
+}
+.adminPage-main-content-container-seach-bottom-button{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
 .adminPage-main-content-container-registerKickboard  *{
     margin: 5px;

@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ page import="dao.FreeboardDao,dto.FreeboardDto" %>
 <%
-  request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("utf-8");
 	FreeboardDao dao = new FreeboardDao();
 	
 	String no 		= request.getParameter("t_no"); 

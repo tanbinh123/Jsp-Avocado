@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import common.DBOracleConnection;
 import dto.FreeboardDto;
 
-public class FreeboardDao {
+public class FreeboardDaoBefore {
 	
 	 DBOracleConnection common = new DBOracleConnection();
 	  Connection connection = null;
@@ -82,9 +82,9 @@ public class FreeboardDao {
 		public int saveFreeboard(FreeboardDto dto) {
 			int result =0;
 			String query ="insert into TA_FreeBoard \r\n" + 
-					"(freeboard_no,freeboard_title,freeboard_content,freeboard_regname,freeboard_regdate,freeboard_attach) \r\n" + 
+					"(freeboard_no,freeboard_title,freeboard_content,freeboard_regname,freeboard_regdate) \r\n" + 
 					"values \r\n" + 
-					"('"+dto.getFreeboard_no()+"','"+dto.getFreeboard_title()+"','"+dto.getFreeboard_content()+"','"+dto.getFreeboard_regName()+"',TO_DATE('"+dto.getFreeboard_regDate()+"','YYYY-MM-DD HH24:MI:SS'),'"+dto.getFreeboard_attach()+"')";
+					"('"+dto.getFreeboard_no()+"','"+dto.getFreeboard_title()+"','"+dto.getFreeboard_content()+"','"+dto.getFreeboard_regName()+"',TO_DATE('"+dto.getFreeboard_regDate()+"','YYYY-MM-DD HH24:MI:SS'))";
 			try {
 				connection = common.getConnection();
 				ps  = connection.prepareStatement(query);
@@ -212,8 +212,7 @@ public class FreeboardDao {
 				if(maxNo == null) {
 					maxNo ="FL001";
 				} else {
-					String n = maxNo.substring(2);
-					System.out.println(n);
+					String n = maxNo.substring(2); 
 					int i = Integer.parseInt(n); 
 					i = i + 1;
 					DecimalFormat df = new DecimalFormat("000");

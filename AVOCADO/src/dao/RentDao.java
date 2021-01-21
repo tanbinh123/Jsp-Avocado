@@ -212,8 +212,8 @@ public class RentDao {
   // 서비스 이용 중인 킥보드 상태 단일 조회 
   public int getUsingServiceStats(String MemberNo) {
     int rent_stats = -1;
-    String query = "select rent_stats\r\n" + "from ta_rent\r\n" + "where rent_member_no = '" + MemberNo + "' and rent_stats = 0";
-
+    String query = "select count(rent_stats)\r\n" + "from ta_rent\r\n" + "where rent_member_no = '" + MemberNo + "' and rent_stats = 0";
+    
     try {
       connection = common.getConnection();
       ps = connection.prepareStatement(query);
@@ -259,7 +259,6 @@ public class RentDao {
   public String getUsingServiceWho(String KickboardNo) {
     String rent_member_no = "";
     String query = "select rent_member_no\r\n" + "from ta_rent\r\n" + "where rent_kickboard_no = '" + KickboardNo + "'\r\n" + "and rent_stats = 0";
-
     try {
       connection = common.getConnection();
       ps = connection.prepareStatement(query);

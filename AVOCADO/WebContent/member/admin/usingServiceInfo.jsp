@@ -24,13 +24,16 @@
                         <tr>
                         <th>렌트 번호</th><th>멤버 번호</th><th>킥보드 번호</th><th>서비스 이용 시작 시간</th>
                         </tr>
-                        <tr>
+                        
                     <% for (int i = 0; i < usingServiceUserArray.size(); i++) { %>
-                        <td><%=usingServiceUserArray.get(i).getRent_no() %></td>
-                        <td title="대여 내역 조회" style="cursor:pointer;" onClick="location.href='/member/admin/serchRentHistory.jsp?t_member_no=<%=usingServiceUserArray.get(i).getRent_member_no() %>'"><%=usingServiceUserArray.get(i).getRent_member_no() %></a></td>
-                        <td title="대여 내역 조회" style="cursor:pointer;" onClick="location.href='/member/admin/serchRentHistory.jsp?t_kickboard_no=<%=usingServiceUserArray.get(i).getRent_kickboard_no() %>'"><%=usingServiceUserArray.get(i).getRent_kickboard_no() %></a></td>
-                        <td><%=usingServiceUserArray.get(i).getRent_startdate() %></td>
+                    	<tr>
+	                        <td><%=usingServiceUserArray.get(i).getRent_no() %></td>
+	                        <td title="대여 내역 조회" style="cursor:pointer;" onClick="location.href='/member/admin/serchRentHistory.jsp?t_member_no=<%=usingServiceUserArray.get(i).getRent_member_no() %>'"><%=usingServiceUserArray.get(i).getRent_member_no() %></a></td>
+	                        <td title="대여 내역 조회" style="cursor:pointer;" onClick="location.href='/member/admin/serchRentHistory.jsp?t_kickboard_no=<%=usingServiceUserArray.get(i).getRent_kickboard_no() %>'"><%=usingServiceUserArray.get(i).getRent_kickboard_no() %></a></td>
+	                        <td><%=usingServiceUserArray.get(i).getRent_startdate() %></td>
+                        </tr>
                 <% }%>
+                
                 </table>
                     <%} %>
                     <br><button type="button" class="adminPage-main-content-container-registerKickboard-btn" onclick="location.href='/member/admin/adminPage.jsp'">관리 페이지 홈</button>

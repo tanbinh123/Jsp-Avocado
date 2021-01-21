@@ -54,17 +54,9 @@ public class AdminDao {
  public ArrayList<MemberDto> getUser(String member_no){
      ArrayList<MemberDto> arr = new ArrayList<MemberDto>();
      
-     String query = "";
-     
-     if (member_no == null || member_no.equals("")) {
-       query =  "select *\r\n"
+     String query = "select *\r\n"
            + "from ta_member\r\n"
-           + "order by member_no asc";
-     }else {
-       query =  "select *\r\n"
-           + "from ta_member\r\n"
-           + "where member_no = '"+member_no+"' order by member_no asc";
-     }
+           + "where member_no like '%"+member_no+"%' order by member_no desc";
      
      try {
          connection = common.getConnection();
@@ -100,17 +92,9 @@ public class AdminDao {
  //킥보드 번호로 킥보드 검색
  public ArrayList<KickboardDto> getKickboard(String kickboard_no){
      ArrayList<KickboardDto> arr = new ArrayList<KickboardDto>();
-     String query = "";
-     
-     if(kickboard_no == null || kickboard_no.equals("")) {
-       query = "select *\r\n"
+     String query ="select *\r\n"
            + "from ta_kickboard\r\n"
-           + "order by kickboard_no asc";
-     } else {
-       query = "select *\r\n"
-           + "from ta_kickboard\r\n"
-           + "where kickboard_no = '"+kickboard_no+"' order by kickboard_no asc";
-     }
+           + "where kickboard_no like '%"+kickboard_no+"%' order by kickboard_no desc";
      
      
      
@@ -149,20 +133,21 @@ public class AdminDao {
      if (serchType.equals("member")) {
        query =  "select rent.rent_no,rent.rent_member_no,member.member_name,rent.rent_kickboard_no,rent.rent_startdate,rent.rent_enddate,rent.rent_useddate,rent.rent_stats,rent.rent_cost\r\n"
            + "from ta_rent rent, ta_member member\r\n"
-           + "where rent.rent_member_no = member.member_no and rent.rent_member_no = '"+no+"' order by rent.rent_no asc";
+           + "where rent.rent_member_no = member.member_no and rent.rent_member_no = '"+no+"' order by rent.rent_no desc";
     } else if (serchType.equals("kickboard")) {
       query =  "select rent.rent_no,rent.rent_member_no,member.member_name,rent.rent_kickboard_no,rent.rent_startdate,rent.rent_enddate,rent.rent_useddate,rent.rent_stats,rent.rent_cost\r\n"
           + "from ta_rent rent, ta_member member\r\n"
           + "where rent.rent_member_no = member.member_no\r\n"
           + "and rent.rent_kickboard_no = '"+no+"'\r\n"
-          + "order by rent.rent_no asc";
+          + "order by rent.rent_no desc";
     }else if (serchType.equals("")) {
       query =  "select rent.rent_no,rent.rent_member_no,member.member_name,rent.rent_kickboard_no,rent.rent_startdate,rent.rent_enddate,rent.rent_useddate,rent.rent_stats,rent.rent_cost\r\n"
           + "from ta_rent rent, ta_member member\r\n"
           + "where rent.rent_member_no = member.member_no\r\n"
-          + "order by rent.rent_no asc";
+          + "and rent.rent_member_no like '%"+no+"%'\r\n"
+          + "order by rent.rent_no desc";
     }
-  
+  System.out.print(query);
      
      try {
          connection = common.getConnection();

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.FreeboardDao,dto.FreeboardDto" %>
+<%@ page import="dao.FreeboardDaoBefore,dto.FreeboardDtoBefore" %>
 <%
-  FreeboardDao dao = new FreeboardDao();
+  FreeboardDaoBefore dao = new FreeboardDaoBefore();
 	String no = request.getParameter("t_no");
 	dao.setHitCount(no);
-	FreeboardDto dto = dao.getFreeboardView(no);
+	FreeboardDtoBefore dto = dao.getFreeboardView(no);
 %>
 
 <!DOCTYPE html>
@@ -89,14 +89,6 @@
               <div class="board-box-view-bottom">
                <%=dto.getFreeboard_content() %>
               </div>
-              
-				<div class="board-box-view-middle-attach">
-					<div class="board-box-view-middle-box">
-						<div class="board-box-view-middle-th-no">첨부파일</div>
-						<div class="board-box-view-middle-no">123123<a href=""></a></div>
-					</div>
-				</div> 
-              
             </div>
 
             <div class="board-bottom">
