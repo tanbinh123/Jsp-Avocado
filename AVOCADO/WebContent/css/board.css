@@ -89,6 +89,9 @@
     overflow: hidden;
     text-align: left;
 }
+.board-attach{
+	min-width: 30px;
+}
 .board-reg_name{
     min-width: 120px;
 }
@@ -96,10 +99,10 @@
     min-width: 90px;
 }
 .board-hit{
-    min-width: 50px;
+    min-width: 30px;
 }
 .board-recommend{
-    min-width: 50px;
+    min-width: 30px;
     font-weight: bold;
     color: #558203;
 }
@@ -226,16 +229,21 @@
 .board-box-write-middle{
     display: flex;
     flex-direction: row;
-    height: 75%;
+    height: 71%;
     //border: 1px solid red;
     margin-bottom: 10px;
 }
 .board-box-write-middle-attach{
     display: flex;
     flex-direction: row;
-    height: 6%;
+    height: 10%;
     //border: 1px solid yellow;
-    margin-bottom: 10px;
+    //margin-bottom: 10px;
+    align-items: center;
+}
+.board-box-write-middle-attach-checkbox{
+	width: 20px;
+	height: 20px;
 }
 .board-box-write-bottom{
     display: flex;
@@ -267,7 +275,7 @@
     //border: 1px solid blue;
 }
 .board-box-write-td{
-    border: 1px solid blue;
+    //border: 1px solid blue;
     height: 100%;
     width: 824px;
    	
@@ -291,9 +299,12 @@
     //border: 1px solid blue;
 }
 .board-box-write-td-attach{
-    //border: 1px solid blue;
-    height: 10%;
-    width: 824px;
+    width: 96%;
+    height: 100%;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #eee;
+    padding: 0 2%;
     
 }
 
@@ -433,33 +444,11 @@
     width: 30px;
     text-align: center;
 }
-
-/* attach 추가부분  적용x */
 .board-box-view-middle-attach{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;;
-    border: 1px solid #eee;
-    margin-bottom: 10px;
-    border-radius: 10px;
-}
-.board-box-view-middle-box-attach{
-    display: flex;
-    flex-direction: row;
-    
-}
-.board-box-view-middle-th-no-attach{
-     font-size: 0.8rem;
-    background-color: #f1f8e9;
-    padding: 10px;
-    width: 50px;
-    text-align: center;
-    border-radius: 10px 0px 0px 10px;
-}
-.board-box-view-middle-no-attach{
     padding: 5px;
-    width: 50px;
     text-align: center;
 }
-
-/* attach 추가부분 */
+.board-box-view-middle-attach a{
+    text-decoration: underline;
+    color: #558203;
+}

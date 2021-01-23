@@ -6,6 +6,22 @@ import java.util.Calendar;
 
 public class commonUtil {
   /**
+   * 파일폴더 경로
+   */
+  public static String file_dir_notice = "C:/Users/junh2/git/Project_AVOCADO/AVOCADO/WebContent/file_room/freooboard";
+      
+  /**
+   * null 검사
+   * @param 검사값
+   * @return null이면 공백, null이 아니면 값
+   */
+  public static String checkNull(String sValue){
+      String result="";
+      if(sValue != null) result = sValue;
+      return result;
+  }
+  
+  /**
    * 현재 날짜 구하기
    * @return 현재 날짜
    */

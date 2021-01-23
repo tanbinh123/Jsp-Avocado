@@ -62,7 +62,8 @@ public class FreeboardDao {
 			int result =0;
 			String query ="update TA_FreeBoard \r\n" + 
 					"set freeboard_title='"+dto.getFreeboard_title()+"', \r\n" + 
-					"    freeboard_content='"+dto.getFreeboard_content()+"' \r\n" + 
+					"    freeboard_content='"+dto.getFreeboard_content()+"', \r\n" + 
+					"    freeboard_attach='"+dto.getFreeboard_attach()+"' \r\n" + 
 					"where freeboard_no ='"+dto.getFreeboard_no()+"'";
 			try {
 				connection = common.getConnection();
@@ -102,7 +103,7 @@ public class FreeboardDao {
 	//상세조회
 		public FreeboardDto getFreeboardView(String no){
 			FreeboardDto dto = null; 
-			String query =	" select b.freeboard_no, b.freeboard_title, b.freeboard_content, a.member_name, to_char(b.freeboard_regdate,'yyyy-MM-dd HH24:MI'), b.freeboard_hit, b.freeboard_regname, c.freeboard_likestack\r\n" + 
+			String query =	" select b.freeboard_no, b.freeboard_title, b.freeboard_content, a.member_name, to_char(b.freeboard_regdate,'yyyy-MM-dd HH24:MI'), b.freeboard_hit, b.freeboard_attach, b.freeboard_regname, c.freeboard_likestack\r\n" + 
 							" from   TA_FreeBoard b, \r\n" + 
 							"        ta_member a, \r\n" + 
 							"        (select like_postnumber, count(*) as freeboard_likestack   \r\n" + 
@@ -111,7 +112,6 @@ public class FreeboardDao {
 							" where a.member_email = b.freeboard_regname \r\n" + 
 							"        and b.freeboard_no = c.like_postnumber(+)\r\n" + 
 							"        and b.freeboard_no ='"+no+"'";
-			
 			try {
 				connection = common.getConnection();
 				ps  = connection.prepareStatement(query);
@@ -120,13 +120,13 @@ public class FreeboardDao {
 					String nn 		= rs.getString(1);
 					String title 	= rs.getString(2);
 					String content 	= rs.getString(3);
-					String reg_name = rs.getString(4);
-					String reg_date = rs.getString(5);
+					String regName = rs.getString(4);
+					String regDate = rs.getString(5);
 					int hit 		= rs.getInt(6);
-					String reg_email = rs.getString(7);
-					int like		= rs.getInt(8);
-					dto = new FreeboardDto(nn,title,content,
-													reg_name,reg_date,hit,reg_email,like);
+					String attach  = rs.getString(7);
+					String regEmail = rs.getString(8);
+					int like		= rs.getInt(9);
+					dto = new FreeboardDto(nn, title, content, attach, regName,regDate, hit, regEmail, like);
 				}
 			}catch(SQLException se) {
 				System.out.println("getFreeboardView() query 오류: "+query);
@@ -161,7 +161,7 @@ public class FreeboardDao {
 			
 			String searchGubun = "b";
 			if(select.equals("member_name")) searchGubun = "a";
-			String query =  " select b.freeboard_no, b.freeboard_title, a.member_name, to_char(b.freeboard_regdate,'yyyy-MM-dd'), b.freeboard_hit, c.freeboard_likestack\r\n " + 
+			String query =  " select b.freeboard_no, b.freeboard_title, a.member_name, to_char(b.freeboard_regdate,'yyyy-MM-dd'), b.freeboard_attach, b.freeboard_hit, c.freeboard_likestack\r\n " + 
 							" from TA_FreeBoard b, \r\n " + 
 							"        ta_member a, \r\n " + 
 							"        (select like_postnumber, count(*) as freeboard_likestack   \r\n" + 
@@ -181,10 +181,10 @@ public class FreeboardDao {
 					String title 	= rs.getString(2);
 					String regName  = rs.getString(3);
 					String regDate  = rs.getString(4);
-					int hit 		= rs.getInt(5);
-					int like		= rs.getInt(6);
-					FreeboardDto dto = new FreeboardDto(no,title,"",
-													regName,regDate,hit,like);
+					String attach  = rs.getString(5);
+					int hit 		= rs.getInt(6);
+					int like		= rs.getInt(7);
+					FreeboardDto dto = new FreeboardDto(no, title, "", regName, regDate, attach, hit, like);
 					arr.add(dto);
 				}			
 			}catch(SQLException se) {

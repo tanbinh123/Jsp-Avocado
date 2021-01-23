@@ -1,3 +1,4 @@
+<%@page import="common.commonUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="dao.FreeboardDao,dto.FreeboardDto" %>
@@ -6,7 +7,7 @@
   request.setCharacterEncoding("utf-8");
 	FreeboardDao dao = new FreeboardDao();
 	
-	String file_dir = "C:/Users/junh2/git/Project_AVOCADO/AVOCADO/WebContent/file_room/freooboard";
+	String file_dir = commonUtil.file_dir_notice;
 	int sizeLimit = 1024 * 1024 * 10;
 	
 	

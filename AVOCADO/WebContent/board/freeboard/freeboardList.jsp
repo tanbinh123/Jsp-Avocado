@@ -115,6 +115,9 @@
                             <div class="board-title board-th">
                                 제목
                             </div>
+                            <div class="board-attach board-th">
+                                첨부
+                            </div>
                             <div class="board-reg_name board-th">
                                 작성자
                             </div>
@@ -138,6 +141,14 @@
                             </div>
                             <div class="board-title" OnClick="javascript:goView('<%=arr.get(k).getFreeboard_no() %>')">
                               	<%=arr.get(k).getFreeboard_title() %>
+                            </div>
+                            <div class="board-attach">
+                                <% if (arr.get(k).getFreeboard_attach() != null ) {
+                                  out.print("<i class='em em-floppy_disk' aria-role='presentation' aria-label='FLOPPY DISK'></i>");
+                                  }else {
+                                  out.print("  ");
+                                  }%>
+                                
                             </div>
                             <div class="board-reg_name">
                                 <%=arr.get(k).getFreeboard_regName() %>

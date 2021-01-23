@@ -20,7 +20,7 @@
 		freeboard.submit();
 	}
 	function goDelete(){
-		if(confirm("삭제된 게시물은 복구 할수 없습니다.\n정말 삭제 하시겠습니까? ")){
+		if(confirm("삭제된 게시물은 복구 할 수 없습니다.\n정말 삭제 하시겠습니까? ")){
 			freeboard.method="post";
 			freeboard.action="/board/freeboard/DBFreeBoardDelete.jsp";
 			freeboard.submit();		
@@ -49,6 +49,7 @@
     <main>
     <form name="freeboard">
 		<input type="hidden" name="t_no" value="<%=no %>">
+		<input type="text" name="t_attach" value="<%=dto.getFreeboard_attach()%>">
 		<input type="hidden" name="t_sessionEmail" value="<%=sessionEmail%>">
 	</form>
       <section class="board-main-section" style="background-color: #f1f8e9">
@@ -66,6 +67,7 @@
                   </div>
                   
                 </div>
+                
                 <div class="board-box-view-middle-right">
                   <div class="board-box-view-middle-box">
                     <div class="board-box-view-middle-th">작성자</div>
@@ -85,17 +87,20 @@
                   </div>
                 </div>
               </div>
+              
               <div class="board-box-view-top"><%=dto.getFreeboard_title() %></div>
               <div class="board-box-view-bottom">
                <%=dto.getFreeboard_content() %>
               </div>
-              
-				<div class="board-box-view-middle-attach">
-					<div class="board-box-view-middle-box">
-						<div class="board-box-view-middle-th-no">첨부파일</div>
-						<div class="board-box-view-middle-no">123123<a href=""></a></div>
-					</div>
-				</div> 
+              <div class="board-box-view-middle">
+				<div class="board-box-view-middle-box">
+					<div class="board-box-view-middle-th">첨부파일</div>
+					<div class="board-box-view-middle-attach">
+					<%  if(dto.getFreeboard_attach() != null){ %>
+						<a href="/common/filedown.jsp?t_file=<%=dto.getFreeboard_attach()%>&t_gubun=notice"><%=dto.getFreeboard_attach()%></a>
+					<%  } %></div>
+				</div>
+			</div>
               
             </div>
 

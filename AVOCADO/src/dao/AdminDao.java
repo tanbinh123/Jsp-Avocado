@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import common.DBOracleConnection;
+import dto.FreeboardDto;
 import dto.KickboardDto;
 import dto.MemberDto;
 import dto.RentDto;
@@ -56,7 +57,7 @@ public class AdminDao {
      
      String query = "select *\r\n"
            + "from ta_member\r\n"
-           + "where member_no like '%"+member_no+"%' order by member_no desc";
+           + "where member_no like '%"+member_no+"%' order by member_no asc";
      
      try {
          connection = common.getConnection();
@@ -94,7 +95,7 @@ public class AdminDao {
      ArrayList<KickboardDto> arr = new ArrayList<KickboardDto>();
      String query ="select *\r\n"
            + "from ta_kickboard\r\n"
-           + "where kickboard_no like '%"+kickboard_no+"%' order by kickboard_no desc";
+           + "where kickboard_no like '%"+kickboard_no+"%' order by kickboard_no asc";
      
      
      
@@ -176,4 +177,190 @@ public class AdminDao {
      
      return arr;
  }
+ 
+ // 세션 이메일로 회원 번호 찾기
+ public String getMemberNo(String sessionEmail) {
+   String member_no = "";
+   String query = "select member_no\r\n" + "from ta_member\r\n" + "where member_email = '" + sessionEmail + "'";
+
+   try {
+     connection = common.getConnection();
+     ps = connection.prepareStatement(query);
+     rs = ps.executeQuery();
+     if (rs.next()) {
+       member_no = rs.getString(1);
+     }
+   } catch (SQLException se) {
+     System.out.println("getMemberNo() query 오류: " + query);
+   } catch (Exception ee) {
+     System.out.println("getMemberNo() 오류");
+   } finally {
+     common.close(connection, ps, rs);
+   }
+   return member_no;
+ }
+ 
+ //오늘 킥보드 이용시간
+ public int getTodayUsedTime(String no){
+   int time = 0;
+     String query =  "SELECT sum(rent_useddate)\r\n"
+         + "FROM ta_rent\r\n"
+         + "where rent_member_no = '"+no+"'\r\n"
+         + "and TO_CHAR(rent_enddate, 'YYYYMMDD')  = TO_CHAR(SYSDATE, 'YYYYMMDD')";
+     try {
+         connection = common.getConnection();
+         ps  = connection.prepareStatement(query);
+         rs  = ps.executeQuery();
+         if(rs.next()) {
+           time       = rs.getInt(1);
+         }
+     }catch(SQLException se) {
+         System.out.println("getTodayUsedTime() query 오류: "+query);
+     }catch(Exception ee) {
+         System.out.println("getTodayUsedTime() 오류");
+     }finally {
+         common.close(connection, ps, rs);
+     }               
+     return time;
+ }
+ 
+ //어제 킥보드 이용시간
+ public int getYesterdayUsedTime(String no){
+   int time = 0;
+     String query =  "SELECT sum(rent_useddate)\r\n"
+         + "FROM ta_rent\r\n"
+         + "where rent_member_no = '"+no+"'\r\n"
+         + "and TO_CHAR(rent_enddate, 'YYYYMMDD')  = TO_CHAR(SYSDATE-1, 'YYYYMMDD')";
+     try {
+         connection = common.getConnection();
+         ps  = connection.prepareStatement(query);
+         rs  = ps.executeQuery();
+         if(rs.next()) {
+           time       = rs.getInt(1);
+         }
+     }catch(SQLException se) {
+         System.out.println("getYesterdayUsedTime() query 오류: "+query);
+     }catch(Exception ee) {
+         System.out.println("getYesterdayUsedTime() 오류");
+     }finally {
+         common.close(connection, ps, rs);
+     }               
+     return time;
+ }
+ //2일전 킥보드 이용시간
+ public int get2daysagoUsedTime(String no){
+   int time = 0;
+     String query =  "SELECT sum(rent_useddate)\r\n"
+         + "FROM ta_rent\r\n"
+         + "where rent_member_no = '"+no+"'\r\n"
+         + "and TO_CHAR(rent_enddate, 'YYYYMMDD')  = TO_CHAR(SYSDATE-2, 'YYYYMMDD')";
+     try {
+         connection = common.getConnection();
+         ps  = connection.prepareStatement(query);
+         rs  = ps.executeQuery();
+         if(rs.next()) {
+           time       = rs.getInt(1);
+         }
+     }catch(SQLException se) {
+         System.out.println("getYesterdayUsedTime() query 오류: "+query);
+     }catch(Exception ee) {
+         System.out.println("getYesterdayUsedTime() 오류");
+     }finally {
+         common.close(connection, ps, rs);
+     }               
+     return time;
+ }
+ //3일전 킥보드 이용시간
+ public int get3daysagoUsedTime(String no){
+   int time = 0;
+     String query =  "SELECT sum(rent_useddate)\r\n"
+         + "FROM ta_rent\r\n"
+         + "where rent_member_no = '"+no+"'\r\n"
+         + "and TO_CHAR(rent_enddate, 'YYYYMMDD')  = TO_CHAR(SYSDATE-3, 'YYYYMMDD')";
+     try {
+         connection = common.getConnection();
+         ps  = connection.prepareStatement(query);
+         rs  = ps.executeQuery();
+         if(rs.next()) {
+           time       = rs.getInt(1);
+         }
+     }catch(SQLException se) {
+         System.out.println("getYesterdayUsedTime() query 오류: "+query);
+     }catch(Exception ee) {
+         System.out.println("getYesterdayUsedTime() 오류");
+     }finally {
+         common.close(connection, ps, rs);
+     }               
+     return time;
+ }
+ //4일전 킥보드 이용시간
+ public int get4daysagoUsedTime(String no){
+   int time = 0;
+     String query =  "SELECT sum(rent_useddate)\r\n"
+         + "FROM ta_rent\r\n"
+         + "where rent_member_no = '"+no+"'\r\n"
+         + "and TO_CHAR(rent_enddate, 'YYYYMMDD')  = TO_CHAR(SYSDATE-4, 'YYYYMMDD')";
+     try {
+         connection = common.getConnection();
+         ps  = connection.prepareStatement(query);
+         rs  = ps.executeQuery();
+         if(rs.next()) {
+           time       = rs.getInt(1);
+         }
+     }catch(SQLException se) {
+         System.out.println("getYesterdayUsedTime() query 오류: "+query);
+     }catch(Exception ee) {
+         System.out.println("getYesterdayUsedTime() 오류");
+     }finally {
+         common.close(connection, ps, rs);
+     }               
+     return time;
+ }
+ //5일전 킥보드 이용시간
+ public int get5daysagoUsedTime(String no){
+   int time = 0;
+     String query =  "SELECT sum(rent_useddate)\r\n"
+         + "FROM ta_rent\r\n"
+         + "where rent_member_no = '"+no+"'\r\n"
+         + "and TO_CHAR(rent_enddate, 'YYYYMMDD')  = TO_CHAR(SYSDATE-5, 'YYYYMMDD')";
+     try {
+         connection = common.getConnection();
+         ps  = connection.prepareStatement(query);
+         rs  = ps.executeQuery();
+         if(rs.next()) {
+           time       = rs.getInt(1);
+         }
+     }catch(SQLException se) {
+         System.out.println("getYesterdayUsedTime() query 오류: "+query);
+     }catch(Exception ee) {
+         System.out.println("getYesterdayUsedTime() 오류");
+     }finally {
+         common.close(connection, ps, rs);
+     }               
+     return time;
+ }
+ //6일전 킥보드 이용시간
+ public int get6daysagoUsedTime(String no){
+   int time = 0;
+     String query =  "SELECT sum(rent_useddate)\r\n"
+         + "FROM ta_rent\r\n"
+         + "where rent_member_no = '"+no+"'\r\n"
+         + "and TO_CHAR(rent_enddate, 'YYYYMMDD')  = TO_CHAR(SYSDATE-6, 'YYYYMMDD')";
+     try {
+         connection = common.getConnection();
+         ps  = connection.prepareStatement(query);
+         rs  = ps.executeQuery();
+         if(rs.next()) {
+           time       = rs.getInt(1);
+         }
+     }catch(SQLException se) {
+         System.out.println("getYesterdayUsedTime() query 오류: "+query);
+     }catch(Exception ee) {
+         System.out.println("getYesterdayUsedTime() 오류");
+     }finally {
+         common.close(connection, ps, rs);
+     }        
+     return time;
+ }
+
 }
