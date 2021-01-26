@@ -9,11 +9,6 @@
 
     <!-- header end-->
     <main>
-     <script>
-    function goProfileEdit(){
-        location.href="edit.html"
-    }    
-    </script>
       <section class="myPage-main-section" style="background-color: #f1f8e9">
         <div class="myPage-main-content">
             <div class="myPage-main-content-document">

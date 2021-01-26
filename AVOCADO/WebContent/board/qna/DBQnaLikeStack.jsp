@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.FreeboardDao" %>
+<%@ page import="dao.QnaDao" %>
 <%
-  FreeboardDao dao = new FreeboardDao();
+  QnaDao dao = new QnaDao();
 
 	
 	String post_no 	= request.getParameter("t_no");
@@ -22,7 +22,7 @@
 <head>
 <script type="text/javascript">
 	alert("<%=msg%>");
-	location.href="/board/freeboard/freeboardView.jsp?t_no=<%=post_no%>";
+	location.href="/board/qna/qnaView.jsp?t_no=<%=post_no%>";
 </script>
 </head>
 <body>

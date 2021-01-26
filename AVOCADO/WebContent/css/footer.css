@@ -50,7 +50,10 @@ footer{
     justify-content: center;
     align-items: center;
 }
-
+.footer-box-bottom-document{
+	display: flex;
+	justify-content: row;
+}
 .footer-box-content-txt, .footer-box-content-txt a{
     font-size: 0.8rem;
     color: #eee;

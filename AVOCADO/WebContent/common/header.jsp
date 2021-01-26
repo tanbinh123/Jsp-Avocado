@@ -47,6 +47,7 @@
     <link rel="stylesheet" href="/css/board.css">
     <link rel="stylesheet" href="/css/myPage.css" />
     <link rel="stylesheet" href="/css/adminPage.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
   </head>
   
   <body>
@@ -79,12 +80,12 @@
         </div>
          <%} %>
           <div class="dropdown">
-            <button class="dropbtn"><i class="em em-left_speech_bubble" aria-role="presentation" aria-label=""></i>&nbsp;&nbsp;게시판</button>
+            <a href="/board/freeboard/freeboardList.jsp"><button class="dropbtn"><i class="em em-left_speech_bubble" aria-role="presentation" aria-label=""></i>&nbsp;&nbsp;게시판</button></a>
             <div class="dropdown-content">
               <a href="/board/freeboard/freeboardList.jsp">자유게시판</a>
-              <a href="/board/qna/qna_list.html">문의하기</a>
+              <a href="/board/qna/qnaList.jsp">문의하기</a>
               <a href="/board/faq/faqList.jsp">자주묻는질문</a>
-              <a href="/Devinfo">개발정보</a>
+              <!-- <a href="/Devinfo">개발정보</a> -->
             </div>
           </div>
           <%

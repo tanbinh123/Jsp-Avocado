@@ -144,6 +144,7 @@ public class RentDao {
     return result;
   }
   
+
   // 서비스 끝 이용시간 이용 요금 업데이트
   public void serviceEndUsedDate(int useddate, int cost, String rent_no) {
     String query = "update ta_rent set rent_useddate = '" + useddate + "', rent_cost = '" + cost + "' where rent_no = '"+rent_no+"'";
@@ -155,6 +156,22 @@ public class RentDao {
       System.out.println("serviceEndUsedDate() query 오류: " + query);
     } catch (Exception ee) {
       System.out.println("serviceEndUsedDate() 오류");
+    } finally {
+      common.close(connection, ps, rs);
+    }
+  }
+  
+  // 서비스 끝  멤버 테이블에 유저 마지막 이용날짜 업데이트, 유저 이용횟수 증가 all
+  public void updateMemberServiceEnd(RentDto dto, String member_no,int usedTimes) {
+    String query = "update ta_member set member_usetimes = member_usetimes + "+usedTimes+", member_lastrentdate = TO_DATE('" + dto.getRent_enddate() + "','YYYY-MM-DD HH24:MI:SS'), member_useCount = member_useCount + 1 where member_no = '"+member_no+"'";
+    try {
+      connection = common.getConnection();
+      ps = connection.prepareStatement(query);
+      ps.executeUpdate();
+    } catch (SQLException se) {
+      System.out.println("updateMemberLastRentDate() query 오류: " + query);
+    } catch (Exception ee) {
+      System.out.println("updateMemberLastRentDate() 오류");
     } finally {
       common.close(connection, ps, rs);
     }
@@ -422,7 +439,6 @@ public class RentDao {
       }finally {
           common.close(connection, ps, rs);
       }       
-      
       return dto;
   }
 

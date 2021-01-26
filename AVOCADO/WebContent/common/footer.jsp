@@ -32,7 +32,12 @@
         <div>
           <br />
           <div class="footer-box-bottom">
-            <i class="em em-kr" aria-role="presentation" aria-label="South Korea Flag"></i>
+          	<div class="footer-box-bottom-document">
+                	<a class="footer-box-content-txt" href="/member/myPage/agreementDocument/serviceAgreementDocument.jsp">서비스 이용약관</a>&nbsp; &nbsp; &nbsp; &nbsp;
+                	<a class="footer-box-content-txt" href="/member/myPage/agreementDocument/personalInfoAgreementDocument.jsp">개인정보 처리 방침</a>&nbsp; &nbsp; &nbsp; &nbsp;
+                	<a class="footer-box-content-txt" href="/member/myPage/agreementDocument/locationAgreementDocument.jsp">위치기반서비스 이용약관</a>&nbsp; &nbsp; &nbsp; &nbsp;
+                	<a class="footer-box-content-txt" href="/member/myPage/agreementDocument/marketingAgreementDocument.jsp">마케팅 정보 수신 동의</a>
+             </div>
             <p class="footer-box-bottom-email">서비스 문의 : <a href="mailto:th.yoon.dev@gmail.com" target="_blank">th.yoon.dev@gmail.com</a></p>
             <p>© Copyright thyoondev. All right reserved.</p>
           </div>

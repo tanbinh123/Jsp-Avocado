@@ -1,11 +1,11 @@
 <%@page import="common.commonUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.FreeboardDao,dto.FreeboardDto" %>
+<%@ page import="dao.QnaDao,dto.QnaDto" %>
 <%@ page import="com.oreilly.servlet.*,java.io.*" %>
 <%
   request.setCharacterEncoding("utf-8");
-	FreeboardDao dao = new FreeboardDao();
+	QnaDao dao = new QnaDao();
 	
 	String file_dir = commonUtil.file_dir_notice;
 	int sizeLimit = 1024 * 1024 * 10;
@@ -23,7 +23,7 @@
 	
 	MultipartRequest mpr = new MultipartRequest(request,file_dir,sizeLimit,"utf-8");
 	
-	String no 		= dao.getFreeboardNo();
+	String no 		= dao.getQnaNo();
 	String title 	= mpr.getParameter("t_title"); 
 	String content 	= mpr.getParameter("t_content"); 
 	String reg_name = mpr.getParameter("t_reg_name"); 
@@ -41,8 +41,8 @@
 /* 	out.print(" attach :"+attach);
 	out.print(" dbAttachName :"+dbAttachName); */
 	
-	FreeboardDto dto = new FreeboardDto(no,title,content,reg_name,reg_date,dbAttachName,0);
-	int result = dao.saveFreeboard(dto);
+	QnaDto dto = new QnaDto(no,title,content,reg_name,reg_date,dbAttachName,0);
+	int result = dao.saveQna(dto);
 	String msg="";
 	if(result == 1) msg =" 등록 되었습니다. ";
 	else msg=" 등록 실패하였습니다 ";
@@ -52,7 +52,7 @@
 <head>
 <script type="text/javascript">
 	alert("<%=msg%>");
-	location.href="/board/freeboard/freeboardList.jsp";
+	location.href="/board/qna/qnaList.jsp";
 </script>
 </head>
 <body>

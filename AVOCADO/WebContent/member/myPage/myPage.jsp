@@ -73,16 +73,16 @@ DecimalFormat df = new DecimalFormat("###,###,###");
                 </div>
                 <div class="myPage-main-content-container-box">
                     <p class="myPage-main-content-container-box-title">개발 정보</p>
-                    <div class="myPage-main-content-container-box-innerbox">프로젝트 문서 바로가기</div>
-                    <div class="myPage-main-content-container-box-innerbox">개발 로드맵 바로가기</div>
-                    <div class="myPage-main-content-container-box-innerbox">개발자 github 바로가기</div>
+                    <a class="agreementDocumentLink" href="https://www.notion.so/c93bbe16d6034803ae07dd6205cd96a8" target="_blank"><div class="myPage-main-content-container-box-innerbox">프로젝트 문서 바로가기</div></a>
+                    <a class="agreementDocumentLink" href="https://www.notion.so/153432ead0fd4336b0b998d08e6aa426?v=9b3a63f01aa84e0ca0249bfc9ede1527" target="_blank"><div class="myPage-main-content-container-box-innerbox">개발 로드맵 바로가기</div></a>
+                    <a class="agreementDocumentLink" href="https://github.com/thyoondev" target="_blank"><div class="myPage-main-content-container-box-innerbox">개발자 github 바로가기</div></a>
                 </div>
                 <div class="myPage-main-content-container-box">
                 	<p class="myPage-main-content-container-box-title">서비스 정보</p>
                 	<a class="agreementDocumentLink" href="/member/myPage/agreementDocument/serviceAgreementDocument.jsp"><div class="myPage-main-content-container-box-innerbox">서비스 이용약관</div></a>
-                	<div class="myPage-main-content-container-box-innerbox">개인정보 처리 방침</div>
-                	<div class="myPage-main-content-container-box-innerbox">위치기반서비스 이용약관</div>
-                	<div class="myPage-main-content-container-box-innerbox">마케팅 정보 수신 동의</div>
+                	<a class="agreementDocumentLink" href="/member/myPage/agreementDocument/personalInfoAgreementDocument.jsp"><div class="myPage-main-content-container-box-innerbox">개인정보 처리 방침</div></a>
+                	<a class="agreementDocumentLink" href="/member/myPage/agreementDocument/locationAgreementDocument.jsp"><div class="myPage-main-content-container-box-innerbox">위치기반서비스 이용약관</div></a>
+                	<a class="agreementDocumentLink" href="/member/myPage/agreementDocument/marketingAgreementDocument.jsp"><div class="myPage-main-content-container-box-innerbox">마케팅 정보 수신 동의</div></a>
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@ DecimalFormat df = new DecimalFormat("###,###,###");
       var data = {
 		        labels: ['오늘', '1일전', '2일전', '3일전', '4일전', '5일전', '6일전'],
 		        datasets: [{
-		            label: '이용 시간(초)',
+		            label: '이용 시간',
 		            data: [today, yesterday, twodaysago, threedaysago, fourdaysago, fivedaysago, sixdaysago],
 		            backgroundColor: [
 		                'rgba(127, 191, 63, 0.2)'
@@ -123,19 +123,23 @@ DecimalFormat df = new DecimalFormat("###,###,###");
       var options = {
     		  scales: {
     			    yAxes: [{
-    			      scaleLabel: {
+    			      /* scaleLabel: {
     			        display: true,
-    			        labelString: '5분 단위'
-    			      },
+    			        labelString: '단위(5분)'
+    			      }, */
     			      ticks: {
     			    	  beginAtZero: true,
     			    	  stepSize: 300,
     			    	  callback: function(value, index, values) {
-    			    		  for (var i = 0; i < value*300; i++) {
-    			    			  if (value == i){
-        			    			  return i/60+"분";
-        			    		  }
-							}
+    			    		  if(value > 60) {
+	    			    		  for (var i = 0; i < value*300; i++) {
+	    			    			  if (value == i){
+	        			    			  return i/60+"분";
+	        			    		  }
+									}
+    			    		}else{
+    			    			return value+"초";
+    			    		}
     			    		  
     			    	  }
     			      }

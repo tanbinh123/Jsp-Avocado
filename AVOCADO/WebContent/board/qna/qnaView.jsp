@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.FreeboardDao,dto.FreeboardDto" %>
+<%@ page import="dao.QnaDao,dto.QnaDto" %>
 <%
-  FreeboardDao dao = new FreeboardDao();
+  QnaDao dao = new QnaDao();
 	String no = request.getParameter("t_no");
 	dao.setHitCount(no);
-	FreeboardDto dto = dao.getFreeboardView(no);
+	QnaDto dto = dao.getQnaView(no);
 %>
 
 <!DOCTYPE html>
@@ -15,15 +15,15 @@
     
 <script>
 	function goUpdateForm(){
-		freeboard.method="post";
-		freeboard.action="/board/freeboard/freeboardUpdate.jsp";
-		freeboard.submit();
+		qna.method="post";
+		qna.action="/board/qna/qnaUpdate.jsp";
+		qna.submit();
 	}
 	function goDelete(){
 		if(confirm("삭제된 게시물은 복구 할 수 없습니다.\n정말 삭제 하시겠습니까? ")){
-			freeboard.method="post";
-			freeboard.action="/board/freeboard/DBFreeBoardDelete.jsp";
-			freeboard.submit();		
+			qna.method="post";
+			qna.action="/board/qna/DBQnaDelete.jsp";
+			qna.submit();		
 		}
 	}
 	function goLikeStack() {
@@ -31,9 +31,9 @@
 			<% if (sessionEmail.equals(dto.getReg_email())) { %>
 	        	alert('자신의 글은 자신이 공감할 수 없습니다.');
 	       	<% } else {%>
-		       	freeboard.method="post";
-				freeboard.action="/board/freeboard/DBFreeBoardLikeStack.jsp";
-				freeboard.submit();	
+		       	qna.method="post";
+				qna.action="/board/qna/DBQnaLikeStack.jsp";
+				qna.submit();	
 	      	<% }%> 
 		<%} else {%>
 		alert('로그인 후 이용가능합니다.');
@@ -41,29 +41,29 @@
 		<%}%>
 	}
 	//function goLikeStack(){
-		//freeboard.method="post";
-		//freeboard.action=
+		//qna.method="post";
+		//qna.action=
 	//}
 </script> 
 
     <main>
-    <form name="freeboard">
+    <form name="qna">
 		<input type="hidden" name="t_no" value="<%=no %>">
-		<input type="hidden" name="t_attach" value="<%=dto.getFreeboard_attach()%>">
+		<input type="hidden" name="t_attach" value="<%=dto.getqna_attach()%>">
 		<input type="hidden" name="t_sessionEmail" value="<%=sessionEmail%>">
 	</form>
       <section class="board-main-section" style="background-color: #f1f8e9">
         <div class="board-main-content">
           <div class="board-container">
             <div class="board-kind">
-              <a href="freeboardList.jsp" class="board-kind-title">자유게시판</a>
+              <a href="qnaList.jsp" class="board-kind-title">QnA</a>
             </div>
             <div class="board-box">
               <div class="board-box-view-middle">
                 <div class="board-box-view-middle-left">
                   <div class="board-box-view-middle-box">
                     <div class="board-box-view-middle-th-no">글번호</div>
-                    <div class="board-box-view-middle-no"><%=dto.getFreeboard_no() %></div>
+                    <div class="board-box-view-middle-no"><%=dto.getqna_no() %></div>
                   </div>
                   
                 </div>
@@ -71,33 +71,33 @@
                 <div class="board-box-view-middle-right">
                   <div class="board-box-view-middle-box">
                     <div class="board-box-view-middle-th">작성자</div>
-                    <div class="board-box-view-middle-reg_name"><%=dto.getFreeboard_regName() %></div>
+                    <div class="board-box-view-middle-reg_name"><%=dto.getqna_regName() %></div>
                   </div>
                   <div class="board-box-view-middle-box">
                     <div class="board-box-view-middle-th">작성일</div>
-                    <div class="board-box-view-middle-reg_date"><%=dto.getFreeboard_regDate() %></div>
+                    <div class="board-box-view-middle-reg_date"><%=dto.getqna_regDate() %></div>
                   </div>
                   <div class="board-box-view-middle-box">
                     <div class="board-box-view-middle-th">조회수</div>
-                    <div class="board-box-view-middle-hit"><%=dto.getFreeboard_hit() %></div>
+                    <div class="board-box-view-middle-hit"><%=dto.getqna_hit() %></div>
                   </div>
                   <div class="board-box-view-middle-box">
                     <div class="board-box-view-middle-th">공감</div>
-                    <div class="board-box-view-middle-up"><%=dto.getFreeboard_like() %></div>
+                    <div class="board-box-view-middle-up"><%=dto.getqna_like() %></div>
                   </div>
                 </div>
               </div>
               
-              <div class="board-box-view-top"><%=dto.getFreeboard_title() %></div>
+              <div class="board-box-view-top"><%=dto.getqna_title() %></div>
               <div class="board-box-view-bottom">
-               <%=dto.getFreeboard_content() %>
+               <%=dto.getqna_content() %>
               </div>
               <div class="board-box-view-middle">
 				<div class="board-box-view-middle-box">
 					<div class="board-box-view-middle-th">첨부파일</div>
 					<div class="board-box-view-middle-attach">
-					<%  if(dto.getFreeboard_attach() != null){ %>
-						<a href="/common/filedown.jsp?t_file=<%=dto.getFreeboard_attach()%>&t_gubun=notice"><%=dto.getFreeboard_attach()%></a>
+					<%  if(dto.getqna_attach() != null){ %>
+						<a href="/common/filedown.jsp?t_file=<%=dto.getqna_attach()%>&t_gubun=notice"><%=dto.getqna_attach()%></a>
 					<%  } %></div>
 				</div>
 			</div>

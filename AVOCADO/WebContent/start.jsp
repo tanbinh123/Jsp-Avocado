@@ -12,11 +12,13 @@
 		<% KickboardDao KickboardDao = new KickboardDao();
 			        RentDao RentDao = new RentDao();
 			        MemberDao MemberDao = new MemberDao();
-			        MemberDto memberDto = RentDao.getUser(RentDao.getMemberNo(sessionEmail));%>
+			        String memberNo = RentDao.getMemberNo(sessionEmail);
+			        MemberDto memberDto = RentDao.getUser(memberNo);%>
 			<% if (!sessionEmail.equals("")) {
 			%>
 			
 			<div id="map">
+			<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
 			<!-- 	<div class="map-infoPanel">
 
 					<div class="map-infoPanel-rent">
@@ -405,7 +407,7 @@
         <% 
         
       	ArrayList<KickboardDto> KickboardValueArray = KickboardDao.getKickboardValue(); 
-      	String memberNo = RentDao.getMemberNo(sessionEmail);
+      	
       	
       	for (int i = 0; i < KickboardValueArray.size(); i++) {
       	String nowUsingMember = RentDao.getUsingServiceWho(KickboardValueArray.get(i).getKickboard_no());

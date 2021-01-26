@@ -24,9 +24,10 @@
 	  int usedTime = Integer.parseInt(dao.getServiceUsedDate(dto)); //이용시간 초
 	  int cost = 1000+((usedTime/60)*100);
 	  dao.serviceEndUsedDate(usedTime, cost, rent_no);
-		dao.updateMemberLastRentDate(dto,member_no);
-		dao.addMemberUseCount(member_no);
-		dao.addMemberUseTimes(member_no, usedTime);
+	  dao.updateMemberServiceEnd(dto, member_no, usedTime);
+		//dao.updateMemberLastRentDate(dto,member_no);
+		//dao.addMemberUseCount(member_no);
+		//dao.addMemberUseTimes(member_no, usedTime);
 	  msg = "반납되었습니다." ;
 	} else {
 	  msg=" 실패하였습니다 ";
