@@ -1,4 +1,4 @@
-package dto;
+package unused;
 
 public class FreeboardDtoBefore {
 	String freeboard_no, freeboard_title, freeboard_content, freeboard_regName, freeboard_regDate,reg_email;

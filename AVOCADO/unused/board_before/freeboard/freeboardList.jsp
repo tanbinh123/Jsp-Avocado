@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.FreeboardDaoBefore,dto.FreeboardDtoBefore,java.util.*,common.Paging" %>
+<%@ page import="unused.FreeboardDaoBefore,unused.FreeboardDtoBefore,java.util.*,common.Paging" %>
 <%
   request.setCharacterEncoding("utf-8");
 	FreeboardDaoBefore dao = new FreeboardDaoBefore();

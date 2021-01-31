@@ -1,4 +1,4 @@
-package dto;
+package unused;
 
 public class NoticeDto {
 

@@ -9,17 +9,22 @@
 <main>
 	<section class="start-section-top">
 		<div class="start-main-content">
-		<% KickboardDao KickboardDao = new KickboardDao();
+			<% KickboardDao KickboardDao = new KickboardDao();
 			        RentDao RentDao = new RentDao();
 			        MemberDao MemberDao = new MemberDao();
 			        String memberNo = RentDao.getMemberNo(sessionEmail);
 			        MemberDto memberDto = RentDao.getUser(memberNo);%>
 			<% if (!sessionEmail.equals("")) {
 			%>
-			
+
 			<div id="map">
-			<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-			<!-- 	<div class="map-infoPanel">
+				<div class="lds-ellipsis">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<!-- 	<div class="map-infoPanel">
 
 					<div class="map-infoPanel-rent">
 						<p class="map-infoPanel-rent-text">
@@ -97,10 +102,10 @@
 						</button>
 					</div>
 				</div> -->
-					<!-- The Modal -->
-					
-					
-					<%
+				<!-- The Modal -->
+
+
+				<%
 					
 			        
 			        if (request.getParameter("t_rent_no") != null) {
@@ -111,36 +116,41 @@
 					int usedDate = resultDto.getRent_useddate();
 					String usedDateStr = (usedDate/60) + "분 " + (usedDate % 60) + "초";
 					%>
-				    <div id="myModal" class="modal">
-				 
-				      <!-- Modal content -->
-				      <div class="map-infoPanel-used">
+				<div id="myModal" class="modal">
+
+					<!-- Modal content -->
+					<div class="map-infoPanel-used">
 						<p class="map-infoPanel-used-text">
 							<i class="em em-avocado" aria-role="presentation"
-								aria-label="AVOCADO"></i>&nbsp;<%=memberDto.getMember_name() %>님 이용해주셔서 감사합니다 :)
+								aria-label="AVOCADO"></i>&nbsp;<%=memberDto.getMember_name() %>님
+							이용해주셔서 감사합니다 :)
 						</p>
 						<p class="map-infoPanel-used-text">
-							<i class="em em-medal" aria-role="presentation" aria-label=""></i>&nbsp;등급 : <%=memberDto.getMember_rank()%>
+							<i class="em em-medal" aria-role="presentation" aria-label=""></i>&nbsp;등급
+							:
+							<%=memberDto.getMember_rank()%>
 						</p>
 						<p class="map-infoPanel-used-text">
 							<i class="em em-clock7" aria-role="presentation"
-								aria-label="CLOCK FACE SEVEN OCLOCK"></i>&nbsp;총 이용 시간 : <%=usedDateStr%>
+								aria-label="CLOCK FACE SEVEN OCLOCK"></i>&nbsp;총 이용 시간 :
+							<%=usedDateStr%>
 						</p>
 						<p class="map-infoPanel-used-text">
 							<i class="em em-moneybag" aria-role="presentation"
-								aria-label="MONEY BAG"></i>&nbsp;총 이용 요금 : <%=resultDto.getRent_cost()%>원
+								aria-label="MONEY BAG"></i>&nbsp;총 이용 요금 :
+							<%=resultDto.getRent_cost()%>원
 						</p>
 						<button class="map-infoPanel-used-button" onClick="closeResult()">
 							<i class="em em-white_check_mark" aria-role="presentation"
 								aria-label="WHITE HEAVY CHECK MARK"></i>창닫기
 						</button>
 					</div>
-				 
-				    </div>
-				        <!--End Modal-->
-				 
-				 
-				    <script type="text/javascript">
+
+				</div>
+				<!--End Modal-->
+
+
+				<script type="text/javascript">
 				    	var resultRentNo = "<%=request.getParameter("t_rent_no") %>";
 				    	
 				        jQuery(document).ready(function() {

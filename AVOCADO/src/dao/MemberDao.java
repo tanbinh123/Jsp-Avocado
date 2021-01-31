@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import common.DBOracleConnection;
+import common.commonJDBC;
 import dto.MemberDto;
 
 public class MemberDao {
@@ -14,11 +15,16 @@ public class MemberDao {
   Connection connection = null;
   PreparedStatement ps = null;
   ResultSet rs = null;
+  commonJDBC jdbc = new commonJDBC();
 
-  // 번호생성
+  /**
+   * 멤버 번호 생성 메소드
+   * 
+   * @return 테이블에 아무것도 없으면 M001부터 생성, 하나라도 있으면 최고값 + 1
+   */
   public String getMemberNo() {
     String maxNo = "";
-    String query = " select max(member_no) from ta_member ";
+    String query = getQuery(null);
     try {
       connection = common.getConnection();
       ps = connection.prepareStatement(query);
@@ -27,19 +33,16 @@ public class MemberDao {
         maxNo = rs.getString(1);
       }
       if (maxNo == null) {
-        maxNo = "M001";
-      } else {
-        String n = maxNo.substring(1);
-        int i = Integer.parseInt(n);
-        i = i + 1;
+        return "M001";
+      }
+      if (maxNo != null) {
         DecimalFormat df = new DecimalFormat("000");
-        String newNo = df.format((double) i);
-        maxNo = "M" + newNo; //
+        return "M" + df.format((double) Integer.parseInt(maxNo.substring(1)) + 1);
       }
     } catch (SQLException se) {
-    	printSQLExceptionError(query);
+      jdbc.printSQLExceptionError(query);
     } catch (Exception ee) {
-    	printExceptionError();
+      jdbc.printExceptionError();
     } finally {
       common.close(connection, ps, rs);
     }
@@ -62,9 +65,9 @@ public class MemberDao {
       if (rs.next())
         return rs.getInt(1);
     } catch (SQLException se) {
-      printSQLExceptionError(query);
+      jdbc.printSQLExceptionError(query);
     } catch (Exception ee) {
-      printExceptionError();
+      jdbc.printExceptionError();
     } finally {
       common.close(connection, ps, rs);
     }
@@ -91,9 +94,9 @@ public class MemberDao {
       }
 
     } catch (SQLException se) {
-      printSQLExceptionError(query);
+      jdbc.printSQLExceptionError(query);
     } catch (Exception ee) {
-      printExceptionError();
+      jdbc.printExceptionError();
     } finally {
       common.close(connection, ps, rs);
     }
@@ -113,15 +116,15 @@ public class MemberDao {
       ps = connection.prepareStatement(query);
       return ps.executeUpdate();
     } catch (SQLException se) {
-      printSQLExceptionError(query);
+      jdbc.printSQLExceptionError(query);
     } catch (Exception ee) {
-      printExceptionError();
+      jdbc.printExceptionError();
     } finally {
       common.close(connection, ps, rs);
     }
     return 0;
   }
-  
+
   /**
    * 회원 등급 조회 메소드
    * 
@@ -131,9 +134,7 @@ public class MemberDao {
    */
   public String getRank(String sessionEmail) {
     String member_rank = "";
-    String query = "select member_rank\r\n"
-        + "from ta_member\r\n"
-        + "where member_email = '"+sessionEmail+"'";
+    String query = "select member_rank\r\n" + "from ta_member\r\n" + "where member_email = '" + sessionEmail + "'";
     try {
       connection = common.getConnection();
       ps = connection.prepareStatement(query);
@@ -143,15 +144,14 @@ public class MemberDao {
       }
 
     } catch (SQLException se) {
-      printSQLExceptionError(query);
+      jdbc.printSQLExceptionError(query);
     } catch (Exception ee) {
-      printExceptionError();
+      jdbc.printExceptionError();
     } finally {
       common.close(connection, ps, rs);
     }
     return member_rank;
   }
-
 
   /**
    * 쿼리문 가져오기
@@ -161,56 +161,23 @@ public class MemberDao {
    */
   private String getQuery(MemberDto dto) {
 
-    if (getMethodName().equals("joinMember")) {
-      return " insert into ta_member \r\n"
-          + " (member_no, member_name, member_email, member_phoneNumber, member_password, member_regDate,member_lastRentDate,\r\n"
-          + "          member_money, member_useTimes, member_rank, member_useCount,\r\n"
-          + "          member_accept) \r\n"
-          + "values \r\n" + "('" + dto.getMember_no() + "','" + dto.getMember_name() + "','"
-          + dto.getMember_email() + "','" + dto.getMember_phoneNumber() + "','"
-          + dto.getMember_password() + "','" + dto.getMember_regDate() + "','" + dto.getMember_lastRentDate() + "'," + dto.getMember_money() + ",'" + dto.getMember_useTimes() + "','" + dto.getMember_rank() + "'," + dto.getMember_useCount() + "," + dto.getMember_accept() + ") ";
+    if (jdbc.getMethodName().equals("joinMember")) {
+      return " insert into ta_member \r\n" + " (member_no, member_name, member_email, member_phoneNumber, member_password, member_regDate,member_lastRentDate,\r\n" + "          member_money, member_useTimes, member_rank, member_useCount,\r\n" + "          member_accept) \r\n" + "values \r\n" + "('"
+          + dto.getMember_no() + "','" + dto.getMember_name() + "','" + dto.getMember_email() + "','" + dto.getMember_phoneNumber() + "','" + dto.getMember_password() + "','" + dto.getMember_regDate() + "','" + dto.getMember_lastRentDate() + "'," + dto.getMember_money() + ",'"
+          + dto.getMember_useTimes() + "','" + dto.getMember_rank() + "'," + dto.getMember_useCount() + "," + dto.getMember_accept() + ") ";
     }
 
-    if (getMethodName().equals("getLoginName")) {
-      return " select member_name from ta_member \r\n" + " where member_email ='"
-          + dto.getMember_email() + "' \r\n" + " and member_password='" + dto.getMember_password()
-          + "'";
+    if (jdbc.getMethodName().equals("getLoginName")) {
+      return " select member_name from ta_member \r\n" + " where member_email ='" + dto.getMember_email() + "' \r\n" + " and member_password='" + dto.getMember_password() + "'";
     }
 
-    if (getMethodName().equals("idCheckCount")) {
+    if (jdbc.getMethodName().equals("idCheckCount")) {
       return "select count(*) from ta_member where member_email ='" + dto.getMember_email() + "'";
     }
-    
-    
+    if (jdbc.getMethodName().equals("getMemberNo")) {
+      return "select max(member_no) from ta_member";
+    }
+
     return "";
   }
-
-  /**
-   * 실행중인 메소드를 취득
-   * 
-   * @return 함수명
-   */
-  public static String getMethodName() {
-    return Thread.currentThread().getStackTrace()[3].getMethodName();
-  }
-
-  /**
-   * SQL 오류시 메세지 출력
-   * 
-   * @param methodName 대상 메소드 이름
-   * @param query 오류 쿼리문 출력
-   */
-  private void printSQLExceptionError(String query) {
-    System.out.println("[ERROR]" + getMethodName() + " query error: " + query);
-  }
-
-  /**
-   * 오류시 메세지 출력
-   * 
-   * @param methodName 대상 메소드 이름
-   */
-  private void printExceptionError() {
-    System.out.println("[ERROR]" + getMethodName());
-  }
-
 }

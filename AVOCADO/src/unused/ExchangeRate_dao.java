@@ -1,13 +1,10 @@
-package dao;
+package unused;
 
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
-import common.ExchangeConnection;
-import dto.ExchangeRate_dto;
 
 public class ExchangeRate_dao {
 

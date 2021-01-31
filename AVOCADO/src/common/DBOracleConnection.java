@@ -16,15 +16,14 @@ public class DBOracleConnection {
     loadJDBCDriver();
 
     try {
-//      String DB_URL = "jdbc:oracle:thin:@jsl70104:1521:orcl";
-//      String DB_USER = "jsl43";
-//      String DB_PASSWORD = "1234";
+      //701호 DB
       String DB_URL = "jdbc:oracle:thin:@211.194.125.16:1521:orcl";
       String DB_USER = "jsl43";
       String DB_PASSWORD = "1234";
-//      String DB_URL = "jdbc:oracle:thin:@awsavocado.c7ka5gpemdun.ap-northeast-2.rds.amazonaws.com:1521:ORCL";
-//      String DB_USER = "admin";
-//      String DB_PASSWORD = "avocado1234";
+      //AWS DB
+      // String DB_URL = "jdbc:oracle:thin:@awsavocado.c7ka5gpemdun.ap-northeast-2.rds.amazonaws.com:1521:ORCL";
+      // String DB_USER = "admin";
+      // String DB_PASSWORD = "avocado1234";
 
       printConnertionCheck(DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD));
       return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -78,11 +77,16 @@ public class DBOracleConnection {
       System.out.println(" oracle db 연결실패===========");
       return;
     }
-    //System.out.println(" oracle db 연결성공~~~");
+    // System.out.println(" oracle db 연결성공~~~");
   }
 
 
-
+  /**
+   * DB Connection 종료
+   * 
+   * @param con
+   * @param ps
+   */
   public void close(Connection con, PreparedStatement ps) {
     try {
       if (ps != null)
@@ -95,7 +99,13 @@ public class DBOracleConnection {
   }
 
 
-
+  /**
+   * DB Connection 종료
+   * 
+   * @param con
+   * @param ps
+   * @param result
+   */
   public void close(Connection con, PreparedStatement ps, ResultSet result) {
     try {
       if (result != null)
